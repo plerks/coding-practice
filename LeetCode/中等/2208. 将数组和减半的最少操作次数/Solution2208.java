@@ -1,4 +1,7 @@
-// https://leetcode.cn/problems/minimum-operations-to-halve-array-sum/
+/*
+url: https://leetcode.cn/problems/minimum-operations-to-halve-array-sum/
+相关: https://leetcode.cn/problems/maximal-score-after-applying-k-operations/
+*/
 
 import java.util.PriorityQueue;
 

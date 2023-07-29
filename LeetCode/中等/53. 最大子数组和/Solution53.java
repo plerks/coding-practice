@@ -2,6 +2,7 @@
 url: https://leetcode.cn/problems/maximum-subarray/
 题目简述: 给你一个整数数组nums，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 相关: https://leetcode.cn/problems/maximum-sum-circular-subarray/
+      如果改成子数组不需要连续，应该和[最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)解法类似
 外部参考: https://zhuanlan.zhihu.com/p/144385162
 */
 
