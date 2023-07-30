@@ -10,11 +10,11 @@ public class Solution141 {
         }
         HashSet<ListNode> set = new HashSet<>();
         ListNode p = head;
-        while (p.next != null) {
-            if (set.contains(p.next)) {
+        while (p != null) {
+            if (set.contains(p)) {
                 return true;
             }
-            set.add(p.next);
+            set.add(p);
             p = p.next;
         }
         return false;
