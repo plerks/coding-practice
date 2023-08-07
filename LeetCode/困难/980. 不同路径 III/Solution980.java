@@ -5,7 +5,7 @@ public class Solution980 {
 
     public int uniquePathsIII(int[][] grid) {
         int[][] visited = new int[grid.length][grid[0].length];
-        int startI = 0, startJ = 0, endI = 0, endJ = 0, noObstacleCount = 0;
+        int startI = 0, startJ = 0, noObstacleCount = 0;
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 1) {
