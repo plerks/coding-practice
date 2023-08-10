@@ -2,6 +2,7 @@
 url: https://leetcode.cn/problems/reverse-integer/solutions/
 LeetCode题解: https://leetcode.cn/problems/reverse-integer/solutions/755611/zheng-shu-fan-zhuan-by-leetcode-solution-bccn/
 相关: https://leetcode.cn/problems/string-to-integer-atoi/
+标签: 乘10时的溢出判断
 */
 
 public class Solution7 {
@@ -16,7 +17,7 @@ public class Solution7 {
                 return 0;
             } */
 
-            // 这个判断方式的推导见LeetCode的官方题解
+            // 这个判断方式的推导见LeetCode的官方题解，rev - Integer.MAX_VALUE / 10 == 0时不会溢出，因为此时digit最多是2
             if (rev - Integer.MAX_VALUE / 10 > 0 || rev - Integer.MIN_VALUE / 10 < 0) {
                 return 0;
             }

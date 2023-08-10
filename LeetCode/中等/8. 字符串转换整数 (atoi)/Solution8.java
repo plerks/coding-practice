@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/string-to-integer-atoi/
 相关: https://leetcode.cn/problems/reverse-integer/solutions/
+标签: 乘10时的溢出判断
 */
 
 public class Solution8 {
