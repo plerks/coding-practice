@@ -1,6 +1,8 @@
 /*
-url: https://leetcode.cn/problems/merge-sorted-array/description/
+url: https://leetcode.cn/problems/merge-sorted-array/
 LeetCode参考: https://leetcode.cn/problems/merge-sorted-array/solutions/666608/he-bing-liang-ge-you-xu-shu-zu-by-leetco-rrb0/
+相关: https://leetcode.cn/problems/remove-element/
+标签: 双指针
 */
 
 public class Solution88 {
