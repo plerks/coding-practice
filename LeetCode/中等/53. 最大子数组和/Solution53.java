@@ -3,12 +3,14 @@ url: https://leetcode.cn/problems/maximum-subarray/
 题目简述: 给你一个整数数组nums，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 相关: https://leetcode.cn/problems/maximum-sum-circular-subarray/
       如果改成子数组不需要连续，应该和[最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)解法类似
+      https://leetcode.cn/problems/house-robber/
 外部参考: https://zhuanlan.zhihu.com/p/144385162
 */
 
 public class Solution53 {
     public int maxSubArray(int[] nums) {
         // dp[i]代表以nums[i]为结尾的子数组的最大和，dp[i] = Math.max(nums[i], nums[i] + dp[i - 1])，然后dp[]中最大的值为全局最大值
+        // dp需要这样设是因为子数组要求连续，如果将dp设为nums[0..i]中的最大子数组和，在递推时无法保证子数组连续
         int[] dp = new int[nums.length];
         dp[0] = nums[0]; // 最大子数组非空，所以初始值为nums[0]
         int max = nums[0];
