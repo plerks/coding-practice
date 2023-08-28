@@ -1,13 +1,14 @@
 /*
 url: https://leetcode.cn/problems/merge-intervals/
 LeetCode参考: https://leetcode.cn/problems/merge-intervals/solutions/203562/he-bing-qu-jian-by-leetcode-solution/
+相关: https://leetcode.cn/problems/insert-interval/
 */
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Solution59 {
+public class Solution56 {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (x, y) -> {
             return x[0] - y[0];
@@ -35,7 +36,7 @@ public class Solution59 {
     }
 
     public static void main(String[] args) {
-        Solution59 solu = new Solution59();
+        Solution56 solu = new Solution56();
         System.out.println(Arrays.deepToString(solu.merge(new int[][]{{1,3},{2,6},{8,10},{15,18}})));
     }
 }
