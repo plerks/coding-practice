@@ -1,4 +1,8 @@
-// https://leetcode.cn/problems/combination-sum/
+/*
+url: https://leetcode.cn/problems/combination-sum/
+相关: https://leetcode.cn/problems/number-of-ways-to-buy-pens-and-pencils/
+标签: 选数，凑值
+*/
 
 import java.util.ArrayList;
 import java.util.Arrays;
