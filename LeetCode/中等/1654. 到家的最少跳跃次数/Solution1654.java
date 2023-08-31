@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/minimum-jumps-to-reach-home/
 LeetCode参考: https://leetcode.cn/problems/minimum-jumps-to-reach-home/solutions/2414842/dao-jia-de-zui-shao-tiao-yue-ci-shu-by-l-sza1/
+标签: 跳跃, 步数
 */
 
 import java.util.ArrayDeque;
