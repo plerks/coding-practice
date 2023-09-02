@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/longest-continuous-increasing-subsequence/
 相关: https://leetcode.cn/problems/longest-increasing-subsequence/
+      https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/
 */
 
 public class Solution674 {
