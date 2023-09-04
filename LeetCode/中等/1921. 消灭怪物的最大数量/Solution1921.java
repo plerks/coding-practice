@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/eliminate-maximum-number-of-monsters/?envType=daily-question&envId=2023-09-03
 LeetCode参考: https://leetcode.cn/problems/eliminate-maximum-number-of-monsters/solutions/857961/xiao-mie-guai-wu-de-zui-da-shu-liang-by-0ou2p/
+标签: 贪心
 */
 
 import java.util.Arrays;
