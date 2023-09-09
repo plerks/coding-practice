@@ -1,16 +1,12 @@
 /*
-url: https://leetcode.cn/problems/course-schedule/
-相关: https://leetcode.cn/problems/course-schedule-ii/
+url: https://leetcode.cn/problems/course-schedule-ii/?envType=daily-question&envId=2023-09-10
+相关: https://leetcode.cn/problems/course-schedule/
 标签: 拓扑排序
 */
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-
-class Solution207 {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+public class Solution210 {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int[] ans = new int[numCourses];
         List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i < numCourses; i++) {
             graph.add(new ArrayList<>());
@@ -27,6 +23,7 @@ class Solution207 {
         int count = 0;
         while (!queue.isEmpty()) {
             int node = queue.poll();
+            ans[count] = node;
             count++;
             List<Integer> list = graph.get(node);
             for (int i = 0; i < list.size(); i++) {
@@ -35,11 +32,9 @@ class Solution207 {
                 if (indegrees[to] == 0) queue.offer(to);
             }
         }
-        return count == numCourses;
+        return count == numCourses ? ans : new int[0];
     }
 
-	public static void main(String[] args) {
-		
-	}
-    
+    public static void main(String[] args) {
+    }
 }
