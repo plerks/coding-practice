@@ -13,11 +13,8 @@ public class Solution1222 {
         }
         int[][] directions = new int[][]{{0,-1},{1,-1},{1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1}};
         for (int[] direction : directions) {
-            int x = king[0], y = king[1];
-            while (true) {
-                x += direction[0];
-                y += direction[1];
-                if (!(x >= 0 && x <= 7 && y >= 0 && y <= 7)) break;
+            int x = king[0] + direction[0], y = king[1] + direction[1];
+            while (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
                 if (set.contains(x * 8 + y)) {
                     List<Integer> list = new ArrayList<>();
                     list.add(x);
@@ -25,6 +22,8 @@ public class Solution1222 {
                     ans.add(list);
                     break;
                 }
+                x += direction[0];
+                y += direction[1];
             }
         }
         return ans;
