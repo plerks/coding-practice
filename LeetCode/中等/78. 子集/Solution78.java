@@ -3,6 +3,7 @@ url: https://leetcode.cn/problems/subsets/
 LeetCode题解: https://leetcode.cn/problems/subsets/solutions/2367622/problem-78-zi-ji-by-alworn-skns/
               https://leetcode.cn/problems/TVdhkn/solutions/2329301/suo-you-zi-ji-by-relaxed-7eavittpjh-jem4/
               https://leetcode.cn/problems/TVdhkn/solutions/2288876/jing-dian-de-zi-ji-shu-wen-ti-by-nice-sa-5f3t/
+标签: 求幂集, 幂集递归
 */
 
 import java.util.*;

@@ -1,6 +1,8 @@
 /*
 url: https://leetcode.cn/problems/non-decreasing-subsequences/
 LeetCode参考: https://leetcode.cn/problems/non-decreasing-subsequences/solutions/387656/di-zeng-zi-xu-lie-by-leetcode-solution/
+相关: https://leetcode.cn/problems/subsets/
+标签: 幂集递归
 */
 
 import java.util.ArrayList;
