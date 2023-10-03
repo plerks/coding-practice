@@ -1,7 +1,9 @@
 /*
 url: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/?envType=daily-question&envId=2023-10-02
 LeetCode参考: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/solutions/476791/mai-mai-gu-piao-de-zui-jia-shi-ji-ii-by-leetcode-s/
-标签: 动态规划
+相关: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
+      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
+标签: 动态规划, 二维动态规划
 */
 
 public class Solution122 {

@@ -1,4 +1,8 @@
-// https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/?envType=daily-question&envId=2023-10-01
+/*
+url: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/?envType=daily-question&envId=2023-10-01
+相关: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
+      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
+*/
 
 public class Solution121 {
     public int maxProfit(int[] prices) {
