@@ -2,6 +2,8 @@
 url: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/?envType=daily-question&envId=2023-10-03
 相关: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
       https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
+      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
+      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 标签: 动态规划, 三维动态规划
 */
 
