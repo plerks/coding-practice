@@ -1,9 +1,10 @@
 /*
 url: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/?envType=daily-question&envId=2023-10-01
-相关: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+相关: LeetCode122. 买卖股票的最佳时机 II
+      LeetCode123. 买卖股票的最佳时机 III
+      LeetCode188. 买卖股票的最佳时机 IV
+      LeetCode309. 买卖股票的最佳时机含冷冻期
+      LeetCode714. 买卖股票的最佳时机含手续费
 */
 
 public class Solution121 {

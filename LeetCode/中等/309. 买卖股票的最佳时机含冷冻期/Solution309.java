@@ -1,9 +1,10 @@
 /*
 url: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/?envType=daily-question&envId=2023-10-05
-相关: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
+相关: LeetCode121. 买卖股票的最佳时机
+      LeetCode122. 买卖股票的最佳时机 II
+      LeetCode123. 买卖股票的最佳时机 III
+      LeetCode188. 买卖股票的最佳时机 IV
+      LeetCode714. 买卖股票的最佳时机含手续费
 标签: 动态规划, 二维动态规划
 */
 

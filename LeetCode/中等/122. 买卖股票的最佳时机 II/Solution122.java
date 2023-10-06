@@ -1,10 +1,11 @@
 /*
 url: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/?envType=daily-question&envId=2023-10-02
 LeetCode参考: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/solutions/476791/mai-mai-gu-piao-de-zui-jia-shi-ji-ii-by-leetcode-s/
-相关: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
-      https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+相关: LeetCode121. 买卖股票的最佳时机
+      LeetCode123. 买卖股票的最佳时机 III
+      LeetCode188. 买卖股票的最佳时机 IV
+      LeetCode309. 买卖股票的最佳时机含冷冻期
+      LeetCode714. 买卖股票的最佳时机含手续费
 标签: 动态规划, 二维动态规划
 */
 
