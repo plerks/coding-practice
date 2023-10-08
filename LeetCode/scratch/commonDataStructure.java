@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.TreeMap;
 import java.util.Map.Entry;
 
 public class commonDataStructure {
@@ -49,5 +50,19 @@ public class commonDataStructure {
         HashSet<String> set = new HashSet<>();
         set.add("dd");
         System.out.println(set.contains("dd"));
+
+        /* LeetCode2034第一次用到TreeMap，是二叉搜索树的实现，具体底层是红黑树，
+        相比HashMap其中的entry有二叉搜索树的序，LeetCode2034用到了firstKey()和lastKey()来获取最大和最小key
+        */
+        TreeMap<Integer, Integer> treeMap = new TreeMap<>();
+        /* TreeMap<Integer, Integer> treeMapConstructWithComparator = new TreeMap<>((x, y) -> {
+            return x - y;
+        }); */
+        treeMap.put(1, 3);
+        treeMap.put(7, 3);
+        treeMap.put(5, 8);
+        System.out.println("treeMap.get(7): " + treeMap.get(7));
+        System.out.println("treeMap.firstKey(): " + treeMap.firstKey());
+        System.out.println("treeMap.lastKey(): " + treeMap.lastKey());
     }
 }
