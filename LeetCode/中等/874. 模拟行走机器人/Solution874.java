@@ -1,19 +1,25 @@
 // https://leetcode.cn/problems/walking-robot-simulation/
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Solution874 {
-    static int maxDistance = 0;
+    int maxDistance = 0;
+
+    /* 用进制表示法，不用往set里直接放Point类，但是这题0 <= obstacles.length <= 10^4但-3 * 10^4 <= xi, yi <= 3 * 10^4(可以为负)，upperbound取10001还不够(会有用例过不了)，
+    得更大。
+    对于-3 * 10^4 <= xi, yi <= 3 * 10^4，n要多大才能使得任意(x1, y1) != (x2, y2)，有x1 * n + y1 != x2 * n + y2 ？
+    只要n使得(x1 - x2) * n + (y1 - y2)必不为0即可。
+        1. 若x1 - x2 == 0，则(x1 - x2) * n + (y1 - y2)不为0
+        2. 若x1 - x2 != 0，因为(x1 - x2) * n + (y1 - y2) == 0 <=> n = (y2 - y1)/(x1 - x2)，则n只需取超过(y2 - y1)/(x1 - x2)的最大值6 * 10^4即可
+    */
+    int upperbound = 60001;
+
     public int robotSim(int[] commands, int[][] obstacles) {
-        if (Arrays.toString(commands).equals(Arrays.toString(new int[]{6, -1, -1, 6})) && obstacles.length == 0) {
-            return 36;
-        }
         Robot robot = new Robot();
-        Set<Point> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         for (int i = 0; i < obstacles.length; i++) {
-            set.add(new Point(obstacles[i][0], obstacles[i][1]));
+            set.add(obstacles[i][0] * upperbound + obstacles[i][1]);
         }
         for (int i = 0; i < commands.length; i++) {
             moveRobot(robot, commands[i], obstacles, set);
@@ -21,7 +27,7 @@ public class Solution874 {
         return maxDistance;
     }
 
-    private void moveRobot(Robot robot, int command, int[][] obstacles, Set<Point> set) {
+    private void moveRobot(Robot robot, int command, int[][] obstacles, Set<Integer> set) {
         if (command < 0) {
             rotateRobot(robot, command);
         }
@@ -41,7 +47,7 @@ public class Solution874 {
                 else {
                     y -= 1;
                 }
-                if (set.contains(new Point(x, y))) {
+                if (set.contains(x * upperbound + y)) {
                     break;
                 }
                 else {
@@ -67,7 +73,7 @@ public class Solution874 {
 
     public static void main(String[] args) {
         Solution874 solu = new Solution874();
-        System.out.println(solu.robotSim(new int[]{6,-1,-1,6}, new int[][]{}));
+        System.out.println(solu.robotSim(new int[]{-2,-1,8,9,6}, new int[][]{{-1,3},{0,1},{-1,5},{-2,-4},{5,4},{-2,-3},{5,-1},{1,-1},{5,5},{5,2}}));
     }
 }
 
@@ -83,27 +89,4 @@ class Position {
     static final int TOP = 1;
     static final int LEFT = 2;
     static final int DOWN = 3;
-}
-
-class Point {
-    int x;
-    int y;
-
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
-    public boolean equals(Object p) {
-        if (p instanceof Point) {
-            return this.x == ((Point) p).x && this.y == ((Point) p).y;
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return this.x + this.y;
-    }
 }
