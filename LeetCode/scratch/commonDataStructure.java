@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 
 public class commonDataStructure {
@@ -64,5 +65,18 @@ public class commonDataStructure {
         System.out.println("treeMap.get(7): " + treeMap.get(7));
         System.out.println("treeMap.firstKey(): " + treeMap.firstKey());
         System.out.println("treeMap.lastKey(): " + treeMap.lastKey());
+
+        // LeetCode1488. 避免洪水泛滥第一次用到TreeSet，底层使用了TreeMap
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        // TreeSet<Integer> treeSetConstructWithComparator = new TreeSet<>((x, y) -> x - y);
+        treeSet.add(1);
+        treeSet.add(5);
+        treeSet.add(7);
+        System.out.println("treeSet.first(): " + treeSet.first());
+        System.out.println("treeSet.last(): " + treeSet.last());
+        // 0的天花板，即往正方向走最相近一个>=0的元素。"Returns the least element in this set greater than or equal to the given element, or null if there is no such element."
+        System.out.println("treeSet.ceiling(0): " + treeSet.ceiling(0));
+        // 5的地板，即从负方向来最相近一个<=5的元素。"Returns the greatest element in this set less than or equal to the given element, or null if there is no such element."
+        System.out.println("treeSet.floor(5): " + treeSet.floor(5));
     }
 }
