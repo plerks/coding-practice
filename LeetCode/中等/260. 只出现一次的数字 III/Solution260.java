@@ -17,7 +17,10 @@ public class Solution260 {
         // firstOneValue为一个有且仅有一位为1的数。此时，在firstOneValue的1所在的这一位，由于x的这一位为1，则a1和a2这一位上一个为0一个为1，从而可以进行分类
         int ans1 = 0, ans2 = 0;
         for (int val : nums) {
-            if ((val & firstOneValue) > 0) {
+            /* 这里应该写成!=0而不是>0，firstOneValue的1可能在最高位，对于(a1, a2) == (0, Integer.MIN_VALUE)，a1和a2 & firstOneValue都<=0，
+            被错误地归为了一类，虽然最终结果是对的(因为ans1初值为0)
+            */
+            if ((val & firstOneValue) != 0) {
                 ans1 ^= val;
             }
             else ans2 ^= val;
@@ -27,6 +30,6 @@ public class Solution260 {
 
     public static void main(String[] args) {
         Solution260 solu = new Solution260();
-        System.out.println(Arrays.toString(solu.singleNumber(new int[]{2,1,2,3,4,1})));
+        System.out.println(Arrays.toString(solu.singleNumber(new int[]{0, Integer.MIN_VALUE, 3, 3})));
     }
 }
