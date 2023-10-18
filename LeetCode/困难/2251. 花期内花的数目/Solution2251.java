@@ -2,8 +2,8 @@
 url: https://leetcode.cn/problems/number-of-flowers-in-full-bloom/?envType=daily-question&envId=2023-09-28
 LeetCode参考: https://leetcode.cn/problems/number-of-flowers-in-full-bloom/solutions/1444982/by-tsreaper-s39k/
               https://leetcode.cn/problems/number-of-flowers-in-full-bloom/solutions/1445000/chai-fen-pythonjavacgo-by-endlesscheng-wz35/
-相关: /典型问题/求一个点被几个区间覆盖
-标签: 求一个点被几个区间覆盖
+相关: /典型问题/求一组点被几个区间覆盖
+标签: 求一组点被几个区间覆盖
 */
 
 import java.util.ArrayList;

@@ -2,11 +2,12 @@
 给出横轴上的一些闭区间和一系列数，求每个数被几个区间覆盖。
 相关: LeetCode35. 搜索插入位置 https://leetcode.cn/problems/search-insert-position/
       LeetCode2251. 花期内花的数目 https://leetcode.cn/problems/number-of-flowers-in-full-bloom/
-标签: 求一个点被几个区间覆盖
+标签: 求一组点被几个区间覆盖
 */
 
 import java.util.*;
 
+// 如果只是求一个点被几个区间覆盖，即xArr.length == 1，只需遍历一遍intervals判断即可
 public class IntervalCover {
     // 将x包含的区间数量为{起点<=x的区间数量} - {终点<x的区间数量}
     public int[] getCoverCount(int[][] intervals, int[] xArr) {
