@@ -2,6 +2,7 @@
 url: https://leetcode.cn/problems/earliest-possible-day-of-full-bloom/?envType=daily-question&envId=2023-09-30
 LeetCode参考: https://leetcode.cn/problems/earliest-possible-day-of-full-bloom/solutions/1202113/quan-bu-kai-hua-de-zui-zao-yi-tian-by-le-ocxg/
               https://leetcode.cn/problems/earliest-possible-day-of-full-bloom/solutions/1200254/tan-xin-ji-qi-zheng-ming-by-endlesscheng-hfwe/
+相关: LeetCode1402. 做菜顺序
 标签: 贪心, 局部调整法
 */
 
