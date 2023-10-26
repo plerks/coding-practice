@@ -1,4 +1,7 @@
-// https://leetcode.cn/problems/max-area-of-island/
+/*
+url: https://leetcode.cn/problems/max-area-of-island/
+相关: LeetCode1465. 切割后面积最大的蛋糕
+*/
 
 class Solution695 {
     int count = 0;

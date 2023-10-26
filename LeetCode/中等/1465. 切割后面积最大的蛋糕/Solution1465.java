@@ -1,7 +1,11 @@
-// https://leetcode.cn/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/?envType=daily-question&envId=2023-10-27
+/*
+url: https://leetcode.cn/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/?envType=daily-question&envId=2023-10-27
+相关: LeetCode695. 岛屿的最大面积
+*/
 
 import java.util.Arrays;
 
+// 这题可以看作LeetCode695. 岛屿的最大面积的特殊情况，只是因为切的方式规则不需要dfs
 public class Solution1465 {
     // 找出两个方向切出的最大间隔并相乘
     public int maxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts) {
