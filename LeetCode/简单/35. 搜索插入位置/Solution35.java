@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/search-insert-position/
-标签: 不小于某元素的最小位置
+标签: 不小于某元素的最小位置，二分查找
 */
 
 public class Solution35 {

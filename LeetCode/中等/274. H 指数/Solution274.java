@@ -1,5 +1,6 @@
 /*
-url: https://leetcode.cn/problems/h-index/submissions/?envType=daily-question&envId=2023-10-29
+url: https://leetcode.cn/problems/h-index/?envType=daily-question&envId=2023-10-29
+相关: LeetCode275. H 指数 II
 标签: h指数
 */
 import java.util.*;
