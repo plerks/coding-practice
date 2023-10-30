@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/subarray-with-elements-greater-than-varying-threshold/
 LeetCode参考: https://leetcode.cn/problems/subarray-with-elements-greater-than-varying-threshold/solutions/1658410/by-endlesscheng-j6pp/
-标签: 单调栈
+标签: 单调栈, 用单调栈寻找左侧第一个比当前元素小的元素, 用单调栈寻找右侧第一个比当前元素小的元素
 */
 
 import java.util.Deque;
@@ -24,7 +24,7 @@ public class Solution2334 {
         }
 
         Deque<Integer> stack2 = new LinkedList<>();
-        int[] table2 = new int[nums.length]; // table1[i]为左侧第一个小于nums[i]的位置
+        int[] table2 = new int[nums.length]; // table2[i]为右侧第一个小于nums[i]的位置
         for (int i = nums.length - 1; i >= 0; i--) {
             while (!stack2.isEmpty() && nums[stack2.peek()] >= nums[i]) stack2.pop();
             table2[i] = stack2.isEmpty() ? nums.length : stack2.peek();

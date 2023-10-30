@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/online-stock-span/?envType=daily-question&envId=2023-10-07
-标签: 单调栈
+标签: 单调栈, 用单调栈寻找左侧第一个比当前元素大的元素
 */
 
 import java.util.Deque;
