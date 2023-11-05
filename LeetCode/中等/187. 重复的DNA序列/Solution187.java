@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/repeated-dna-sequences/?envType=daily-question&envId=2023-11-05
 LeetCode参考: https://leetcode.cn/problems/repeated-dna-sequences/solutions/1035568/zhong-fu-de-dnaxu-lie-by-leetcode-soluti-z8zn/
-标签: 滑动窗口, 字符串压缩到整数
+标签: 滑动窗口, 字符串特化压缩
 */
 
 import java.util.ArrayList;
