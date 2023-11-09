@@ -1,9 +1,11 @@
+// 相关: 典型问题/最短路径-bfs(针对边权全为1的图)
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ShortestPath {
+public class ShortestPathDijkstra {
     public int[] shortestPath(int n, int[][] graph, int s) { // 求s到其它点的最短路径
         int[] distance = new int[n];
         Arrays.fill(distance, Integer.MAX_VALUE);
@@ -61,7 +63,7 @@ public class ShortestPath {
     }
 
     public static void main(String[] args) {
-        ShortestPath solu = new ShortestPath();
+        ShortestPathDijkstra solu = new ShortestPathDijkstra();
         int n = 5;
         int[][] graph = new int[n][n];
         for (int[] arr : graph) {
