@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/escape-the-spreading-fire/?envType=daily-question&envId=2023-11-09
 LeetCode参考: https://leetcode.cn/problems/escape-the-spreading-fire/solutions/1460794/er-fen-bfspythonjavacgo-by-endlesscheng-ypp1/
-相关: 典型问题/最短路径-bfs(针对边权全为1的图)
+相关: 典型问题/最短路径-bfs(针对边权全为1的图), 典型问题/有序范围内的二分查找
 标签: 二分查找, bfs
 */
 
@@ -27,8 +27,32 @@ public class Solution2258 {
                 right = mid;
             }
         }
-        // left == m * n，第一个不符合的位置在[m * n, m * n]之间，其实代表的是第一个不符合的位置在[m * n, 正无穷]之间，也即可以无限等待
-        return left == m * n ? 1_000_000_000 : left - 1;
+        // 由于单调性，区间呈现[符合 ... 不符合]的特征。(可能全为符合或不符合)
+        /* 循环结束后，按理left应当为[0, m * n]内第一个不符合的位置，但与搜索数组内第一个大于某值的位置不同，第一个不符合的位置在[0, m*n]不一定存在，若存在，left准确
+        地汇报了[0, m * n]内第一个不符合的位置，则left-1就是最后一个符合的位置。若第一个不符合的位置不存在，left最终会是m*n，注意这里若left最终为m*n，则left一定不是
+        由于是第一个不符合的位置而被汇报出来的，因为根据问题情景若m*n是第一个不符合的位置，那m*n-1才应该是第一个不符合的位置，矛盾。则m*n是符合，说明永远符合。
+        因此，由于存在性不满足，循环结束后，left为[0, m * n]内第一个不符合的位置这一性质也不满足。
+
+        一种更好的看法是看left-1，搜索出来的left-1为[0, m * n)内最后一个符合的位置(若无符合的位置则为-1)，则若left - 1为m*n-1，说明m*n-1符合，说明永远符合。这里也
+        体现了区间初始取值的重要性，初始的left必须是0，要让left-1能取到-1，初始的right必须>=m*n，因为只要探测到m*n-1符合，则[m*n-1, 正无穷]全部符合。
+
+        更一般的，若初始left==x, right==y，则这个写法最后left-1为[x, y)内最后一个符合的位置(若无符合的位置则left-1为x-1)。
+        */
+        return left - 1 == m * n - 1 ? 1_000_000_000 : left - 1;
+    
+        // 这里二分搜索searchLast的闭区间写法:
+        /* int left = 0, right = m * n - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (check(grid, mid)) {
+                left = mid + 1;
+            }
+            else {
+                right = mid - 1;
+            }
+        }
+        // 搜索出的left-1是[0, m*n-1]内最后一个符合的位置(若无符合的位置则left-1为x-1)。
+        return left - 1 == m * n - 1? 1_000_000_000 : left - 1; */
     }
 
     // 检测等待time时间能否逃脱
