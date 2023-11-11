@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/?envType=daily-question&envId=2023-11-01
 LeetCode参考: https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/solutions/1190222/can-jia-hui-yi-de-zui-duo-yuan-gong-shu-u8e8u/
               https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/solutions/2507559/gong-shui-san-xie-sha-shi-nei-xiang-wai-4ig79/
-标签: 基环内向树, 基环树, 拓扑排序, 环
+标签: 基环内向树, 基环树, 拓扑排序, 环, 座位问题
 */
 
 import java.util.*;
