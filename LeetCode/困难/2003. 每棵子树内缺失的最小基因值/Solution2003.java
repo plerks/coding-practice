@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/smallest-missing-genetic-value-in-each-subtree/?envType=daily-question&envId=2023-10-31
 LeetCode参考: https://leetcode.cn/problems/smallest-missing-genetic-value-in-each-subtree/solutions/2490449/mei-ke-zi-shu-nei-que-shi-de-zui-xiao-ji-mljk/
+相关: LeetCode41. 缺失的第一个正数
 标签: dfs, 从下往上, 自下而上
 */
 
