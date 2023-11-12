@@ -1,39 +1,41 @@
 /*
 url: https://leetcode.cn/problems/insert-interval/
-相关: https://leetcode.cn/problems/merge-intervals/
+LeetCode参考: https://leetcode.cn/problems/insert-interval/solutions/472435/shou-hua-tu-jie-57-cha-ru-qu-jian-fen-cheng-3ge-ji/
+              https://leetcode.cn/problems/insert-interval/solutions/472151/cha-ru-qu-jian-by-leetcode-solution/
+相关: LeetCode56. 合并区间, LeetCode715. Range 模块
+标签: 区间合并
 */
 
 import java.util.*;
 
 public class Solution57 {
-    // 直接拿了<https://leetcode.cn/problems/merge-intervals/>的代码过来用
+    // intervals已按区间左端点排序
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        int[][] newIntervals = new int[intervals.length + 1][2];
-        for (int i = 0; i < intervals.length; i++) {
-            newIntervals[i] = intervals[i];
+        List<int[]> mergedIntervals = new ArrayList<>();
+        int i = 0;
+
+        // newInterval相对已有的区间分为3个阶段，左边与newInterval无重叠的部分，中间有重叠的部分，右边无重叠的部分
+
+        while (i < intervals.length && intervals[i][1] < newInterval[0]) {
+            mergedIntervals.add(intervals[i]);
+            i++;
         }
-        newIntervals[newIntervals.length - 1] = newInterval;
-        Arrays.sort(newIntervals, (x, y) -> {
-            return x[0] - y[0];
-        });
-        List<int[]> merged = new ArrayList<>();
-        for (int i = 0; i < newIntervals.length; i++) {
-            int[] interval = newIntervals[i];
-            if (merged.size() == 0) {
-                merged.add(interval);
-            }
-            else {
-                if (interval[0] > merged.get(merged.size() - 1)[1]) {
-                    merged.add(interval);
-                }
-                else {
-                    merged.get(merged.size() - 1)[1] = Math.max(interval[1], merged.get(merged.size() - 1)[1]);
-                }
-            }
+
+        while (i < intervals.length && !(intervals[i][0] > newInterval[1])) {
+            newInterval[0] = Math.min(newInterval[0], intervals[i][0]);
+            newInterval[1] = Math.max(newInterval[1], intervals[i][1]); // newInterval记录了中间部分的合并结果
+            i++;
         }
-        int[][] ans = new int[merged.size()][2];
-        for (int i = 0; i < merged.size(); i++) {
-            ans[i] = merged.get(i);
+        mergedIntervals.add(newInterval);
+
+        while (i < intervals.length) {
+            mergedIntervals.add(intervals[i]);
+            i++;
+        }
+
+        int[][] ans = new int[mergedIntervals.size()][2];
+        for (int j = 0; j < ans.length; j++) {
+            ans[j] = mergedIntervals.get(j);
         }
         return ans;
     }

@@ -1,7 +1,8 @@
 /*
 url: https://leetcode.cn/problems/merge-intervals/
 LeetCode参考: https://leetcode.cn/problems/merge-intervals/solutions/203562/he-bing-qu-jian-by-leetcode-solution/
-相关: https://leetcode.cn/problems/insert-interval/
+相关: LeetCode57. 插入区间, LeetCode715. Range 模块
+标签: 区间合并
 */
 
 import java.util.ArrayList;
