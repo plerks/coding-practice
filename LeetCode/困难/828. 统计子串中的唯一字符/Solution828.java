@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/?envType=daily-question&envId=2023-11-26
-标签: 幂集
+相关: LeetCode907. 子数组的最小值之和
+标签: 子数组集
 */
 
 import java.util.HashMap;
