@@ -47,6 +47,8 @@ public class commonDataStructure {
         for (Entry<String, String> e : map.entrySet()) {
             System.out.println(e.getKey() + ": " + e.getValue());
         }
+        map.merge("Name1", "3", (x, y) -> x + y);
+        System.out.println("map.get(\"Name1\"): " + map.get("Name1"));
 
         HashSet<String> set = new HashSet<>();
         set.add("dd");
