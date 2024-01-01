@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/card-flipping-game/
 LeetCode参考: https://leetcode.cn/problems/card-flipping-game/solutions/2368848/du-dong-ti-jiu-neng-shi-xian-de-suan-fa-3hx0s/
+标签: 卡牌问题
 */
 
 import java.util.HashSet;
