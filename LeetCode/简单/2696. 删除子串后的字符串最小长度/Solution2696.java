@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/minimum-string-length-after-removing-substrings/description/?envType=daily-question&envId=2024-01-10
 LeetCode参考: https://leetcode.cn/problems/minimum-string-length-after-removing-substrings/solutions/2278343/liang-chong-suan-fa-bao-li-ti-huan-zhan-vto0o/
+相关: LeetCode20. 有效的括号
 标签: 栈, 括号匹配
 */
 
