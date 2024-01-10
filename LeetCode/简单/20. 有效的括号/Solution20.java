@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/valid-parentheses/description/
-相关: LeetCode2696. 删除子串后的字符串最小长度
+相关: LeetCode2696. 删除子串后的字符串最小长度, LeetCode2645. 构造有效字符串的最少插入数
 标签: 栈, 括号匹配
 */
 
