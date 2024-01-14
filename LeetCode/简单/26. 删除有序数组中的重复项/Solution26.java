@@ -1,6 +1,8 @@
 /*
 url: https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
 LeetCode参考: https://leetcode.cn/problems/remove-duplicates-from-sorted-array/solutions/728105/shan-chu-pai-xu-shu-zu-zhong-de-zhong-fu-tudo/
+相关: LeetCode83. 删除排序链表中的重复元素, LeetCode82. 删除排序链表中的重复元素 II
+标签: 双指针
 */
 
 public class Solution26 {

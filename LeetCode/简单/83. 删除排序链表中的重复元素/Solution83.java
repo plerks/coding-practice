@@ -1,4 +1,8 @@
-// https://leetcode.cn/problems/remove-duplicates-from-sorted-list/description/?envType=daily-question&envId=2024-01-14
+/*
+url: https://leetcode.cn/problems/remove-duplicates-from-sorted-list/description/?envType=daily-question&envId=2024-01-14
+相关: LeetCode26. 删除有序数组中的重复项, LeetCode82. 删除排序链表中的重复元素 II
+标签: 双指针
+*/
 
 public class Solution83 {
     public ListNode deleteDuplicates(ListNode head) {
