@@ -1,6 +1,7 @@
 /*
 描述: 投掷n个骰子，点数随机1~6，求最终点数之和>=x的概率
 参考: https://kriszhang.com/shaizi_google/
+相关: LeetCode2719. 统计整数数目
 */
 
 public class RollDiceLargerOrEqualX {
