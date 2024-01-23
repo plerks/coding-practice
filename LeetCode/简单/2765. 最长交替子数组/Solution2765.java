@@ -1,4 +1,7 @@
-// https://leetcode.cn/problems/longest-alternating-subarray/description/?envType=daily-question&envId=2024-01-23
+/*
+url: https://leetcode.cn/problems/longest-alternating-subarray/description/?envType=daily-question&envId=2024-01-23
+我的题解: https://leetcode.cn/problems/longest-alternating-subarray/solutions/2616302/yi-ge-xiao-wen-ti-guan-yu-wei-shi-yao-ke-ev72/
+*/
 
 public class Solution2765 {
     public int alternatingSubarray(int[] nums) {
