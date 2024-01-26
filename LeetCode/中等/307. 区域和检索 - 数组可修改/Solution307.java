@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/range-sum-query-mutable/?envType=daily-question&envId=2023-11-13
-外部参考: https://oi-wiki.org/ds/fenwick/
+其它参考: https://oi-wiki.org/ds/fenwick/
 LeetCode参考: https://leetcode.cn/problems/range-sum-query-mutable/solutions/1393053/-by-hu-ge-8-t4rn/
               https://leetcode.cn/problems/range-sum-query-mutable/solutions/1389182/qu-yu-he-jian-suo-shu-zu-ke-xiu-gai-by-l-76xj/
               https://leetcode.cn/problems/range-sum-query-mutable/solutions/1394254/by-fenjue-ewfb/

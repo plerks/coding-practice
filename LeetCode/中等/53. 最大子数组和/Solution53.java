@@ -4,7 +4,7 @@ url: https://leetcode.cn/problems/maximum-subarray/
 相关: https://leetcode.cn/problems/maximum-sum-circular-subarray/
       如果改成子数组不需要连续，应该和[最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)解法类似
       https://leetcode.cn/problems/house-robber/
-外部参考: https://zhuanlan.zhihu.com/p/144385162
+其它参考: https://zhuanlan.zhihu.com/p/144385162
 */
 
 public class Solution53 {

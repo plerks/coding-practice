@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/minimum-time-to-repair-cars/?envType=daily-question&envId=2023-09-07
 LeetCode参考: https://leetcode.cn/problems/minimum-time-to-repair-cars/solutions/2177199/er-fen-da-an-pythonjavacgo-by-endlessche-keqf/
-外部参考: https://en.cppreference.com/w/cpp/numeric/math/sqrt
+其它参考: https://en.cppreference.com/w/cpp/numeric/math/sqrt
 相关: https://leetcode.cn/problems/search-insert-position/
 标签: 二分查找
 */
