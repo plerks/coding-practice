@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
 LeetCode参考: https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/solutions/238552/er-cha-shu-de-zui-jin-gong-gong-zu-xian-by-leetc-2/
+相关: LeetCode2846. 边权重均等查询
 标签: 两个节点的最近公共祖先
 */
 
