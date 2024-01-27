@@ -89,7 +89,7 @@ public class Solution2846 {
         while (!q.isEmpty()) {
             int i = q.poll();
             f[i][0] = parent[i]; // 除了根节点，其它节点在入队时已填充好了parent[i]
-            for (int j = 1; j < m; j++) {
+            for (int j = 1; j < m; j++) { // 有些节点的祖先没那么多个，统一会记为根节点0，最终跳跃时会判断depth，不会有问题
                 f[i][j] = f[f[i][j - 1]][j - 1]; // 关键关系，i的第2^1个祖先f[i][j]等于i的第2^(i-1)个祖先f[i][j - 1]的第2^(i-1)个祖先
             }
             List<int[]> neighbors = graph.get(i);
