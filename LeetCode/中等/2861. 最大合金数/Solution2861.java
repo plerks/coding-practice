@@ -10,6 +10,7 @@ import java.util.List;
 public class Solution2861 {
     /* 原本以为有更巧妙的做法，但是题解也是二分。如果用模拟的方式做，可能能这样：如果目前的stock一份都做不了，补充到可做的最小套数，更新stock，继续循环；
     如果可以做，则做，更新stock，继续循环。
+    这里容易想到二分的原因是对于生产数量n，很容易计算budget够不够，根据生产n需要的材料数量计算需要补充的材料数量即可，而且区间变化也符合单调性。
     */
     public int maxNumberOfAlloys(int n, int k, int budget, List<List<Integer>> composition, List<Integer> stock, List<Integer> cost) {
         int ans = 0;
