@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/maximize-distance-to-closest-person/
 LeetCode参考: https://leetcode.cn/problems/maximize-distance-to-closest-person/solutions/2393766/dao-zui-jin-de-ren-de-zui-da-ju-chi-by-l-zboe/
+相关: LeetCode2808. 使循环数组所有元素相等的最少秒数, 典型问题/到最近的x的最大距离, 典型问题/到最近的x的所有距离
 标签: 双指针
 */
 

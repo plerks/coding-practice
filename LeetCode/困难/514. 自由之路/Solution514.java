@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/freedom-trail/description/?envType=daily-question&envId=2024-01-29
 LeetCode参考: https://leetcode.cn/problems/freedom-trail/solutions/480315/zi-you-zhi-lu-by-leetcode-solution/
+相关: LeetCode2808. 使循环数组所有元素相等的最少秒数, 典型问题/到最近的x的所有距离
 标签: 动态规划
 */
 
