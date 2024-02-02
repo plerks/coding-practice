@@ -95,4 +95,19 @@ public class Sort {
         arr[left] = pivot;
         return left;
     }
+
+    /* 还有一种partition()的写法是这样，《数据结构(C++语言版)》-ISBN9787302330646 12.1.5节有讲解，这样写对于完全(或几乎完全)有序的输入，
+    partition的结果会划分为一长一短两个子向量，而非接近等长，因此效率会差。而LeetCode215. 数组中的第K个最大元素用例中有一个很长的
+    几乎全为1的用例，采用这种partition写法会超时。
+    */
+    /* public int partition(int[] arr, int left, int right) {
+        int pivot = arr[left];
+        while (left < right) {
+            // 这里arr[right] >= pivot和arr[left] <= pivot不能是>和<，否则可能死循环，例如arr元素全部相等
+            while (left < right && arr[right] >= pivot) right--; arr[left] = arr[right];
+            while (left < right && arr[left] <= pivot) left++; arr[right] = arr[left];
+        }
+        arr[left] = pivot;
+        return left;
+    } */
 }

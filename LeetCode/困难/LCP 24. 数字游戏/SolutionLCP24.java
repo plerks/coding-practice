@@ -1,8 +1,8 @@
 /*
 url: https://leetcode.cn/problems/5TxKeK/description/?envType=daily-question&envId=2024-02-01
 LeetCode参考: https://leetcode.cn/problems/5TxKeK/solutions/2623535/shu-zi-you-xi-by-leetcode-solution-xvte/
-相关: LeetCode462. 最小操作次数使数组元素相等 II, LeetCode295. 数据流的中位数
-标签: 双优先队列
+相关: LeetCode462. 最小操作次数使数组元素相等 II, LeetCode295. 数据流的中位数, 典型问题/k选取, LeetCode215. 数组中的第K个最大元素
+标签: 双优先队列, 中位数, 求流的中位数
 */
 
 import java.util.Arrays;
