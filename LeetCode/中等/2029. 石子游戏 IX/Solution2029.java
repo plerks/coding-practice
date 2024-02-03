@@ -2,6 +2,7 @@
 url: https://leetcode.cn/problems/stone-game-ix/
 LeetCode参考: https://leetcode.cn/problems/stone-game-ix/solutions/1459077/by-gong-zi-mian-p0k7/
               https://leetcode.cn/problems/stone-game-ix/solutions/2373721/2029-shi-zi-you-xi-ix-by-stormsunshine-9n0w/
+相关: LeetCode1686. 石子游戏 VI, LeetCode1690. 石子游戏 VII
 标签: 石子游戏
 */
 

@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/stone-game-vi/description/?envType=daily-question&envId=2024-02-02
-相关: LeetCode1402. 做菜顺序, LeetCode2029. 石子游戏 IX
+相关: LeetCode1402. 做菜顺序, LeetCode2029. 石子游戏 IX, LeetCode1690. 石子游戏 VII
 我的题解: https://leetcode.cn/problems/stone-game-vi/solutions/2628684/fen-xi-er-ren-xuan-ze-de-zui-you-ce-lue-oje8f/
 标签: 标号数组排序, 石子游戏
 */
