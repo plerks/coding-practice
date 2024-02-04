@@ -3,7 +3,7 @@ url: https://leetcode.cn/problems/stone-game-vii/description/?envType=daily-ques
 LeetCode参考: https://leetcode.cn/problems/stone-game-vii/solutions/2626699/shi-zi-you-xi-vii-by-leetcode-solution-8wqc/
               https://leetcode.cn/problems/stone-game-vii/solutions/2629582/jiao-ni-yi-bu-bu-si-kao-dong-tai-gui-hua-zktx/
 相关: LeetCode1686. 石子游戏 VI, LeetCode2029. 石子游戏 IX
-标签: 石子游戏, 动态规划, 二维动态规划, 前缀和
+标签: 石子游戏, 记忆化搜索, 动态规划, 二维动态规划, 前缀和
 */
 
 public class Solution1690 {
@@ -82,6 +82,7 @@ public class Solution1690 {
         return aliceScore - bobScore;
     }
 
+    // 自顶向下，用记忆化搜索优化递归
     public int stoneGameVII(int[] stones) {
         int n = stones.length;
         int[] prefixSum = new int[n];
@@ -105,6 +106,7 @@ public class Solution1690 {
         return max;
     }
 
+    // 自底向上，dp
     public int stoneGameVII_implementation2(int[] stones) {
         int n = stones.length;
         int[][] dp = new int[n][n]; // dp[i][j]表示一个人面对stones[i, j]时能实现的最大得分差
