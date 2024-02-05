@@ -7,8 +7,10 @@ LeetCode参考: https://leetcode.cn/problems/sliding-window-maximum/solutions/54
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class Solution239 {
+    // 使用单调队列
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         int[] ans = new int[n - k + 1];
@@ -36,8 +38,31 @@ public class Solution239 {
         return ans;
     }
 
+    // 使用优先队列的解法，不比上面用单调队列的更优，但是也实现一下。使用优先队列，若nums元素单增，不会删除元素，查询最大元素共需要log1+log2+...+logn=lonn!=O(nlogn)时间
+    public int[] maxSlidingWindow_implementation2(int[] nums, int k) {
+        int n = nums.length;
+        PriorityQueue<Integer> q = new PriorityQueue<>((x, y) -> {
+            return nums[y] - nums[x];
+        });
+        int[] ans = new int[n - k + 1];
+        for (int i = 0; i < n; i++) { // i为窗口右端点
+            if (i < k - 1) {
+                q.offer(i);
+            }
+            else {
+                q.offer(i);
+                while (q.peek() < i - k + 1) {
+                    q.poll();
+                }
+                ans[i - k + 1] = nums[q.peek()];
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         Solution239 solu = new Solution239();
         System.out.println(Arrays.toString(solu.maxSlidingWindow(new int[]{7,2,4}, 2)));
+        System.out.println(Arrays.toString(solu.maxSlidingWindow_implementation2(new int[]{7,2,4}, 2)));
     }
 }
