@@ -64,7 +64,7 @@ public class Solution2846 {
     进而实现每次可以跳多步，而不是像LeetCode236. 二叉树的最近公共祖先那样一步步往上跳，从而实现对多次query的优化。此外由于往上跳的过程可以每次只跳一步，
     不会存在跳过或者跳不到最近公共祖先的情况。
 
-    还有个Tarjan算法，一时半会看不明白，以后再说。
+    待做: 还有个Tarjan算法，一时半会看不明白，以后再说。
     */
     public int[] minOperationsQueries(int n, int[][] edges, int[][] queries) {
         final int W = 26;
