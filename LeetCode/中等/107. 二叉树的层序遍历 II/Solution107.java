@@ -1,13 +1,13 @@
 /*
-url: https://leetcode.cn/problems/binary-tree-level-order-traversal/description/?envType=daily-question&envId=2024-02-14
-相关: LeetCode107. 二叉树的层序遍历 II
+url: https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/description/?envType=daily-question&envId=2024-02-15
+相关: LeetCode102. 二叉树的层序遍历
 标签: 层序遍历
 */
 
 import java.util.*;
 
-public class Solution102 {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+public class Solution107 {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
         Deque<TreeNode> q = new LinkedList<>();
         List<List<Integer>> ans = new ArrayList<>();
         if (root != null) q.offer(root);
@@ -22,11 +22,12 @@ public class Solution102 {
             }
             ans.add(list);
         }
+        Collections.reverse(ans);
         return ans;
     }
 
     public static void main(String[] args) {
-        Solution102 solu = new Solution102();
-        System.out.println(solu.levelOrder(new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)))));
+        Solution107 solu = new Solution107();
+        System.out.println(solu.levelOrderBottom(new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)))));
     }
 }
