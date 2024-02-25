@@ -1,19 +1,18 @@
 /*
 url: https://leetcode.cn/problems/binary-tree-postorder-traversal/
-相关: https://leetcode.cn/problems/binary-tree-preorder-traversal/
-      https://leetcode.cn/problems/binary-tree-inorder-traversal/
-      https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-      https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+相关: LeetCode144. 二叉树的前序遍历
+      LeetCode94. 二叉树的中序遍历
+      LeetCode105. 从前序与中序遍历序列构造二叉树
+      LeetCode106. 从中序与后序遍历序列构造二叉树
+      LeetCode889. 根据前序和后序遍历构造二叉树
+      LeetCode589. N 叉树的前序遍历
+      LeetCode590. N 叉树的后序遍历
 LeetCode参考: https://leetcode.cn/problems/binary-tree-postorder-traversal/solutions/431066/er-cha-shu-de-hou-xu-bian-li-by-leetcode-solution/
               https://leetcode.cn/problems/binary-tree-postorder-traversal/solutions/431066/er-cha-shu-de-hou-xu-bian-li-by-leetcode-solution/comments/1194730
 标签: 后序遍历, 迭代版后序遍历
 */
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution145 {
     public List<Integer> postorderTraversal(TreeNode root) {
@@ -52,6 +51,21 @@ public class Solution145 {
                 node = node.right;
             }
         }
+        return ans;
+    }
+
+    // 迭代版2，参考LeetCode590. N 叉树的后序遍历postorder_implementation3()
+    public List<Integer> postorderTraversal_implementation3(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        if (root != null) stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            ans.add(node.val);
+            if (node.left != null) stack.push(node.left);
+            if (node.right != null) stack.push(node.right);
+        }
+        Collections.reverse(ans);
         return ans;
     }
 

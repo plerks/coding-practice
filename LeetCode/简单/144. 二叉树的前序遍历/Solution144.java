@@ -1,16 +1,17 @@
 /*
 url: https://leetcode.cn/problems/binary-tree-preorder-traversal/
-相关: https://leetcode.cn/problems/binary-tree-inorder-traversal/
-      https://leetcode.cn/problems/binary-tree-postorder-traversal/
-      https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-      https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+相关: LeetCode94. 二叉树的中序遍历
+      LeetCode145. 二叉树的后序遍历
+      LeetCode105. 从前序与中序遍历序列构造二叉树
+      LeetCode106. 从中序与后序遍历序列构造二叉树
+      LeetCode889. 根据前序和后序遍历构造二叉树
+      LeetCode589. N 叉树的前序遍历
+      LeetCode590. N 叉树的后序遍历
 LeetCode参考: https://leetcode.cn/problems/binary-tree-preorder-traversal/solutions/461821/er-cha-shu-de-qian-xu-bian-li-by-leetcode-solution/
 标签: 前序遍历, 迭代版前序遍历, 先序遍历, 迭代版先序遍历
 */
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution144 {
     public List<Integer> preorderTraversal(TreeNode root) {
@@ -42,6 +43,20 @@ public class Solution144 {
             // 转向右子树
             node = stack.pop();
             node = node.right;
+        }
+        return ans;
+    }
+
+    // 迭代版2，参考LeetCode589. N 叉树的前序遍历preorder_implementation3()
+    public List<Integer> preorderTraversal_implementation3(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        if (root != null) stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            ans.add(node.val);
+            if (node.right != null) stack.push(node.right);
+            if (node.left != null) stack.push(node.left);
         }
         return ans;
     }

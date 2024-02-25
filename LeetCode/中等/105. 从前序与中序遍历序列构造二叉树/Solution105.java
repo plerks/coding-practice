@@ -1,9 +1,10 @@
 /*
 url: https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-相关: https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+LeetCode参考: https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/solutions/255811/cong-qian-xu-yu-zhong-xu-bian-li-xu-lie-gou-zao-9/
+相关: LeetCode106. 从中序与后序遍历序列构造二叉树, LeetCode889. 根据前序和后序遍历构造二叉树
 */
 
-import java.util.Stack;
+import java.util.*;
 
 class Solution105 {
 	/*public TreeNode buildTree(int[] preorder, int[] inorder) {
@@ -28,28 +29,30 @@ class Solution105 {
 	}*/
 	
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if(preorder==null || preorder.length ==0) return null;
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode root=new TreeNode(preorder[0]);
-        stack.push(root);
-        int inorderIndex = 0;//构建的最左侧通路的终点
-        for(int i=1;i<preorder.length;i++) {
-        	TreeNode node = stack.peek();
-        	if(node.val!=inorder[inorderIndex]) {
-        		node.left = new TreeNode(preorder[i]);
-        		stack.push(node.left);
-        	}
-        	else {
-        		//否则此时要退栈，对应中序遍历是从最左下方节点后退的过程(会刚好相等)
-        		while(!stack.isEmpty() && stack.peek().val == inorder[inorderIndex]) {
-        			node = stack.pop();
-        			inorderIndex++;
-        		}
-        		node.right = new TreeNode(preorder[i]);
-        		stack.push(node.right);
-        	}
-        }
-        return root;
+        Deque<TreeNode> stack = new LinkedList<>();
+		TreeNode root = new TreeNode(preorder[0]);
+		stack.push(root);
+		int inorderIndex = 0;
+		for (int i = 1; i < preorder.length; i++) {
+			TreeNode node = stack.peek();
+			if (node.val != inorder[inorderIndex]) { // 构建node的最左侧通路
+				node.left = new TreeNode(preorder[i]);
+				node = node.left;
+				stack.push(node);
+			}
+			// node.val == inorder[inorderIndex]，已经构建完最左侧通路的最后一个节点，此时需要构建右子树，但是当前节点不一定有右子树，因此可能需要回退多步
+			else {
+				// 按最左侧通路回退，到第一个有右子树的节点，回退过程会刚好有stack.peek().val == inorder[inorderIndex]，因为inorder访问最左侧通路和刚刚入栈顺序刚好相反
+				while (!stack.isEmpty() && stack.peek().val == inorder[inorderIndex]) {
+					node = stack.pop();
+					inorderIndex++;
+				}
+				// node现在是第一个有右子树的节点
+				node.right = new TreeNode(preorder[i]);
+				stack.push(node.right);
+			}
+		}
+		return root;
     }
 
 	public static void main(String[] args) {
