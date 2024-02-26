@@ -1,7 +1,7 @@
 /*
 描述: 质因数分解，对N求出所有质因数
 参考: https://oi-wiki.org/math/number-theory/pollard-rho/
-相关: LeetCode172. 阶乘后的零
+相关: LeetCode172. 阶乘后的零, LeetCode1390. 四因数
 待做: [oi wiki](https://oi-wiki.org/math/number-theory/pollard-rho/#pollard-rho-%E7%AE%97%E6%B3%95)上还有个Pollard Rho算法，以后再说
 */
 
