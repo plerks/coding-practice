@@ -4,8 +4,8 @@ LeetCode参考: https://leetcode.cn/problems/minimum-edge-weight-equilibrium-que
               https://leetcode.cn/problems/minimum-edge-weight-equilibrium-queries-in-a-tree/solutions/2614609/bian-quan-zhong-jun-deng-cha-xun-by-leet-yunc/
 其它参考: https://www.bilibili.com/video/BV1N7411G7JD/
           https://oi.wiki/graph/lca/
-相关: LeetCode236. 二叉树的最近公共祖先
-标签: 最近公共祖先, 倍增法, Tarjan算法
+相关: LeetCode236. 二叉树的最近公共祖先, LeetCode2867. 统计树中的合法路径数目
+标签: 最近公共祖先, 树中节点路径, 倍增法, Tarjan算法
 */
 
 import java.util.*;
