@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/four-divisors/description/
 LeetCode参考: https://leetcode.cn/problems/four-divisors/solutions/166486/si-yin-shu-by-leetcode-solution/
 其它参考: https://oi-wiki.org/math/number-theory/sieve/
-相关: 典型问题/质因数分解, LeetCode2867. 统计树中的合法路径数目
+相关: 典型问题/质因数分解, 典型问题/筛法, LeetCode2867. 统计树中的合法路径数目
 标签: 质因数分解, 数论, 埃拉托斯特尼筛法, 欧拉筛法
 */
 
@@ -86,7 +86,7 @@ public class Solution1390 {
         List<Integer> primes = new ArrayList<>();
         // 这里筛法代码参考[oi wiki](https://oi-wiki.org/math/number-theory/sieve/)
         for (int i = 2; i <= N; i++) {
-            if (isPrime[i]) { // 根据不变性，i还没被<i的范围内的数筛掉，是质数
+            if (isPrime[i]) { // 根据不变性，i还没被<i的范围内的数筛掉，说明这些数都不是i的因子，说明i是质数
                 primes.add(i);
             }
             if ((long)i * i > N) continue; // 这里i * i可能溢出int范围，提前转long判断一下
