@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/count-valid-paths-in-a-tree/description/?envType=daily-question&envId=2024-02-27
 LeetCode参考: https://leetcode.cn/problems/count-valid-paths-in-a-tree/solutions/2654126/tong-ji-shu-zhong-de-he-fa-lu-jing-shu-m-yyuw/
 相关: 典型问题/筛法, LeetCode1390. 四因数, LeetCode2846. 边权重均等查询
-标签: 数论, 埃拉托斯特尼筛法, 欧拉筛法, 最近公共祖先, 树中节点路径
+标签: 数论, 埃拉托斯特尼筛法, 欧拉筛法, 最近公共祖先, 树中节点路径, 并查集
 */
 
 import java.util.*;
@@ -121,6 +121,7 @@ public class Solution2867 {
                 if (count[neighbor] == 0) {
                     seen.clear();
                     // 这里有dfs防返回的技巧，graph是树结构，只需用一个pre指示上一层就可以防止dfs时从neighbor返回去访问root，通用的办法应该是把seen改成Set<Integer> visited
+                    // 这里dfs2()是在反复读树的，应该可以用并查集提前把不含素数的连通分量及大小求出来，防止反复dfs
                     dfs2(graph, seen, neighbor, i, isPrime);
                     for (int node : seen) {
                         count[node] = seen.size();
