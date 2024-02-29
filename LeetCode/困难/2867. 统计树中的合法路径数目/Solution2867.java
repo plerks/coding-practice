@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/count-valid-paths-in-a-tree/description/?envType=daily-question&envId=2024-02-27
 LeetCode参考: https://leetcode.cn/problems/count-valid-paths-in-a-tree/solutions/2654126/tong-ji-shu-zhong-de-he-fa-lu-jing-shu-m-yyuw/
 相关: 典型问题/筛法, LeetCode1390. 四因数, LeetCode2846. 边权重均等查询
-标签: 数论, 埃拉托斯特尼筛法, 欧拉筛法, 最近公共祖先, 树中节点路径, 并查集
+标签: 数论, 埃拉托斯特尼筛法, 欧拉筛法, 最近公共祖先, 树中节点路径, 并查集, 树以节点边给出时的dfs
 */
 
 import java.util.*;
@@ -135,6 +135,7 @@ public class Solution2867 {
         return ans;
     }
 
+    // 树以节点边的形式给出，用pre即可防止返回去访问，不需要用visited[]记录
     private void dfs2(List<List<Integer>> graph, List<Integer> seen, int root, int pre, boolean[] isPrime) {
         seen.add(root);
         for (int neighbor : graph.get(root)) {
