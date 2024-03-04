@@ -1,4 +1,7 @@
-// https://leetcode.cn/problems/implement-stack-using-queues/description/?envType=daily-question&envId=2024-03-03
+/*
+url: https://leetcode.cn/problems/implement-stack-using-queues/description/?envType=daily-question&envId=2024-03-03
+相关: LeetCode232. 用栈实现队列
+*/
 
 import java.util.*;
 
@@ -14,7 +17,7 @@ public class Solution225 {
     这里q2实际没用上。
     再观察为什么能对，当x入'栈'之后，将x移到了q1头部，x将会是最先出'栈'的元素，且在x入'栈'之前，本身在队首
     的元素(若无x入'栈'，则下一次出'栈'的元素将会是这个)在x入'栈'并调整之后会紧接x，其会是第二个出的元素，其余
-    元素同样保持了出的顺序，因此可以说明这样做的正确性。
+    元素同样保持了出的顺序，也即q1的旧元素的相对顺序得到了保持，因此可以说明这样做的正确性。
     */
 
     // 粘贴到LeetCode上把这个方法名改为MyStack
