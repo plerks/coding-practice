@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/escape-the-spreading-fire/?envType=daily-question&envId=2023-11-09
 LeetCode参考: https://leetcode.cn/problems/escape-the-spreading-fire/solutions/1460794/er-fen-bfspythonjavacgo-by-endlesscheng-ypp1/
-相关: 典型问题/最短路径-bfs(针对边权全为1的图), 典型问题/有序范围内的二分查找
+相关: 典型问题/最短路径问题/最短路径-bfs(针对边权全为1的图), 典型问题/有序范围内的二分查找
 标签: 二分查找, bfs
 */
 
