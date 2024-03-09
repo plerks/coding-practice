@@ -21,7 +21,7 @@ public class Solution232 {
     和一个入口，为了让x能到栈底必须用到stack2暂存stack1出栈的元素。
     */
     
-    public void push(int x) {
+    /* public void push(int x) {
         while (!stack1.isEmpty()) {
             stack2.push(stack1.pop());
         }
@@ -41,6 +41,34 @@ public class Solution232 {
     
     public boolean empty() {
         return stack1.isEmpty();
+    } */
+
+    // 在《数据结构(C++语言版)》-ISBN9787302330646配套的讲义上有个思路非常清晰的图，见../双栈当队.png，用这个思路来写更清晰。
+
+    public void push(int x) {
+        stack2.push(x);
+    }
+    
+    public int pop() {
+        if (stack1.isEmpty()) {
+            while (!stack2.isEmpty()) {
+                stack1.push(stack2.pop());
+            }
+        }
+        return stack1.pop();
+    }
+    
+    public int peek() {
+        if (stack1.isEmpty()) {
+            while (!stack2.isEmpty()) {
+                stack1.push(stack2.pop());
+            }
+        }
+        return stack1.peek();
+    }
+    
+    public boolean empty() {
+        return stack1.isEmpty() && stack2.isEmpty();
     }
 
     public static void main(String[] args) {
