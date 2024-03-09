@@ -7,6 +7,7 @@ import java.util.*;
 
 public class ShortestPathCountFloyd {
     public int shortestPathCount(int n, int[][] edges) {
+        if (0 == n - 1) return 1; // 单独判断一次，LeetCode1976有个用例n==1，roads=[]，要求返回1，这里也这样来，不过感觉返回0更合适
         List<List<int[]>> graph = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
@@ -29,19 +30,19 @@ public class ShortestPathCountFloyd {
         }
         for (int i = 0; i < n; i++) {
             dis[i][i] = 0;
-            count[i][i] = 1;
+            /* 这里假定没有自环，不过就算有自环，只要自环权重为正，这里让count[i][i]=0也不影响结果，因为最短路径不会走自环。
+            若自环权重为0，则这里单纯让count[i][i]=0会影响结果，因为无限走自环路径权重不变。 */
+            count[i][i] = 0;
         }
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (i != k && j != k) { // 这个判断必须加，不然i==k或者j==k时会走到dis[i][k] + dis[k][j] == dis[i][j]的情况里多加
-                        if (dis[i][k] != Integer.MAX_VALUE && dis[k][j] != Integer.MAX_VALUE && dis[i][k] + dis[k][j] < dis[i][j]) {
-                            dis[i][j] = dis[i][k] + dis[k][j];
-                            count[i][j] = count[i][k] * count[k][j];
-                        }
-                        else if (dis[i][k] + dis[k][j] == dis[i][j]) {
-                            count[i][j] = count[i][j] + count[i][k] * count[k][j];
-                        }
+                    if (dis[i][k] != Integer.MAX_VALUE && dis[k][j] != Integer.MAX_VALUE && dis[i][k] + dis[k][j] < dis[i][j]) {
+                        dis[i][j] = dis[i][k] + dis[k][j];
+                        count[i][j] = count[i][k] * count[k][j];
+                    }
+                    else if (dis[i][k] + dis[k][j] == dis[i][j]) {
+                        count[i][j] = count[i][j] + count[i][k] * count[k][j];
                     }
                 }
             }

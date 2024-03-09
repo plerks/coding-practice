@@ -13,7 +13,8 @@ public class Solution1976 {
     int count = 0;
 
     /* 4 / 55 个通过的测试用例，这样写想的是通过dfs遍历所有从节点0到n-1的路径，但是这题是无向图，只要0到n-1的路径有多条，就意味着
-    图是有环的，且这题某些路口之间还可能有双向道路，这样写对
+    图是有环的，这题题目上说某些路口之间有双向道路，但是又说了任意两个路口之间最多有一条路，按理说这意思是两点之间至多一条边，不知道这个双向道路是什么意思。
+    这样写对
     18, new int[][]{{0,1,3972},{2,1,1762},{3,1,4374},{0,3,8346},{3,2,2612},{4,0,6786},{5,4,1420},{2,6,7459},{1,6,9221},
     {6,3,4847},{5,6,4987},{7,0,14609},{7,1,10637},{2,7,8875},{7,6,1416},{7,5,6403},{7,3,6263},{4,7,7823},{5,8,10184},
     {8,1,14418},{8,4,11604},{7,8,3781},{8,2,12656},{8,0,18390},{5,9,15094},{7,9,8691},{9,6,10107},{9,1,19328},{9,4,16514},
@@ -160,6 +161,53 @@ public class Solution1976 {
         return count[0][n - 1];
     }
 
+    // 这里让count[i][i] = 0感觉更合理，也让count符合邻接矩阵的定义
+    public int countPaths_implementation3(int n, int[][] roads) {
+        /* 若不这样单独判断一次，则后面count[i][i] = 0;要改成count[i][i] = 1;因为有个用例n==1，roads=[]，要求返回1，不过感觉返回0更合适。
+        若后面改成count[i][i] = 1;则循环里需要判断if (i != k && j != k)，不然i==k或者j==k时会走到dis[i][k] + dis[k][j] == dis[i][j]的情况里多加
+        */
+        if (0 == n - 1) return 1;
+        final int MOD = (int)1e9 + 7;
+        List<List<int[]>> graph = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        for (int[] edge : roads) {
+            graph.get(edge[0]).add(new int[]{edge[1], edge[2]});
+            graph.get(edge[1]).add(new int[]{edge[0], edge[2]});
+        }
+        long[][] dis = new long[n][n]; // 记录两点之间的最短距离
+        int[][] count = new int[n][n]; // 记录两点之间的最短路径数
+        for (long[] arr : dis) Arrays.fill(arr, Long.MAX_VALUE);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < graph.get(i).size(); j++) {
+                int u = i, v = graph.get(i).get(j)[0], w = graph.get(i).get(j)[1];
+                dis[u][v] =  w;
+                count[u][v] = 1;
+                dis[v][u] = w;
+                count[v][u] = 1;
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            dis[i][i] = 0;
+            count[i][i] = 0; // 题意应该没有自环
+        }
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (dis[i][k] != Long.MAX_VALUE && dis[k][j] != Long.MAX_VALUE && dis[i][k] + dis[k][j] < dis[i][j]) {
+                        dis[i][j] = dis[i][k] + dis[k][j];
+                        count[i][j] = count[i][k] * count[k][j];
+                    }
+                    else if (dis[i][k] + dis[k][j] == dis[i][j]) {
+                        count[i][j] = (count[i][j] + count[i][k] * count[k][j]) % MOD;
+                    }
+                }
+            }
+        }
+        return count[0][n - 1];
+    }
+
     public static void main(String[] args) {
         Solution1976 solu = new Solution1976();
         // System.out.println(solu.countPaths_wrong(7, new int[][]{{0,6,7},{0,1,2},{1,2,3},{1,3,3},{6,3,3},{3,5,1},{6,5,1},{2,5,1},{0,4,5},{4,6,2}}));
@@ -170,5 +218,8 @@ public class Solution1976 {
 
         Solution1976 solu3 = new Solution1976();
         System.out.println(solu3.countPaths_implementation2(7, new int[][]{{0,6,7},{0,1,2},{1,2,3},{1,3,3},{6,3,3},{3,5,1},{6,5,1},{2,5,1},{0,4,5},{4,6,2}}));
+
+        Solution1976 solu4 = new Solution1976();
+        System.out.println(solu4.countPaths_implementation3(7, new int[][]{{0,6,7},{0,1,2},{1,2,3},{1,3,3},{6,3,3},{3,5,1},{6,5,1},{2,5,1},{0,4,5},{4,6,2}}));
     }
 }
