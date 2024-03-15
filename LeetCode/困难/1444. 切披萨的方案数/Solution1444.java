@@ -1,7 +1,8 @@
 /*
 url: https://leetcode.cn/problems/number-of-ways-of-cutting-a-pizza/
 LeetCode参考: https://leetcode.cn/problems/number-of-ways-of-cutting-a-pizza/solutions/2387392/qie-pi-sa-de-fang-an-shu-by-leetcode-sol-7ik7/
-标签: 动态规划
+相关: LeetCode2312. 卖木头块
+标签: 动态规划, 切矩形
 */
 public class Solution1444 {
     public int ways(String[] pizza, int k) {
