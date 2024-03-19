@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/reachable-nodes-with-restrictions/description/?envType=daily-question&envId=2024-03-02
-标签: dfs, 树以节点边给出时的dfs
+标签: dfs, 树以节点边给出时的dfs, 树的dfs
 */
 
 import java.util.*;

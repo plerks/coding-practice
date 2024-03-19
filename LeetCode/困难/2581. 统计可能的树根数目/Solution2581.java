@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/count-number-of-possible-root-nodes/description/?envType=daily-question&envId=2024-02-29
 LeetCode参考: https://leetcode.cn/problems/count-number-of-possible-root-nodes/solutions/2654312/tong-ji-ke-neng-de-shu-gen-shu-mu-by-lee-3gzg/
               https://leetcode.cn/problems/count-number-of-possible-root-nodes/solutions/2147714/huan-gen-dppythonjavacgo-by-endlesscheng-ccwy/
-标签: 动态规划, 树动态规划, 换根动态规划, 树以节点边给出时的dfs, 进制表示法
+标签: 动态规划, 树动态规划, 换根动态规划, 树形dp, 树以节点边给出时的dfs, 树的dfs, 进制表示法
 */
 
 import java.util.*;
