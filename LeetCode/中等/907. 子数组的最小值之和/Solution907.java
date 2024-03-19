@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/sum-of-subarray-minimums/?envType=daily-question&envId=2023-11-27
-相关: LeetCode828. 统计子串中的唯一字符
-标签: 单调栈, 子数组集
+相关: LeetCode828. 统计子串中的唯一字符, LeetCode1793. 好子数组的最大分数, LeetCode84. 柱状图中最大的矩形, LeetCode42. 接雨水, LeetCode2334. 元素值大于变化阈值的子数组
+标签: 单调栈, 子数组集, 子数组的最小值
 */
 
 import java.util.Deque;

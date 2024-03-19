@@ -2,7 +2,9 @@
 url: https://leetcode.cn/problems/trapping-rain-water/
 题目简述: 给定n个非负整数表示每个宽度为1的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 LeetCode参考: https://leetcode.cn/problems/trapping-rain-water/solutions/2355502/li-kou-jia-jia-shuang-shu-zu-or-shuang-z-noah/
-https://leetcode.cn/problems/trapping-rain-water/solutions/2355400/ni-hui-jie-yu-shui-de-san-chong-fang-fa-sbbfc/
+              https://leetcode.cn/problems/trapping-rain-water/solutions/2355400/ni-hui-jie-yu-shui-de-san-chong-fang-fa-sbbfc/
+相关: LeetCode1793. 好子数组的最大分数, LeetCode84. 柱状图中最大的矩形, LeetCode2334. 元素值大于变化阈值的子数组, LeetCode907. 子数组的最小值之和
+标签: 双指针
 */
 
 public class Solution42 {
