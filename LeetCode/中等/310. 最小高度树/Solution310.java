@@ -5,6 +5,8 @@ LeetCode参考: https://leetcode.cn/problems/minimum-height-trees/solutions/1397
 其它参考: https://oi-wiki.org/graph/tree-basic/
           https://oi-wiki.org/graph/tree-diameter/
           https://oi-wiki.org/dp/tree/
+我的题解: https://leetcode.cn/problems/minimum-height-trees/solutions/2699018/shu-xing-dp-shi-yong-oi-wikizhong-qiu-sh-k5qf/
+相关: 典型问题/树的直径
 标签: 树动态规划, 换根动态规划, 树形dp, 树的定义, 树的直径, bfs, dfs, 拓扑排序
 */
 
@@ -291,6 +293,77 @@ public class Solution310 {
         return ans;
     }
 
+    // oi wiki上求树的直径的思路，dp时不用考虑往上走，只用考虑向下，具体原因见`典型问题/树的直径`和`我的题解.md`中的说明
+    public List<Integer> findMinHeightTrees_implementation5(int n, int[][] edges) {
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        for (int[] edge : edges) {
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
+        }
+        int[] dis1 = new int[n]; // 记录往下走的最大长度
+        int[] dis2 = new int[n]; // 记录往下走的次大长度
+        int[] sub1 = new int[n]; // 记录取最大值的子树根节点
+        Arrays.fill(sub1, -1);
+        int[] sub2 = new int[n]; // 记录取次大值的子树根节点
+        Arrays.fill(sub2, -1);
+        dfs(graph, 0, -1, dis1, dis2, sub1, sub2); // 选0号节点作为根
+        int diameter = 0;
+        int node = 0; // 在以0号节点为根的树中，最长路径对应的子树根
+        for (int i = 0; i < n; i++) {
+            if (dis1[i] + dis2[i] > diameter) {
+                diameter = dis1[i] + dis2[i];
+                node = i;
+            }
+        }
+        List<Integer> path1 = new ArrayList<>();
+        List<Integer> path2 = new ArrayList<>();
+        int x = sub1[node];
+        while (x != -1) {
+            path1.add(x);
+            x = sub1[x];
+        }
+        int y = sub2[node];
+        while (y != -1) {
+            path2.add(y);
+            y = sub1[y]; // 注意这里是要用sub1往下走
+        }
+        List<Integer> path = new ArrayList<>();
+        Collections.reverse(path1);
+        for (int pathNode : path1) path.add(pathNode);
+        path.add(node);
+        for (int pathNode : path2) path.add(pathNode);
+        List<Integer> ans = new ArrayList<>();
+        int size = path.size();
+        if (size % 2 == 0) {
+            ans.add(path.get(size / 2 - 1));
+            ans.add(path.get(size / 2));
+        }
+        else ans.add(path.get(size / 2));
+        return ans;
+    }
+
+    private void dfs(List<List<Integer>> graph, int root, int fa, int[] dis1, int[] dis2, int[] sub1, int[] sub2) {
+        for (int neighbor : graph.get(root)) {
+            if (neighbor != fa) {
+                dfs(graph, neighbor, root, dis1, dis2, sub1, sub2);
+                int dis = 1 + dis1[neighbor];
+                if (dis > dis1[root]) {
+                    dis2[root] = dis1[root];
+                    sub2[root] = sub1[root];
+                    dis1[root] = dis;
+                    sub1[root] = neighbor;
+                }
+                else if (dis > dis2[root]) {
+                    dis2[root] = dis;
+                    sub2[root] = neighbor;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Solution310 solu = new Solution310();
         System.out.println(solu.findMinHeightTrees(4, new int[][]{{1,0},{1,2},{1,3}}));
@@ -303,5 +376,9 @@ public class Solution310 {
         System.out.println(solu4.findMinHeightTrees_implementation2(6, new int[][]{{3,0},{3,1},{3,2},{3,4},{5,4}}));
         System.out.println(solu4.findMinHeightTrees_implementation3(6, new int[][]{{3,0},{3,1},{3,2},{3,4},{5,4}}));
         System.out.println(solu4.findMinHeightTrees_implementation4(6, new int[][]{{3,0},{3,1},{3,2},{3,4},{5,4}}));
+
+        Solution310 solu5 = new Solution310();
+        System.out.println(solu5.findMinHeightTrees_implementation5(6, new int[][]{{3,0},{3,1},{3,2},{3,4},{5,4}}));
+        System.out.println(solu5.findMinHeightTrees_implementation5(10, new int[][]{{0,1},{0,2},{0,3},{2,4},{0,5},{5,6},{6,7},{2,8},{7,9}}));
     }
 }
