@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/lfu-cache/submissions/?envType=daily-question&envId=2023-09-25
 LeetCode参考: https://leetcode.cn/problems/lfu-cache/solutions/186348/lfuhuan-cun-by-leetcode-solution/
+相关: LeetCode2671. 频率跟踪器
 标签: map + 双向链表
 */
 
