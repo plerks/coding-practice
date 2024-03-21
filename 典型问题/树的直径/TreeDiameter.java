@@ -32,7 +32,7 @@ public class TreeDiameter {
     上面2.情况二δ(n,m) + δ(m,y) >= δ(m,y)使用到了条件δ(n,m)>=0，因此：
     "上述证明过程建立在所有路径均不为负的前提下。如果树上存在负权边，则上述证明不成立。故若存在负权边，则无法使用两次DFS的方式求解直径"(oi wiki原话)
     上面2需要分情况一和情况二讨论，主要是如果这样想：若u不在x，y这条路径上，则由树的定义x可以到m，m再到u，u再到v，这样一条x到v的路径不一定是简单路径。
-    要充分利用简单路径的局部也是简单路径，证明才是严谨的。
+    要充分利用简单路径的局部也是简单路径(相对地，简单路径组合的结果不一定是简单路径)，证明才是严谨的。
     */
     // 前提: 所有边均不为负。这里以两次dfs为例，还可以用bfs，参考LeetCode310
     private int treeDiameter(int n, int[][] edges) {
@@ -159,6 +159,8 @@ public class TreeDiameter {
             }
         }
     }
+
+    // 此外，有个结论是边权为正，所有直径中点相同，具体见LeetCode310. 最小高度树 我的题解.md
 
     public static void main(String[] args) {
         TreeDiameter treeDiameter = new TreeDiameter();
