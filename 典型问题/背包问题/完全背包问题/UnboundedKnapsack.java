@@ -2,7 +2,7 @@
 描述: 有一个背包，最大容量为amount，有一系列物品coins，每个物品的重量为coins[i]，
     每个物品的数量无限。请问有多少种方法，能够把背包恰好装满？
 参考: https://labuladong.github.io/algo/di-er-zhan-a01c6/bei-bao-le-34bd4/jing-dian--70de0/
-相关: LeetCode518. 零钱兑换 II
+相关: LeetCode518. 零钱兑换 II, LeetCode322. 零钱兑换
 */
 
 public class UnboundedKnapsack {
@@ -15,6 +15,7 @@ public class UnboundedKnapsack {
         for (int i = 1; i <= coins.length; i++) {
             for (int j = 1; j <= amount; j++) { // 这里dp[i][j]与左侧有关，不能改成for (int j = amount; j >= 1; j--)
                 int w = coins[i - 1]; // 第i种硬币的重量
+                // 选或不选一次第i种硬币，有两种情况
                 dp[i][j] = dp[i - 1][j] + (j - w >= 0 ? dp[i][j - w] : 0); // dp[i][j - w]仍然为使用前i种硬币，保留了重复使用第i种硬币的可能
             }
         }
