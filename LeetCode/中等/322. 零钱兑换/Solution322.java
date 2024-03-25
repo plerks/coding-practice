@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/coin-change/?envType=daily-question&envId=2024-03-24
 标签: 完全背包问题
-相关: 典型问题/背包问题/完全背包问题
+相关: 典型问题/背包问题/完全背包问题, LeetCode518. 零钱兑换 II
 */
 
 import java.util.*;

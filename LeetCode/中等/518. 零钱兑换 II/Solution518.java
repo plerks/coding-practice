@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/coin-change-ii/description/
-相关: 典型问题/背包问题/完全背包问题
+相关: 典型问题/背包问题/完全背包问题, LeetCode322. 零钱兑换
 */
 public class Solution518 {
     public int change(int amount, int[] coins) {
