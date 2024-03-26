@@ -3,14 +3,16 @@
       算法每次选出当前V-S集合中s离其距离最近的节点，然后对这个节点的邻居做松弛操作，选出的这个节点会加入S集合，若所有边权重非负，则能
       保证对S中的所有节点，s到其的最短距离已经找到，这保证了算法的正确性。若边权重可以为负，则本身可能可以通过某条负权边使s到某个
       点的距离更小，但是这个点早已在S集合中，也就意味着之前确信的最短距离并非最短，算法结果也就不正确)
+参考: https://oi-wiki.org/graph/shortest-path/#%E5%AE%9E%E7%8E%B0_2
 相关: LeetCode1976. 到达目的地的方案数
 */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
+/* 参考[oi wiki]<https://oi-wiki.org/graph/shortest-path/#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6>
+n为节点数，e为边数，暴力法实现的Dijkstra算法时间复杂度为O(n^2)，使用优先队列实现的Dijkstra算法时间复杂度为O(nloge + eloge)。
+因此优先队列实现的Dijkstra算法适用于稀疏图，暴力法实现的Dijkstra算法适用于稠密图。
+*/
 public class ShortestPathDijkstra {
     public int[] shortestPath(int n, int[][] graph, int s) { // 求s到其它点的最短路径
         int[] distance = new int[n];

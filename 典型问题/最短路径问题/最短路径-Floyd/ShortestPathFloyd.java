@@ -6,6 +6,7 @@
 import java.util.*;
 
 public class ShortestPathFloyd {
+    // 这里graph是邻接矩阵，若是以edge形式给出，注意要置D[i][i]=0
     public int[][] shortestPath(int n, int[][] graph) {
         int[][] D = new int[n][n];
         for (int i = 0; i < n; i++) {

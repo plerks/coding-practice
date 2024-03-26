@@ -1,10 +1,15 @@
 /*
 描述: 使用优先队列实现Dijkstra算法
+参考: https://oi-wiki.org/graph/shortest-path/#%E5%AE%9E%E7%8E%B0_2
 相关: LeetCode1976. 到达目的地的方案数
 */
 
 import java.util.*;
 
+/* 参考[oi wiki]<https://oi-wiki.org/graph/shortest-path/#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6>
+n为节点数，e为边数，暴力法实现的Dijkstra算法时间复杂度为O(n^2)，使用优先队列实现的Dijkstra算法时间复杂度为O(nloge + eloge)。
+因此优先队列实现的Dijkstra算法适用于稀疏图，暴力法实现的Dijkstra算法适用于稠密图。
+*/
 public class ShortestPathDijkstraPriorityQueue {
     public int[] shortestPath(int n, int[][] edges, int s) {
         List<List<int[]>> graph = new ArrayList<>();
