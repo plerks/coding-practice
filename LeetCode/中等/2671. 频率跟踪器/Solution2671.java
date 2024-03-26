@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/frequency-tracker/description/?envType=daily-question&envId=2024-03-21
 相关: LeetCode460. LFU 缓存
+标签: 双Map
 */
 
 import java.util.*;
