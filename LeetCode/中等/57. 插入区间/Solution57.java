@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/insert-interval/
 LeetCode参考: https://leetcode.cn/problems/insert-interval/solutions/472435/shou-hua-tu-jie-57-cha-ru-qu-jian-fen-cheng-3ge-ji/
               https://leetcode.cn/problems/insert-interval/solutions/472151/cha-ru-qu-jian-by-leetcode-solution/
-相关: LeetCode56. 合并区间, LeetCode715. Range 模块
+相关: LeetCode56. 合并区间, LeetCode715. Range 模块, LeetCode2580. 统计将重叠区间合并成组的方案数
 标签: 区间合并
 */
 

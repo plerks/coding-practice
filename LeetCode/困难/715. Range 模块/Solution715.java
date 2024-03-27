@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/range-module/?envType=daily-question&envId=2023-11-12
-相关: LeetCode56. 合并区间, LeetCode57. 插入区间
+相关: LeetCode56. 合并区间, LeetCode57. 插入区间, LeetCode2580. 统计将重叠区间合并成组的方案数
 LeetCode题解: https://leetcode.cn/problems/range-module/solutions/1608992/range-mo-kuai-by-leetcode-solution-4utf/
               https://leetcode.cn/problems/range-module/solutions/1612952/by-ac_oier-i4sw/
 标签: 区间合并, 区间删除, 二分查找, 有序集合, TreeMap, 线段树
