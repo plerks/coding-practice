@@ -29,7 +29,7 @@ bin/
 .DS_Store
 
 # my ignoration
-.exe
-.class
+*.exe
+*.class
 .idea
 *.iml
