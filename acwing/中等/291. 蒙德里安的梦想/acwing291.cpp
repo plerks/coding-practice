@@ -1,6 +1,6 @@
 /*
 参考: https://www.bilibili.com/video/BV1cv411b7EG/
-标签: 状态压缩dp, 状压dp
+标签: 状态压缩dp, 状压dp, 位运算
 */
 
 #include <bits/stdc++.h>
@@ -49,6 +49,8 @@ int main(int argc, char const *argv[]) {
         cout << f[m][0] << endl;
     }
 }
+
+// 用时858ms
 
 // 一个用例
 // 1 2
