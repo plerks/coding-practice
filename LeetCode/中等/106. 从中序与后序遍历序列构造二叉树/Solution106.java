@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
 LeetCode参考: https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/solutions/426738/cong-zhong-xu-yu-hou-xu-bian-li-xu-lie-gou-zao-14/
-相关: LeetCode105. 从前序与中序遍历序列构造二叉树, LeetCode889. 根据前序和后序遍历构造二叉树
+相关: LeetCode105. 从前序与中序遍历序列构造二叉树, LeetCode889. 根据前序和后序遍历构造二叉树, LeetCode331. 验证二叉树的前序序列化, LCR 152. 验证二叉搜索树的后序遍历序列
 */
 
 import java.util.Deque;
@@ -56,7 +56,25 @@ class Solution106 {
 	}
 
     public static void main(String[] args) {
-        
+        Solution106 solu = new Solution106();
+		// 普通用例
+		solu.buildTree(new int[]{9,3,15,20,7}, new int[]{9,15,7,20,3});
+
+		// 在做`LeetCodeLCR 152. 验证二叉搜索树的后序遍历序列`时，发现这题代码对非法输入无能为力
+
+		// 这里中序[4,5,6,8,9]，后序[4,9,6,5,8]是非法输入，没有对应的树。但是代码能正常运行，但最终重建的树是错的，且最终inorderIndex != 0
+		solu.buildTree(new int[]{4,5,6,8,9}, new int[]{4,9,6,5,8});
+
+		// 这里这个用例是合法输入，最终也能给出正确结果，最终inorderIndex != 0
+		solu.buildTree(new int[]{1,2,3,4,5}, new int[]{5,4,3,2,1});
+
+		/* 上面的例子说明，以上代码对于不合法的输入是无法判断的，且上面的例子也说明inorderIndex最终是否为0和重建的树是否正确也没有必然关系，
+		不能通过结束时判断inorderIndex是否为0得到结论。
+		且可能有用例会导致while循环里inorderIndex为负，代码不能正常运行的，这或许可以通过在while循环条件里判断inorderIndex是否大于等于0解决，
+		没去试，但是无论是否能解决，也只能保证算法一定能运行结束，根据上面的例子，重建的树仍然可能是错的。这样一来，似乎就只能在建树之后再去
+    	中序和后序遍历一遍确认是否重建出了正确的树。
+		总之，以上代码只适用于输入序列保证是树的中序和后序遍历的情况。
+		*/
     }
 }
 
