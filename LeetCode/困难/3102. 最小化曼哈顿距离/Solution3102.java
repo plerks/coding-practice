@@ -7,6 +7,16 @@ LeetCode参考: https://leetcode.cn/problems/minimize-manhattan-distances/soluti
 
 import java.util.*;
 
+/* 这题的基础问题应该是：给定n个平面上的点，求点之间的最大曼哈顿距离。暴力法需要O(n^2)时间，用这题转为切比雪夫距离的办法，
+只需要在转换坐标时记录x'和y'的最大最小，TreeMap都不需要，神奇地只要O(n)时间！
+
+如果是求点之间的最小曼哈顿距离好像就不能这么做了，求最大的特殊性在于max(max(|x1' - x2'|, |y1' - y2'|), max(|x1' - x3'|, |y1' - y3'|), ...)（O(n^2)组点对）
+可以拆成max(|x1' - x2'|,|x1' - x3'|, ..., |y1' - y2'|, |y1' - y3'|, ...)（也是O(n^2)组，甚至常系数变大成2了），但是可以将x和y分开考虑，且**求xi-xj和yi-yj的最
+大值只需求xy最大最小**，于是只需O(n)时间。
+
+若是最小曼哈顿距离，则min(max(), max(),...)则不能把坐标拆开独立看。比如|x1'-x2'|可能很小，但是|y1'-y2'|大于|x1'-x2'|，曼哈顿距离根本取不到|x1'-x2'|。不知道
+有没有非暴力的做法。
+*/
 public class Solution3102 {
     // 周赛时写的暴力解法，519 / 536 个通过的测试用例，超时
     public int minimumDistance_exceed_time_limit(int[][] points) {
