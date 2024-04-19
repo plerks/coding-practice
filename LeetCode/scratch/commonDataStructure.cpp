@@ -5,6 +5,20 @@ using namespace std;
 int main(int argc, char const *argv[]) {
     // <----- vector ------>
     vector<int> v{1,3,7,5,9}; // 用std::initializer_list初始化vector
+    /* 也可以写`vector<int> v = {1,3,7,5,9};`，这种写法感觉要清晰点，特别是和括号初始化一起看。
+    vector<int> b{3}，b只有一个元素，b为{3}
+    vector<int> d(3)，d有三个元素，d为{0, 0, 0}
+    vector<int> p{1, 2}，p为{1, 2}
+    vector<int> q(1, 2)，q为{2}
+    */
+    int n = 5;
+    /* 这里graph内部已经有了n个创建好了的vector，和Java里List<List<Integer>> list = new ArrayList<>(5)不一样，Java里这样只是指定
+    了initialCapacity，list里还一个对象没有。
+    */
+    vector<vector<int>> graph(n); // 这和vector<vector<int>> graph(n, vector<int>())效果相同，后者指定创建n个什么样的vector，这里是空vector
+    vector<vector<int>> d2Arr(n, vector<int>(n)); // n*n的二维数组，元素会初始化为0
+    vector<vector<vector<int>>> d3Arr(n, vector<vector<int>>(n, vector<int>(n))); // n*n*n的三维数组，元素会初始化为0
+    d3Arr[1][2][2] = 2;
     v.push_back(1);
     /* 关于push_back()和emplace_back()，如果这里vector放的是一个对象，push_back()必须构建个临时对象作为参数，而
     emplace_back()可以直接传构造对象所需的参数列表，不必须创建个临时对象传进去(虽然也可以以临时对象为参数)。 */
@@ -61,6 +75,7 @@ int main(int argc, char const *argv[]) {
     cout << dq.back() << endl;
     dq.pop_front();
 
+    // C++ lambda表达式的结果是个匿名函数对象
     auto comparator = [](auto &x, auto &y) {
         /* 若x应该排在前面，则返回true，否则返回false。但是，由于C++里的优先队列是大根堆，所以实际
         是排在后面的元素接近队首。
@@ -158,7 +173,7 @@ int main(int argc, char const *argv[]) {
         这时意味着后面代码可以尝试修改这个struct，这会有误导性，虽然引用绑定到了当前栈帧中的内存，但是看起来像是在修改右值，
         应该是因为这个所以C++禁止左值引用绑定到右值。
 
-        这里是左值引用接收函数返回值(右值)的情况，还有着这种情况:
+        这里是左值引用接收函数返回的右值的情况，还有这种情况:
         `const int &var = 10;`，参考<https://zhuanlan.zhihu.com/p/97128024>，这样实际上是:
         `const int temp = 10; const int &var = temp;`
 
@@ -169,6 +184,17 @@ int main(int argc, char const *argv[]) {
         常左值引用 = 右值
         ```
         最方便的还是直接: `auto p = map2.find("a");`
+
+        注意: **函数的返回值可能是左值也可能是右值**。当函数返回基本类型或者直接返回对象时，返回值是右值。当函数返回引用时，
+        返回值是左值，但是，需要函数内部自行保证内存的有效性，例如，返回静态变量或者返回new出的东西。
+        像
+        ```
+        int& getValue() {
+            int x = 42;
+            return x;
+        }
+        ```
+        这样不合理的代码编译器会有警告。
         */
         auto p = map2.find("a");
         if (p != map2.end()) {
@@ -224,4 +250,29 @@ int main(int argc, char const *argv[]) {
     cout << get<0>(t) << ',' << get<1>(t) << ',' << get<2>(t) << endl;
 
     // C++还有multiset这种容器，允许元素重复，但这可以用map实现，用value来计数即可
+
+    /* C中max()和min()可能是用宏来实现的，因此例如`max(3, rand() % 6)`会被展开为`(((3) > (rand() % 6)) ? (3) : (rand() % 6))`，
+    宏展开导致函数调用了两次，这可能导致最终的值是个错误的小于3的值。而C++的std::max()和std::min()是函数，没有这个问题。
+    */
+
+    /* vector<bool>的坑，vector<bool>不是标准vector的实现方式，单独实现了std::vector<bool>，内部用bit存，用operator[]时，
+    返回的会是一个代理引用对象std::vector<bool>::reference，以下`auto visit1 = visited1[0]; visit1 = false;`会导致修改visited1中的内容。
+
+    避坑的话直接用vector<int>即可。
+
+    参考:
+    <https://www.zhihu.com/question/23367698/answer/148258487>
+    <https://www.zhihu.com/question/23367698/answer/2744093298>
+    <https://en.cppreference.com/w/cpp/container/vector_bool>
+    <https://en.cppreference.com/w/cpp/container/vector>
+    */
+    vector<bool> visited1 = {true, false, true};
+    // vector<bool>的operator[]返回类型是vector<bool>中的一个内部类，这里visit1类型为std::vector<bool>::reference。
+    auto visit1 = visited1[0]; // 直接写bool visit1 = visited1[0]然后visit1 = false是ok的，会隐式转换代理对象为bool，不会影响visited1[0]
+    visit1 = false; // 这行过后visited1[0]也会变为false
+
+    vector<int> visited2 = {1, 0, 1};
+    auto visit2 = visited2[0]; // visited2[0]返回T&，auto推断时会去除引用，因此visit2类型为int
+    visit2 = false; // 这行过后不会导致visited2[0]变
+    // 上面一样的代码，对vector<bool>和vector<int>有不同的结果，因此vector<bool>并不是一个通常意义上的vector容器，有坑。
 }
