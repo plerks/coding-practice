@@ -11,7 +11,7 @@ using namespace std;
 class Solution1466 {
 public:
     /* 我的解法。给的是树结构，以0为根dfs，若发现边的方向不对，将其反向，为了dfs能到达反向的节点，需要把边当作无向边处理，
-    用unordered_set来记录边的原始方向。 */
+    用unordered_set来记录边的原始方向。LeetCode执行用时459ms。 */
     int minReorder(int n, vector<vector<int>>& connections) {
         vector<vector<int>> graph(n);
         /* 用unordered_set<int>，LeetCode上有一个用例会报错:
@@ -44,7 +44,7 @@ public:
         return ans;
     }
 
-    // 官方题解的解法，思路相同，细节上直接建图时标记边的方向，避免用unordered_set
+    // 官方题解的解法，思路相同，细节上直接建图时标记边的方向，避免用unordered_set。LeetCode执行用时240ms。
     int minReorder_implementation2(int n, vector<vector<int>>& connections) {
         vector<vector<pair<int, int>>> graph(n);
         for (auto &edge : connections) {
@@ -63,6 +63,8 @@ public:
         }
         return ans;
     }
+
+    // 这题LeetCode官方题解的C++代码执行用时280ms，官方题解的Java代码执行用时32ms
 };
 
 int main(int argc, char const *argv[]) {
