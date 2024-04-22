@@ -113,7 +113,7 @@ int main(int argc, char const *argv[]) {
     map1["one"] = -1;
     map1.erase("one"); // 也有erase(iterator pos)方法
     map1["three"] = 3;
-    cout << map1["one"] << endl; // 用operator[]如果entry不存在会直接插入默认值，应该把operator[]当put()用，不该用于读取
+    cout << map1["one"] << endl; // 用operator[]如果entry不存在会直接插入默认值，直接map1["one"]有副作用，应该把operator[]当put()用，不该用于读取
     map1.erase("one");
     map1.insert({"three", -3}); // unordered_map.insert()，如果key已经存在，会直接忽略，不会覆盖。感觉只需要用类似Java HashMap的put()的operator[]
     map1.insert(make_pair("three", -4));
@@ -121,10 +121,11 @@ int main(int argc, char const *argv[]) {
     所以这里find()返回的是iterator，通过判断是否是end()判断是否找到，无法像Java一样通过判断是否为null，所以C++容器
     的访问不得不用迭代器来实现，否则若放的是基础类型(例如int)，返回个0不知道是没找到还是就是找到的值为0。
     */
-    if (map1.find("three") != map1.end()) { // 判断是否containsKey()
-        cout << map1.find("three")->second << endl;
+    auto it = map1.find("three"); // unordered_map的find()相当于Java HashMap的get()，只是判断是否有对应key的逻辑变成了it != map1.end()
+    if (it != map1.end()) { // 判断是否containsKey()
+        cout << it->second << endl;
     }
-    if (map1.count("three")) { // count()相当于Java里的containsKey()
+    if (map1.count("three")) { // count()相当于Java里的containsKey()，不过这里相当于两次查找了，上面的写法要好一点
         cout << map1.find("three")->second << endl;
     }
     // 迭代器循环unordered_map
