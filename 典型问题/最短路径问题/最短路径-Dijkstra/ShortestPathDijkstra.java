@@ -17,15 +17,15 @@ public class ShortestPathDijkstra {
     public int[] shortestPath(int n, int[][] graph, int s) { // 求s到其它点的最短路径
         int[] distance = new int[n];
         Arrays.fill(distance, Integer.MAX_VALUE);
+        distance[s] = 0;
         boolean[] discovered = new boolean[n];
         Arrays.fill(discovered, false);
-        distance[s] = 0;
-        int discoveredNodeCount = 0;
         int[] parent = new int[n]; // 记录最短路径
         for (int i = 0; i < parent.length; i++) {
             parent[i] = i;
         }
-        while (discoveredNodeCount < n) {
+        int discoveredNodeCount = 0;
+        while (discoveredNodeCount < n) { // 这里也可以直接写for (int cnt = 0; cnt < n; cnt++)
             // 找优先级最高的未发现节点，这个每次找最高优先级节点的过程可以优化
             int node = -1, min = Integer.MAX_VALUE;
             for (int i = 0; i < distance.length; i++) {
