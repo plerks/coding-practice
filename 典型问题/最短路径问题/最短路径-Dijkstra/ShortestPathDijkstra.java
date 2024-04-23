@@ -14,6 +14,7 @@ n为节点数，e为边数，暴力法实现的Dijkstra算法时间复杂度为O
 因此优先队列实现的Dijkstra算法适用于稀疏图，暴力法实现的Dijkstra算法适用于稠密图。
 */
 public class ShortestPathDijkstra {
+    // 这里graph是用邻接矩阵表示的
     public int[] shortestPath(int n, int[][] graph, int s) { // 求s到其它点的最短路径
         int[] distance = new int[n];
         Arrays.fill(distance, Integer.MAX_VALUE);
@@ -38,6 +39,7 @@ public class ShortestPathDijkstra {
             }
             for (int j = 0; j < graph[node].length; j++) { // 用node相关的边做松弛操作
                 if (graph[node][j] != Integer.MAX_VALUE) {
+                    if (discovered[j]) continue; // 若节点属于早先已被发现的节点，松弛操作一定不会减小距离，不用做
                     if (distance[node] + graph[node][j] < distance[j]) {
                         distance[j] = distance[node] + graph[node][j];
                         parent[j] = node;
