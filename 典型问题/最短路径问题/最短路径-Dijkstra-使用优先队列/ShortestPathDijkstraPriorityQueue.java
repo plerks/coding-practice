@@ -1,7 +1,7 @@
 /*
 描述: 使用优先队列实现Dijkstra算法
 参考: https://oi-wiki.org/graph/shortest-path/#%E5%AE%9E%E7%8E%B0_2
-相关: LeetCode1976. 到达目的地的方案数
+相关: LeetCode1976. 到达目的地的方案数, LeetCode3123. 最短路径中的边
 */
 
 import java.util.*;
