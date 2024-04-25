@@ -24,7 +24,7 @@ class UnionFind {
     public void union(int x, int y) {
         int rx = find(x);
         int ry = find(y);
-        if (rx == ry) return; // x, y已经相连
+        if (rx == ry) return; // x, y已经相连，不要做下面的操作
         if (sizes[rx] < sizes[ry]) {
             parents[rx] = ry;
             sizes[ry] += sizes[rx];

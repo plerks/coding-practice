@@ -9,8 +9,8 @@ public class AllPathDAG {
     int n;
     List<List<Integer>> ans;
 
-    /* 以下代码要求图是有向无环图，若图不是有向无环图，则见LeetCode1976. 到达目的地的方案数 countPaths_wrong()，这样写会有问题
-    */
+    // 以下代码要求图是有向无环图
+    // 若图不是有向无环图，应该也可以求，但是要用visited[]改一下，防止搜索路径时重复访问，但是这个算法复杂度很高，见LeetCode1976. 到达目的地的方案数 countPaths_exceed_time_limit()
     // 参考LeetCode797. 所有可能的路径的官方题解，因为本题中的图为有向无环图（DAG），搜索过程中不会反复遍历同一个点，因此我们无需判断当前点是否遍历过。
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         n = graph.length;

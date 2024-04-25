@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/description/?envType=daily-question&envId=2024-03-05
 LeetCode参考: https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/solutions/951921/dao-da-mu-de-di-de-fang-an-shu-by-leetco-5ptp/
 其它参考: https://oi-wiki.org/graph/shortest-path/#%E5%AE%9E%E7%8E%B0_2
-相关: LeetCode797. 所有可能的路径
+相关: LeetCode797. 所有可能的路径, LeetCode1631. 最小体力消耗路径
 标签: 最短路径数, Dijkstra算法, 优先队列实现的Dijkstra算法, Floyd算法, 动态规划
 */
 
@@ -28,12 +28,18 @@ public class Solution1976 {
     {1,16,55181},{16,7,44544},{8,16,40763},{0,16,59153},{15,16,5936},{16,10,26307},{16,6,45960},{12,16,19517},{17,2,57606},
     {17,3,54994},{17,14,14822},{17,11,27005},{0,17,63340},{17,7,48731},{8,17,44950},{17,16,4187},{5,17,55134},{17,10,30494},
     {17,9,40040},{17,12,23704},{13,17,20644},{17,1,59368}}
-    这个用例会超时，但是运行了一段时间没有stackoverflow，说明不是dfs()死递归了，更像是dfs()死循环了，看调用栈dfs()的帧也不是特别多。
-    但是没想明白这个死循环是如何发生的，这个用例的图太复杂了，试了下4个节点的完全图又没发生死循环。
-    待做: 这个死循环是如何发生的
-    但是这样写可以用于有向无环图求两个节点间的所有路径，见LeetCode797. 所有可能的路径。
+    这个用例会超时，之前看运行一段时间之后调用栈的帧不多，没有stackoverflow，还以为是以某种我想不出来的方式死循环了，
+    但是在`LeetCode1631. 最小体力消耗路径`中也写了这样的代码，且那题对一个看起来不算太长的用例也超时了，说明这里
+    应该不是以某种方式死循环了，而是单纯超时了。
+
+    分析下时间复杂度，以n个节点的完全图为例，以0到n-1的路径为例，中间路径可用n-2个节点，每个节点可选可不选，于是中间路径所用点是这n-2个节点的集合
+    的幂集，每个子集内部还可以全排构成不同路径。选2个节点作为起点和终点有A(n,2)种情况，即使忽略掉子集内部的全排，路径总数也有A(n,2) * 2^(n - 2)。
+    是指数级，所以很容易超时。
+    这题节点数规模1 <= n <= 200。
+
+    这里的代码是求有向无环图求两个节点间的所有路径的解法，见LeetCode797. 所有可能的路径（节点数规模2 <= n <= 15）。
     */
-    public int countPaths_wrong(int n, int[][] roads) {
+    public int countPaths_exceed_time_limit(int n, int[][] roads) {
         List<List<int[]>> graph = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
@@ -210,8 +216,8 @@ public class Solution1976 {
 
     public static void main(String[] args) {
         Solution1976 solu = new Solution1976();
-        // System.out.println(solu.countPaths_wrong(7, new int[][]{{0,6,7},{0,1,2},{1,2,3},{1,3,3},{6,3,3},{3,5,1},{6,5,1},{2,5,1},{0,4,5},{4,6,2}}));
-        System.out.println(solu.countPaths_wrong(4, new int[][]{{0,1,1},{0,2,1},{0,3,1},{1,2,1},{1,3,1},{2,3,1}}));
+        // System.out.println(solu.countPaths_exceed_time_limit(7, new int[][]{{0,6,7},{0,1,2},{1,2,3},{1,3,3},{6,3,3},{3,5,1},{6,5,1},{2,5,1},{0,4,5},{4,6,2}}));
+        System.out.println(solu.countPaths_exceed_time_limit(4, new int[][]{{0,1,1},{0,2,1},{0,3,1},{1,2,1},{1,3,1},{2,3,1}}));
 
         Solution1976 solu2 = new Solution1976();
         System.out.println(solu2.countPaths(7, new int[][]{{0,6,7},{0,1,2},{1,2,3},{1,3,3},{6,3,3},{3,5,1},{6,5,1},{2,5,1},{0,4,5},{4,6,2}}));
