@@ -76,7 +76,8 @@ int main(int argc, char const *argv[]) {
     dq.pop_front();
 
     // C++ lambda表达式的结果是个匿名函数对象
-    auto comparator = [](auto &x, auto &y) {
+    // C++ 11 lambda表达式的参数的类型不能声明为auto，C++ 14可以，所以如果是C++ 14可以直接写[](auto &x, auto &y)
+    auto comparator = [](int &x, int &y) { // C++ 11的写法
         /* 若x应该排在前面，则返回true，否则返回false。但是，由于C++里的优先队列是大根堆，所以实际
         是排在后面的元素接近队首。
         见<https://en.cppreference.com/w/cpp/container/priority_queue>:
@@ -213,7 +214,12 @@ int main(int argc, char const *argv[]) {
     cout << map2.rbegin()->first << endl; // 最后一个元素的key
 
     // std::map自定义排序器，按从大到小排
-    auto comparator2 = [](auto &x, auto &y) {
+    // C++ 11 lambda表达式的参数的类型不能声明为auto，C++ 14可以，所以如果是C++ 14可以直接写[](auto &x, auto &y)
+    /* 这里参数按引用传递的话必须声明为const，因为map需要避免key被改，如果写成[](int &x, int &y)，stl_tree.h中
+    会有一个static_assert会报错：static_assert(__is_invocable<_Compare&, const _Key&, const _Key&>{}, "comparison object must be invocable with two arguments of key type")
+    */
+    // 对C++ 11，这里可以写成[](const int &x, const int &y)或者[](int x, int y)
+    auto comparator2 = [](const int &x, const int &y) { // C++ 11的写法
         return x > y;
     };
     map<int, int, decltype(comparator2)> map3(comparator2);
