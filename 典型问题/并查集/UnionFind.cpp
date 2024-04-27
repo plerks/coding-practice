@@ -2,6 +2,11 @@
 
 using namespace std;
 
+/* C++会自动析构成员对象，参考<https://www.cnblogs.com/AntonioSu/p/12269474.html>,
+这里当UnionFind的析构函数被调用时，成员对象vector<int> parent和vector<int> size的析构函数也被调用，成员对象内部关联的动态内存也得到释放。
+即便手动写一个函数体为空的析构函数，成员对象也会得到析构。也即，成员对象内部是可能关联动态内存的，其内部的动态内存会在调用成员对象的析构函数
+时被释放。总之，不用担心成员对象的析构问题，只需考虑自己new出来的东西的delete。 */
+
 class UnionFind {
 public:
     vector<int> parent; // 不能vector<int> parent(2, 1);，不能在类声明中直接初始化
