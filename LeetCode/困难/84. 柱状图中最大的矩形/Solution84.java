@@ -1,8 +1,8 @@
 /*
 url: https://leetcode.cn/problems/largest-rectangle-in-histogram/description/
 LeetCode参考: https://leetcode.cn/problems/largest-rectangle-in-histogram/solutions/266844/zhu-zhuang-tu-zhong-zui-da-de-ju-xing-by-leetcode-/
-相关: LeetCode1793. 好子数组的最大分数, LeetCode42. 接雨水, LeetCode2334. 元素值大于变化阈值的子数组, LeetCode907. 子数组的最小值之和
-标签: 单调栈, 子数组的最小值
+相关: LeetCode1793. 好子数组的最大分数, LeetCode42. 接雨水, LeetCode2334. 元素值大于变化阈值的子数组, LeetCode907. 子数组的最小值之和, LeetCode2454. 下一个更大元素 IV
+标签: 单调栈, 子数组的最小值, 单调栈出栈元素性质
 */
 
 import java.util.*;

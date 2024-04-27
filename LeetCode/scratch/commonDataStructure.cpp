@@ -59,7 +59,7 @@ int main(int argc, char const *argv[]) {
     q.push(1);
     q.emplace(2);
     q.pop();
-    cout << q.front() << endl; // 应该是线性的数据结构就有front()和back()方法
+    cout << q.front() << endl; // 应该是线性的数据结构才设计了front()和back()方法，不过stack和priority_queue没有
 
     // <------ deque ------>
     deque<int> dq;
