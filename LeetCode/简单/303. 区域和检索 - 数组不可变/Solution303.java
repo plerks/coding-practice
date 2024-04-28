@@ -1,5 +1,6 @@
 /*
 url: https://leetcode.cn/problems/range-sum-query-immutable/description/?envType=daily-question&envId=2024-03-18
+相关: LeetCode304. 二维区域和检索 - 矩阵不可变, LeetCode2132. 用邮票贴满网格图
 标签: 前缀和
 */
 
