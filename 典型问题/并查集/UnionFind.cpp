@@ -9,7 +9,14 @@ using namespace std;
 
 class UnionFind {
 public:
-    vector<int> parent; // 不能vector<int> parent(2, 1);，不能在类声明中直接初始化
+    /* 不能vector<int> parent(2, 1);，不能在成员变量声明时用构造函数初始化。
+    但是见<https://www.zhihu.com/question/371513953/answer/1020815175>,
+    <https://stackoverflow.com/questions/13662441/c11-allows-in-class-initialization-of-non-static-and-non-const-members-what-c>
+    C++ 11可以直接在声明成员变量的地方初始化(in-class initialization)。对于基本类型直接int cnt = 0即可，对于对象类型不能直接在声明
+    的地方调用构造函数，例如不能声明时直接vector<int> v(1, 0)，而是要用initializer_list: vector<int> v = {0}（或者vector<int> v{0}）
+    之前`LeetCode1631. 最小体力消耗路径`solution1631.cpp中就写过这样的初始化了，只是当时不知道这是C++ 11的in-class initialization。
+    */
+    vector<int> parent;
     vector<int> size;
 
     /* 参考: <https://blog.csdn.net/sinat_20265495/article/details/53642761>

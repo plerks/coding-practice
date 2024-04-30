@@ -76,9 +76,11 @@ public class commonDataStructure {
         treeSet.add(7);
         System.out.println("treeSet.first(): " + treeSet.first());
         System.out.println("treeSet.last(): " + treeSet.last());
-        // 0的天花板，即往正方向走最相近一个>=0的元素。"Returns the least element in this set greater than or equal to the given element, or null if there is no such element."
+        // first >=。"Returns the least element in this set greater than or equal to the given element, or null if there is no such element."
         System.out.println("treeSet.ceiling(0): " + treeSet.ceiling(0));
-        // 5的地板，即从负方向来最相近一个<=5的元素。"Returns the greatest element in this set less than or equal to the given element, or null if there is no such element."
+        // last <=。"Returns the greatest element in this set less than or equal to the given element, or null if there is no such element."
         System.out.println("treeSet.floor(5): " + treeSet.floor(5));
+        /* 元素从小到大排，position(first >= x) == position(last <= x)或者position(first >= x) == position(last <= x) + 1，
+        符合ceil在floor之上的关系。TreeMap对应的方法是ceilingEntry()和floorEntry()。 */
     }
 }

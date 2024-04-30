@@ -209,7 +209,22 @@ int main(int argc, char const *argv[]) {
     }
     cout << map2.lower_bound("a")->first << endl; // 返回第一个>=x的迭代器
     cout << map2.upper_bound("a")->first << endl; // 返回第一个>x的迭代器
-    // 如果要找最后一个<=x，则是map2.upper_bound("a") - 1
+    /* 如果要找最后一个<=x，则是map2.upper_bound("a") - 1，类似典型问题/有序范围内的二分查找中总结的。
+    但是见`LeetCode2276. 统计区间中的整数数目`，upper_bound()要减1时要注意是否有前一个元素，
+    ```
+        auto it = myMap.upper_bound(x); // 这时it是第一个左端点>x的，或者end()
+        if (it != myMap.begin()) { // 有前一个元素，则用upper_bound()减1
+            it--;
+        }
+        else {
+            it = myMap.end(); // 否则没有last <=，last <=为空
+        }
+    ```
+    若upper_bound() != map.begin()，说明有前一个元素，则可以upper_bound() - 1，
+    否则last <= x是没有的，这时候应该让iterator = map.end()。注意C++ begin() - 1和end() + 1是未定义行为。
+    
+    这样it才相当于Java TreeMap的floorEntry()的效果，floorEntry()返回null相当于让it为map.end()
+    */
     cout << map2.begin()->first << endl; // 第一个元素的key
     cout << map2.rbegin()->first << endl; // 最后一个元素的key
 
