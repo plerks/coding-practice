@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/climbing-stairs/
 LeetCode参考: https://leetcode.cn/problems/climbing-stairs/solutions/286022/pa-lou-ti-by-leetcode-solution/
+相关: LeetCode746. 使用最小花费爬楼梯
 标签: 动态规划, 转为矩阵乘, 矩阵快速幂
 */
 
