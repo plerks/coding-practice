@@ -1,17 +1,16 @@
 /*
-url: https://leetcode.cn/problems/longest-increasing-subsequence/
-LeetCode参考: https://leetcode.cn/problems/longest-increasing-subsequence/solutions/147667/zui-chang-shang-sheng-zi-xu-lie-by-leetcode-soluti/
-              https://leetcode.cn/problems/longest-increasing-subsequence/solutions/2147040/jiao-ni-yi-bu-bu-si-kao-dpfu-o1-kong-jia-4zma/
-              https://www.bilibili.com/video/BV1ub411Q7sB/
-相关: LeetCode674. 最长连续递增序列, LeetCode1671. 得到山形数组的最少删除次数, LeetCode2407. 最长递增子序列 II
-标签: 动态规划, 贪心, 二分查找, 子序列, 最长严格递增子序列
+描述: 求数组的最长严格递增子序列的长度
+参考: https://leetcode.cn/problems/longest-increasing-subsequence/solutions/147667/zui-chang-shang-sheng-zi-xu-lie-by-leetcode-soluti/
+      https://leetcode.cn/problems/longest-increasing-subsequence/solutions/2147040/jiao-ni-yi-bu-bu-si-kao-dpfu-o1-kong-jia-4zma/
+      https://www.bilibili.com/video/BV1ub411Q7sB/
+相关: LeetCode300. 最长递增子序列, LeetCode1671. 得到山形数组的最少删除次数, LeetCode2407. 最长递增子序列 II
 */
-
-// 题目是叫最长递增子序列，但是实际描述是最长严格递增子序列
 
 import java.util.*;
 
-public class Solution300 {
+// 此问题与`LeetCode300. 最长递增子序列`完全相同，LeetCode300虽然题目名字是最长递增子序列，但是实际描述是求最长严格递增子序列
+
+public class LSIS { // Longest Strict Increasing Subsequence
     // 动态规划，时间复杂度O(n^2)
     public int lengthOfLIS(int[] nums) {
         int[] dp = new int[nums.length]; // dp[i]表示以nums[i]结尾的最长严格递增子序列长度
@@ -84,7 +83,7 @@ public class Solution300 {
     */
 
     public static void main(String[] args) {
-        Solution300 solu = new Solution300();
+        LSIS solu = new LSIS();
         System.out.println(solu.lengthOfLIS(new int[]{10,9,2,5,3,7,101,18}));
         System.out.println(solu.lengthOfLIS_implementation2(new int[]{10,9,2,5,3,7,101,18}));
     }
