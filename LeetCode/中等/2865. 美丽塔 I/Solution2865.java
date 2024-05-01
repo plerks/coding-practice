@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/beautiful-towers-i/description/?envType=daily-question&envId=2024-01-24
 LeetCode参考: https://leetcode.cn/problems/beautiful-towers-i/solutions/2614597/mei-li-ta-i-by-leetcode-solution-uqnf/
+相关: LeetCode2866. 美丽塔 II
 标签: 动态规划, 单调栈
 */
 
