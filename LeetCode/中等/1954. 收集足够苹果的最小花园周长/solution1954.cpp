@@ -1,11 +1,14 @@
 /*
 url: https://leetcode.cn/problems/minimum-garden-perimeter-to-collect-enough-apples/description/
+相关: LeetCode3102. 最小化曼哈顿距离
 标签: 数学, 二分查找
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
+
+// 这题的竖着的正方形和横着的正方形是到原点的曼哈顿距离和切比雪夫距离为C的点，有点像`LeetCode3102. 最小化曼哈顿距离`，不过两题技巧不同
 
 class Solution1954 {
 public:

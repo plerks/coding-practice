@@ -2,6 +2,7 @@
 url: https://leetcode.cn/problems/minimize-manhattan-distances/description/
 LeetCode参考: https://leetcode.cn/problems/minimize-manhattan-distances/solutions/2716755/tu-jie-man-ha-dun-ju-chi-heng-deng-shi-b-op84/
 其它参考: https://oi-wiki.org/geometry/distance/#%E8%AF%81%E6%98%8E
+相关: LeetCode1954. 收集足够苹果的最小花园周长
 标签: LeetCode第391场周赛, 数学, 平面几何, 曼哈顿距离, 切比雪夫距离, 有序集合, TreeMap
 */
 
