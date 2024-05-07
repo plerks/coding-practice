@@ -15,10 +15,13 @@ public:
     int minReorder(int n, vector<vector<int>>& connections) {
         vector<vector<int>> graph(n);
         /* 用unordered_set<int>，LeetCode上有一个用例会报错:
-        runtime error: signed integer overflow: 45988 * 46697 cannot be represented in type 'int'
+        runtime error: signed integer overflow: 45988 * 46697 cannot be represented in type 'int' (solution.cpp)
+        SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:16:34
         应该是对应mySet.insert(edge[0] * n + edge[1])这行。
-        我windows下测试`int c1, c2; cin >> c1 >> c2; int c = c1 * c2;`是不会报错的，溢出就溢出了。
-        可能是LeetCode后台用的编译器版本和编译选项在这里把edge[0] * n换成了带溢出检测的乘的函数。
+        直接windows下测试`int c1, c2; cin >> c1 >> c2; int c = c1 * c2;`是不会报错的，溢出就溢出了。
+        这里sanitizer是gcc/g++的一个编译选项，加上之后可以检查地址错误，未定义行为等问题，例如
+        `g++ -g -fsanitize=undefined test.cpp -o test`，这里溢出是ub，LeetCode后台运行时加上了sanitizer，所以会检测并报错。
+        实测ubuntu下的g++可以直接用sanitizer，windows下mingw的g++不行。
         */
         unordered_set<long long> mySet;
         for (auto &edge : connections) {

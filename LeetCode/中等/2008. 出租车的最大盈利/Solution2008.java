@@ -34,6 +34,8 @@ public class Solution2008 {
     <https://www.zhihu.com/question/528658985/answer/2661467570>
     <https://www.zhihu.com/question/456618030/answer/1856628789>
     大概是LeetCode后台Java的运行用时计算规则相比其它语言有优势，其它语言可能把外围代码的时间算进去了，Java没有。
+
+    此外根据LeetCode上的C++报错信息，LeetCode后台加上了sanitizer检测地址错误等，所以运行也会变慢。
     */
 
     public static void main(String[] args) {
