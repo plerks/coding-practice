@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/maximum-students-taking-exam/description/
 LeetCode参考: https://leetcode.cn/problems/maximum-students-taking-exam/solutions/2580043/jiao-ni-yi-bu-bu-si-kao-dong-tai-gui-hua-9y5k/
-相关: AcWing291. 蒙德里安的梦想
+相关: AcWing291. 蒙德里安的梦想, AcWing292. 炮兵阵地
 标签: 状态压缩dp, 状压dp, 位运算
 */
 
@@ -139,6 +139,44 @@ public:
         }
         return dp[m - 1][states[m - 1]];
     }
+
+    // 用`AcWing292. 炮兵阵地`的思路写，要清晰一些
+    int maxStudents_implementation4(vector<vector<char>>& seats) {
+        int m = seats.size();
+        int n = seats[0].size();
+        vector<int> g(m); // state[i]表示一开始第i行的座位状态，位为1表示那个位置座位可用
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (seats[i][j] == '.') {
+                    g[i] |= 1 << (n - 1 - j);
+                }
+            }
+        }
+        vector<int> states; // 预处理求出无左右相邻1的状态
+        for (int i = 0; i < 1 << n; i++) {
+            if ((i & (i >> 1)) == 0) {
+                states.push_back(i);
+            }
+        }
+        // dp[i][j]表示当第i行的状态为j时，前i行的最大可坐数，用滚动数组优化
+        vector<vector<int>> dp(2, vector<int>(1 << n));
+        for (int i = 0; i < m; i++) {
+            for (int j : states) { // 第i行状态
+                if ((j & g[i]) != j) continue; // 若j非g[i]的子集，直接剪枝
+                for (int k : states) { // 第i - 1行状态
+                    if (i - 1 >= 0 && (k & g[i - 1]) != k) continue; // 剪枝
+                    if (((j << 1) & k) == 0 && ((j >> 1) & k) == 0) {
+                        dp[i & 1][j] = max(dp[i & 1][j], dp[(i - 1) & 1][k] + __builtin_popcount(j));
+                    }
+                }
+            }
+        }
+        int ans = INT_MIN;
+        for (int j : states) {
+            ans = max(ans, dp[(m - 1) & 1][j]);
+        }
+        return ans;
+    }
 };
 
 int main(int argc, char const *argv[]) {
@@ -154,5 +192,6 @@ int main(int argc, char const *argv[]) {
     cout << solu.maxStudents_implementation3(seats) << endl;
     vector<vector<char>> seats2 = {{'#','#','.'},{'#','.','.'},{'.','.','#'}};
     cout << solu.maxStudents_implementation3(seats2) << endl;
+    cout << solu.maxStudents_implementation4(seats2) << endl;
     return 0;
 }

@@ -161,6 +161,13 @@ int main_memory_limit_exceeded(int argc, char const *argv[]) {
 }
 
 // 用滚动数组优化空间使用
+/*
+为什么这里dp数组是三维的？
+首先，需要枚举第i行的各种状态，因此dp至少是2维的，其次，第i行受i-1和i-2行影响，最暴力的方式是dp[i][j][k][s]，
+i表示行号，j, k, s分别表示第i, i - 1, i - 2行的状态，这样就不需要用到子问题了。无论如何，都是要
+枚举第i, i - 1, i - 2行的状态的，再观察，消掉s，dp[i][j][k]，虽然只有两行，但是dp[i - 1]刚好包含i - 1和i - 2行的
+状态，于是可以用dp[i - 1]递推出dp[i]。
+*/
 int main(int argc, char const *argv[]) {
     int m, n;
     cin >> m >> n; // m行n列，输入数据范围列数<=10
