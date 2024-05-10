@@ -43,7 +43,10 @@ public:
 
     注意这里随x增大，是先发生d > s - d + 1的情况，再发生d <= s - d + 1的情况
 
-    d = s - d + 1对应x = (sum(nums[i]) - 2min(nums[i]) - 1) / (n - 2)，记x0 = (sum - 2min - 1) / (n - 2) + 1（注意要取向上取整的那个位置），然后尝试x0, x0 - 1, x0 + 1
+    d < s - d + 1对应x < (sum(nums[i]) - 2min(nums[i]) - 1) / (n - 2)，于是⌊(sum(nums[i]) - 2min(nums[i]) - 1) / (n - 2)​⌋是
+    第一段的最后一个点，而⌊(sum(nums[i]) - 2min(nums[i]) - 1) / (n - 2)​⌋ + 1是第二段的第一个点，由于第二段的直线有s % 2 * cost1
+    的成分，虽然斜率为正，第二段的第二个点⌊(sum(nums[i]) - 2min(nums[i]) - 1) / (n - 2)​⌋ + 2可能更小，所以也要尝试这个位置。
+    记x0 = ⌊(sum(nums[i]) - 2min(nums[i]) - 1) / (n - 2)​⌋，需要尝试的是x0, x0 + 1, x0 + 2
 
     x的范围是[max(nums), 正无穷)
     
@@ -60,7 +63,7 @@ public:
             sum += num;
         }
         if (n <= 2 || cost1 * 2 <= cost2) return (n * M - sum) * cost1 % MOD;
-        int x0 = (sum - 2 * m - 1) / (n - 2) + 1;
+        int x0 = (sum - 2 * m - 1) / (n - 2);
         vector<long long> candidates;
 
         // 用lambda获得一个函数对象免得定义一个f函数传参数麻烦
@@ -74,8 +77,8 @@ public:
         candidates.push_back(f(M));
         candidates.push_back(f(M + 1));
         if (x0 >= M) candidates.push_back(f(x0));
-        if (x0 - 1 >= M)candidates.push_back(f(x0 - 1));
-        if (x0 + 1 >= M)candidates.push_back(f(x0 + 1));
+        if (x0 - 1 >= M)candidates.push_back(f(x0 + 1));
+        if (x0 + 1 >= M)candidates.push_back(f(x0 + 2));
         return *min_element(candidates.begin(), candidates.end()) % MOD;
     }
 };
