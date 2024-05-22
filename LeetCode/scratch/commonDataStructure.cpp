@@ -30,11 +30,22 @@ int main(int argc, char const *argv[]) {
     v.emplace(v.begin(), 2);
     v.erase(v.begin());
     v = {1,3,7,5,9};
-    // 或者sort(v.rbegin(), v.rend());
-    // sort(v.rbegin(), v.rend());
+    // sort默认是升序排列，降序排列可以按以下方式做
+    sort(v.rbegin(), v.rend());
+    v = {1,3,7,5,9};
     sort(v.begin(), v.end(), [](int x, int y) {
-        return y - x;
+        /* 如果x > y，则返回true，表示x应该排在y前面，否则返回false，表示x应该排在y后面。简化之后就是return x > y。
+        也就是说这里要回答: x是否应该排在y的前面？
+        注意不能像Java里返回y - x，Java问的是: x和y的大小关系如何？然后通过返回值的正负来判别。而C++的comparator返回
+        的类型是bool，而C++里非0值都会被视作true。
+        */
+        return x > y;
     });
+    v = {1,3,7,5,9};
+    /* 注意这里要传个对象进去，所以greater<int>后面要()，创建个对象。
+    默认是用less<>比较的，所以这里和priority_queue都一样，如果是要默认顺序的反序就写greater<>，不必主动去写less<>
+    */
+    sort(v.begin(), v.end(), greater<int>());
     v.emplace(v.end(), 10);
     // v.end() - 1才是最后一个元素，*(end())是undefined behavior
     cout << *(v.end() - 1) << endl;
@@ -95,8 +106,9 @@ int main(int argc, char const *argv[]) {
     必须pq(comparator)给进去。 */
     priority_queue<int, vector<int>, decltype(comparator)> pq(comparator);
     /* 比较通用的自定义排序写法是用lambda，不过也有:
-    priority_queue<int, vector<int>, less<>> q1; // 堆顶为最大
-    priority_queue<int, vector<int>, greater<>> q2; // 堆顶为最小
+    priority_queue<int, vector<int>, less<int>> q1; // 堆顶为最大
+    priority_queue<int, vector<int>, greater<int>> q2; // 堆顶为最小
+    注意这里greater<int>不像用在sort()里那样要写成greater<int>()，这里是写在泛型里，不是传对象进去，所以没有()
     */
     pq.push(1);
     pq.push(9);
@@ -270,6 +282,8 @@ int main(int argc, char const *argv[]) {
     // <------ tuple ------>
     tuple<int, int, int> t(2, 4, 6);
     cout << get<0>(t) << ',' << get<1>(t) << ',' << get<2>(t) << endl;
+
+    // pair和tuple的比较，按从左到右的各个位置进行优先级比较
 
     // C++还有multiset这种容器，允许元素重复，但这可以用map实现，用value来计数即可
 
