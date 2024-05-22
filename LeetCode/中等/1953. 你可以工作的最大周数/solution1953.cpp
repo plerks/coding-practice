@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/maximum-number-of-weeks-for-which-you-can-work/description/
 参考: https://leetcode.cn/problems/maximum-number-of-weeks-for-which-you-can-work/solutions/908442/ni-ke-yi-gong-zuo-de-zui-da-zhou-shu-by-rbidw/
       https://www.bilibili.com/video/BV1Nf421U7em/
-相关: LeetCode3139. 使数组中所有元素相等的最小开销
+相关: LeetCode3139. 使数组中所有元素相等的最小开销, LeetCode1054. 距离相等的条形码, LeetCode767. 重构字符串
 标签: 贪心, 构造, 数学
 */
 
@@ -11,6 +11,7 @@ url: https://leetcode.cn/problems/maximum-number-of-weeks-for-which-you-can-work
 using namespace std;
 
 // 此题在`LeetCode3139. 使数组中所有元素相等的最小开销`中有使用
+// 此题若要输出方案，见`LeetCode1054. 距离相等的条形码`和`LeetCode767. 重构字符串`
 class Solution1953 {
 public:
     /* 参考灵茶山艾府在LeetCode3139中的视频讲解，此题相当于nums[i]代表有i号盒子有nums[i]个小球，
@@ -31,6 +32,7 @@ public:
     有1号盒子的小球间隔。
     longest == rest时，例如nums = {3,1,2}，则1号盒子摆完后是这样: 1 _ 1 _ 1 _，先在最后的那个位置摆一个小球，然后就相当于上面
     的情况。
+    当longest < rest时，则类似这样1 _ 1 _ 1 _ x _ x _ 把x视作1即可看出能摆好
 
     再回到最多能摆多少个小球的问题，
         当longest <= rest + 1时，可以全部摆完，return total
