@@ -126,6 +126,9 @@ public class Solution1390 {
 
     /* 针对sumFourDivisors_implementation3()重复计算isPrime和map的问题，在LeetCode2867. 统计树中的合法路径数目的官方题解中发现
     可以使用static代码块的方式解决，但是实际写成下面这样之后LeetCode上的运行用时没有改善，甚至用时还高了一些(37ms -> 41ms)，奇怪
+    
+    补充: 参考<https://leetcode.cn/circle/discuss/j3S2cz/>, <https://pangin.pro/posts/computation-in-static-initializer>
+    好像Java的static代码块就是很慢。
     */
 
     // 1 <= nums[i] <= 10^5

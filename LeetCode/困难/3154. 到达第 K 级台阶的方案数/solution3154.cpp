@@ -15,8 +15,9 @@ using namespace std;
 int c[31][31];
 
 /* 立即调用的lambda表达式（Immediately Invoked Lambda Expression，IIFE）实现全局初始化的效果
-好像这种lambda必须得有return语句，即使写成[]() -> void，不写return也无法编译通过
-待做: 为什么这种lambda必须得有return语句？
+这样写，右侧是直接调用了的，所以init不是函数对象，而是调用结果，这里init是int类型。
+所以这里lambda里必须有返回值，不然就是把void赋值给init，auto推断为void，而void init是非法的，编译不通过。
+直接不写`auto init = `，单纯写右边也通不过编译。全局范围下写`[]() {cout << 1 << endl;}();`不能编译，函数里写可以。
 */
 auto init = []() {
     for (int i = 0; i <= 30; i++) {
@@ -27,7 +28,7 @@ auto init = []() {
             c[i][j] = c[i - 1][j - 1] + c[i - 1][j];
         }
     }
-    return 0;
+    return 0; // 必须有返回值
 }();
 
 

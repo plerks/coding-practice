@@ -165,7 +165,11 @@ public class Solution2867 {
 
     /* 用static块尝试优化countPaths_implementation2()对每个用例都要计算isPrime的问题，但是和LeetCode1390. 四因数sumFourDivisors_implementation4()一样
     没起效果，countPaths_implementation2()LeetCode运行用时39ms，countPaths_implementation3()LeetCode运行用时72ms，奇怪。不过这里对每个用例只需要筛n范围
-    的，LeetCode1390. 四因数那里是对每个用例都要筛100000范围的 */
+    的，LeetCode1390. 四因数那里是对每个用例都要筛100000范围的
+    
+    补充: 参考<https://leetcode.cn/circle/discuss/j3S2cz/>, <https://pangin.pro/posts/computation-in-static-initializer>
+    好像Java的static代码块就是很慢。
+    */
     public long countPaths_implementation3(int n, int[][] edges) {
         List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i <= n; i++) {
