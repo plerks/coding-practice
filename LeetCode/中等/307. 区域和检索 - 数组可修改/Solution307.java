@@ -4,7 +4,7 @@ url: https://leetcode.cn/problems/range-sum-query-mutable/?envType=daily-questio
 LeetCode参考: https://leetcode.cn/problems/range-sum-query-mutable/solutions/1393053/-by-hu-ge-8-t4rn/
               https://leetcode.cn/problems/range-sum-query-mutable/solutions/1389182/qu-yu-he-jian-suo-shu-zu-ke-xiu-gai-by-l-76xj/
               https://leetcode.cn/problems/range-sum-query-mutable/solutions/1394254/by-fenjue-ewfb/
-标签: 树状数组, 线段树, 兼顾求前缀和与更新
+标签: 树状数组, 线段树, 模板, 兼顾求前缀和与更新
 */
 
 // 暴力法update()开销为O(1)，sumRange()为O(right-left)。用前缀和update()开销为O(n-left)(需要更新前缀和)，sumRange()为O(1)。用前缀和不能优化
@@ -19,8 +19,9 @@ public class Solution307 {
     public Solution307(int[] nums) {
         this.nums = nums;
         this.c = new int[nums.length + 1]; // 树状数组下标不能等于0, 否则会进入死循环, 所以树状数组通常使用的下标会执行+1操作
-        for (int i = 0; i < nums.length; i++) {
-            add(i + 1, nums[i]); // 把值加进去，注意树状数组的下标对应比原始数组大1
+        for (int i = 1; i <= nums.length; i++) {
+            c[i] += nums[i - 1];
+            if (i + lowBit(i) <= nums.length) c[i + lowBit(i)] += c[i];
         }
     }
     
