@@ -276,7 +276,7 @@ int main(int argc, char const *argv[]) {
 
     // <------ pair ------>
     pair<int, int> p1(1, 2);
-    pair<int, int> p2 = make_pair(1, 3); // make_pair不用写泛型类型，会自动推导。这里这行创建了两个pair。
+    pair<int, int> p2 = make_pair(1, 3); // make_pair()不用写泛型类型，因为make_pair()是模板函数，编译器会根据发生调用时的类型，实例化创建对应的函数。这里这行创建了两个pair。
     cout << p2.first << ',' << p2.second << endl;
 
     // <------ tuple ------>
