@@ -33,13 +33,35 @@ int main(int argc, char const *argv[]) {
     // sort默认是升序排列，降序排列可以按以下方式做
     sort(v.rbegin(), v.rend());
     v = {1,3,7,5,9};
+    /*
+    参考:
+    <https://blog.csdn.net/River_Lethe/article/details/78618788>
+    <https://blog.csdn.net/Strengthennn/article/details/107738011>
+    <https://oi-wiki.org/basic/stl-sort/#%E4%B8%A5%E6%A0%BC%E5%BC%B1%E5%BA%8F>
+    <https://en.cppreference.com/w/cpp/named_req/Compare>
+    C++的自定义比较器需要满足严格弱序关系，只需定义一个 < 关系，就可以达成判断 x < y, y < x, x = y 的目的，不需要定义< > =三种比较符。
+    严格弱序关系的要求为：
+    1. 反自反性。对任意a，a < a为false
+    2. 非对称性。对任意a, b，若a < b为true，则b < a为false
+    3. 传递性。对任意a, b, c，若a < b为true且b < c为true，则a < c为true
+    4. 不可比的传递性。对任意a, b, c，如果a, b不可比(即a < b为false且b < a为false)，且b, c不可比，则a, c不可比
+    C++自定义的比较器comp(x, y)时，要求满足以上的严格弱序的性质，否则会ub。
+    具体来说，使用满足严格弱序的 < 关系，可以用一个 < 比较，判断出 x < y, y < x, x = y 三种大小关系：
+    若 x < y (指 x < y为true，下同)，则说明 x 小于 y
+    若 y < x，则说明 y 小于 x
+    若 !(x < y) && !(y < x)，则说明 x 等于 y
+    具体来说，自定义比较器的代码中不要用<= >=等比较符，而要用< >。用<= >=的问题在于，当x = y时，comp(x, y)和comp(y, x)的结果都为true，
+    会认为x < y且y < x，无法探知到x = y，且x < y且y < x是矛盾的。
+    结论是：C++自定义比较器，当确定x < y时返回true，否则一律返回false。自定义比较器中的代码要用< >等比较符，不要用<= >=。
+    一个严格弱序的 < 关系，实现了判断x, y的< > =关系，达到了Java中自定义比较器返回负 0 正值的效果。
+    */
     sort(v.begin(), v.end(), [](int x, int y) {
         /* 如果x > y，则返回true，表示x应该排在y前面，否则返回false，表示x应该排在y后面。简化之后就是return x > y。
         也就是说这里要回答: x是否应该排在y的前面？
         注意不能像Java里返回y - x，Java问的是: x和y的大小关系如何？然后通过返回值的正负来判别。而C++的comparator返回
         的类型是bool，而C++里非0值都会被视作true。
         */
-        return x > y;
+        return x > y; // 不要写成>=，要满足严格弱序关系
     });
     v = {1,3,7,5,9};
     /* 注意这里要传个对象进去，所以greater<int>后面要()，创建个对象。
@@ -311,4 +333,13 @@ int main(int argc, char const *argv[]) {
     auto visit2 = visited2[0]; // visited2[0]返回T&，auto推断时会去除引用，因此visit2类型为int
     visit2 = false; // 这行过后不会导致visited2[0]变
     // 上面一样的代码，对vector<bool>和vector<int>有不同的结果，因此vector<bool>并不是一个通常意义上的vector容器，有坑。
+
+    // <------ array ------>
+    // std::array将元素存储在栈上，相当于int arr[5]。这里5个元素在栈上，如果长度可能很长不要用array，避免栈溢出。
+    array<int, 5> arr = {1, 2, 3, 4, 5}; // 不初始化的话，和int arr[5]一样，元素值不确定
+    /* array<int, 3>* arr1 = new array<int,3>(); 初始化为全0
+    array<int,3> arr2; 元素值不确定 */
+    cout << arr[2] << endl;
+    vector<array<int, 3>> vec_arr(2); // 这里vector里的array是vector new出来的，不用担心消耗栈空间
+    cout << vec_arr[1][2] << endl;
 }
