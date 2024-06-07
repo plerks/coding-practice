@@ -31,7 +31,7 @@ public class KMP {
                 j = next[j];
             }
         }
-        return i - j <= s.length() - p.length() ? i - j : -1;
+        return j == p.length() ? i - j : -1;
     }
 
     public int[] buildOptimizedNext(String p) {
@@ -64,7 +64,7 @@ public class KMP {
                 j = next[j];
             }
         }
-        return i - j <= s.length() - p.length() ? i - j : -1;
+        return j == p.length() ? i - j : -1;
     }
 
     public static void main(String[] args) {
