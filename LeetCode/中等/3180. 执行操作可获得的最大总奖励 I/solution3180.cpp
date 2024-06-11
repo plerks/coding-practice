@@ -13,7 +13,10 @@ using namespace std;
 // 此题与LeetCode3181. 执行操作可获得的最大总奖励 II相同，只是数据范围小些
 class Solution3180 {
 public:
-    // 周赛时的解法，这题不能dp，因为最优解不一定由子最优解转移而来，所以想着应该要一定的暴力枚举，写了个记忆化搜索，577 / 586 个通过的测试用例，超时。
+    /* 周赛时的解法，当时想的是[0, i]范围的最优解不一定由子最优解转移而来，因为比如子问题可以不选最优，让x积累慢一点，然后使得
+    可以选rewardValues[i]，所以觉得不能dp，所以想着应该要一定的暴力枚举，然后就写了个记忆化搜索，577 / 586 个通过的测试用例，超时。
+    实际还是要dp的，只是要转换思路，枚举值域而非考虑问题范围，看能不能凑出那个值。
+    */
     int maxTotalReward_time_limit_exceeded(vector<int>& rewardValues) {
         sort(rewardValues.begin(), rewardValues.end());
         map<pair<int, int>, int> memo;
