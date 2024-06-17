@@ -41,5 +41,21 @@ int main(int argc, char const *argv[]) {
     */
 
     dfs(1);
+
+    // 还有个方法是lambda传入自己作为参数
+    auto dfs2 = [&](auto dfs2, int i) { // lambda参数使用了auto，需要C++14及以上
+        if (i <= 0) {
+            cout << "dfs2" << endl;
+            return;
+        }
+        dfs2(dfs2, i - 1);
+    };
+
+    dfs2(dfs2, 1);
+
+    /* 这种写法看起来比较怪，且要多带一个参数。但是这种比用std::function要快，`LeetCode3186. 施咒的最大总伤害`这道题，
+    使用std::function会超时，用这种lambda传入自己的技巧就不会。
+    */
+
     return 0;
 }

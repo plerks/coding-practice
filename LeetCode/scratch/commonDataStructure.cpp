@@ -4,8 +4,8 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
     // <----- vector ------>
-    vector<int> v{1,3,7,5,9}; // 用std::initializer_list初始化vector
-    /* 也可以写`vector<int> v = {1,3,7,5,9};`，这种写法感觉要清晰点，特别是和括号初始化一起看。
+    vector<int> v{1,3,7,5,9}; // 用std::initializer_list初始化vector，调用的是vector的构造函数
+    /* 也可以写`vector<int> v = {1,3,7,5,9};`，先创建一个空vector，然后调用operator=，这种写法感觉要清晰点，特别是和括号初始化一起看。
     vector<int> b{3}，b只有一个元素，b为{3}
     vector<int> d(3)，d有三个元素，d为{0, 0, 0}
     vector<int> p{1, 2}，p为{1, 2}
