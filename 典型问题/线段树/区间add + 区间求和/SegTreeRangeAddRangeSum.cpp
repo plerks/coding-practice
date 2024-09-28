@@ -1,8 +1,10 @@
 /*
 参考: https://oi-wiki.org/ds/seg/
       https://www.bilibili.com/video/BV18t4y1p736/
-相关: 洛谷P3372 【模板】线段树 1
+相关: 洛谷P3372 【模板】线段树 1, LeetCode2286. 以组为单位订音乐会的门票
 */
+
+// LeetCode2286. 以组为单位订音乐会的门票 的线段树同时维护了区间最小值和区间sum，并支持单点修改 (对线段树的代码修改不大，主要把pushup的逻辑增加下就行)
 
 #include <bits/stdc++.h>
 
