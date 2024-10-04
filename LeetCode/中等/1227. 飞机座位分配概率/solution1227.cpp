@@ -1,5 +1,7 @@
 /*
 url: https://leetcode.cn/problems/airplane-seat-assignment-probability/description/?envType=daily-question&envId=2024-10-04
+参考: https://leetcode.cn/problems/airplane-seat-assignment-probability/solutions/664495/fei-ji-zuo-wei-fen-pei-gai-lu-by-leetcod-gyw4/
+我的题解: https://leetcode.cn/problems/airplane-seat-assignment-probability/solutions/2938943/guan-yu-guan-fang-ti-jie-suo-shuo-de-yan-3mw4/
 标签: 数学
 */
 
@@ -22,14 +24,11 @@ public:
         return 0.5;
     }
 
-    /* [官方题解](https://leetcode.cn/problems/airplane-seat-assignment-probability/solutions/664495/fei-ji-zuo-wei-fen-pei-gai-lu-by-leetcod-gyw4/)这么推导的：
-    对于选中间座位的情况，例如坐在i(2 <= i <= n - 1)位置，则第2到第i-1位乘客会直接坐在自己座位，对第i到第n位乘客，此时剩下1号座位
-    和第i + 1 到 n号座位，将第i号乘客的正确座位视为1，此时变为规模为n - i + 1的子问题，于是
-    f(n) = 1/n * 1 + 1/n * 0 + 1/nΣ(i=2, n - 1)f(n-i+1), 即
+    /* 补充: 上面这样想并不严谨，官方题解的做法是严谨的，具体见`我的题解.md`。
+    这里只保留f(n) = 1/n * 1 + 1/n * 0 + 1/nΣ(i=2, n - 1)f(n-i+1)是怎么计算的:
     nf(n) = 1 + Σ(i=2, n - 1)f(n-i+1), 再写一项
     (n-1)f(n-1) = 1 + Σ(i=2, n - 2)f(n-i) = 1 + Σ(i=3, n - 1)f(n-i+1)
     两边相减能得到f(n) = f(n-1)，这样就能得到结果了。
-    这里好像还是需要把第i号乘客的正确座位视为1才能视作一模一样的子问题，不然的话问题开始时i号乘客没有正确的位置，然后多了个1号座位没有对应的乘客
     */
 };
 
