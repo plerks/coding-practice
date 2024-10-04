@@ -58,6 +58,16 @@ public:
 
     /* 这题好像没办法像 LeetCode1928. 规定时间内到达终点的最小花费 minCost_implementation2() 那样剪枝，
     多次松弛到某一个节点x时，能丢弃的路径是，存在其它路径长度也短，经过站数也少的路径的情况，这题权在边上，不好判断这个。
+    LeetCode1928能那样剪枝是因为计算cost时权在节点上，当x的邻居i,j,k依次出优先队列想要松弛x节点时，加的都是passingFees[x]，一定有
+    cost(i) + passingFees[x] <= cost(j) + passingFees[x] <= cost(k) + passingFees[x]，
+    (以k为例)所以只需要看到k的用时比最短用时长，则可知道当前路径0 ~ k -> x相比前面的某条路径属于cost大用时也高，则这条路径直接剪掉。
+
+    但是这题计算cost时权在边上，i,j,k的cost和station可能分别是[1, 2] [3, 4] [6, 3]，然后其松弛x时会加上**各自**的边权w1,w2,w3，
+    例如变成[101, 3] [4, 5] [9, 4]，找到的到x的路径的cost不是单增的，当前路径站数大不一定cost大，不能只看有站数更小的就剪，
+    会导致把[9, 4]这条可能是最优解的路径剪掉。
+
+    同样都是"若判断存在cost更小且station更少的到x的路则剪掉当前这条路"的剪枝策略，但是这在LeetCode1928中好实现，这题则不好实现。
+
     正解应该是像官方题解用Bellman-Ford */
     int findCheapestPrice_implementation2(int n, vector<vector<int>>& flights, int src, int dst, int k) {
         // 中间节点能有k个，则最多k + 1条边

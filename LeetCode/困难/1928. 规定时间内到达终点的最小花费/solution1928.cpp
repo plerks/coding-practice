@@ -40,7 +40,7 @@ public:
     }
 
     // 参考<https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/2937601/chao-yue-98de-dijkstrayou-hua-si-lu-by-c-fipw/>
-    // 很高效的剪枝
+    // 很高效的剪枝，但是受益于这题权在节点上才能高效实现，`LeetCode787. K 站中转内最便宜的航班`不好这样做(或者说不能只看用时少就剪掉当前到x的路径)
     int minCost_implementation2(int maxTime, vector<vector<int>>& edges, vector<int>& passingFees) {
         int n = passingFees.size();
         vector<vector<pair<int, int>>> graph(n);
@@ -84,7 +84,8 @@ public:
                 这题计算费用时，权在节点上，假设nId先后被i和j当作邻居想要更新，则两次的cost是cost[i] + passingFees[nId]
                 和cost[j] + passingFees[nId]，由于是优先队列，cost[i]小，所以到nId的最短距离能确定为cost[i] + passingFees[nId]，
                 也就是说第一次松弛nId时会是一个最小的cost。但是这个到nId的cost最小的路不一定是最终的解，因为可能这条路用时多，导致后续不得
-                不走一些用时少但是cost很大的路，导致整体0到n - 1的cost大。
+                不走一些用时少但是cost很大的路，导致整体0到n - 1的cost大。只有cost大且用时也大的路才能安全地剪掉。
+                受益于这题权在节点上，所以松弛某个节点x时一定会按cost单增的顺序，所以只需和最小用时比较就能知道是否能剪掉。
                 （权在边上的话是cost[i] + w1和cost[j] + w2，不能确定哪次更新是最小值） */
 
                 /* 如果nTime > minLegalTime[nId]，说明之前被另外一条路径更新过，由前所述，那条路径cost更小，则若当前这条
@@ -107,7 +108,7 @@ public:
     }
 
     /* 参考<https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/1980876/c-dai-shi-jian-xian-zhi-de-dijkstra-by-t-ms56/>
-    并进行了修改的解法，这样写能过LeetCode787. K 站中转内最便宜的航班，但是这题会超时，79 / 93 个通过的测试用例，剪枝没剪够 */
+    并进行了修改的解法，换了个剪枝策略。这样写能过LeetCode787. K 站中转内最便宜的航班，但是这题会超时，79 / 93 个通过的测试用例，剪枝没剪够 */
     int minCost_time_limit_exceeded(int maxTime, vector<vector<int>>& edges, vector<int>& passingFees) {
         int n = passingFees.size();
         vector<vector<pair<int, int>>> graph(n);
@@ -171,14 +172,15 @@ public:
     /* <https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/1980876/c-dai-shi-jian-xian-zhi-de-dijkstra-by-t-ms56/>
     里的写法大致是以下这样。
 
-    这样写的问题在于minCost[i]和minTime[i]不一定是同一条路径的值，假设3条到节点x的路径的cost和time分别是[1, 6]，[3, 4], [2, 5]，
-    存在这样一种情况：使用[1, 6]会最终导致超maxTime，[3, 4]可行，[2, 5]是最优解。
-    而以下这样写，前两种情况会把minCost[x]变成1，minTime[x]变成4，然后到了[2, 5]的时候，[2, 5]没有进队列，最终就是错的。
-    也就是说，这样剪枝把坏的剪了，但是也把好的剪了。
+    一开始以为这样写有问题，minCost[i]和minTime[i]不一定是同一条路径的值，但是实际由于这题权在节点上，
+    所以当x的邻居i,j,k依次出优先队列想要松弛x节点时，加的都是passingFees[x]，一定有
+    cost(i) + passingFees[x] <= cost(j) + passingFees[x] <= cost(k) + passingFees[x]，
+    于是只需判断当前路径用时比最短用时长则可知道当前路径属于cost大用时也高，直接剪掉。
 
-    但是以下这样写能过这题，用例不够强，但是过不了LeetCode787. K 站中转内最便宜的航班，会WA
+    所以这里 if (nextCost < minCost[nextId]) 永远不会发生，这个判断可以直接删掉，minCost其实是没用的，
+    其实这里相当于minCost_implementation2()去掉提前判断是否能在maxTime内到达的剪枝。
     */
-    int minCost_wrong(int maxTime, vector<vector<int>>& edges, vector<int>& passingFees) {
+    int minCost_implementation3(int maxTime, vector<vector<int>>& edges, vector<int>& passingFees) {
         int n = passingFees.size();
         vector<vector<pair<int, int>>> graph(n);
         for (auto e : edges) {
@@ -205,6 +207,8 @@ public:
                 因为这里有maxTime的限制，最短费用的路径可能time是超的，次优路径也需要考虑
                 */
                 if (nextTime > maxTime) continue;
+
+                // 参考题解里是这样写的，但是实际这里nextCost < minCost[nextId]永远不会发生，这个if直接删掉，minCost是没用的
                 if (nextCost < minCost[nextId]) {
                     q.push({nextCost, nextId, nextTime});
                     minCost[nextId] = nextCost;
@@ -218,6 +222,10 @@ public:
         }
         return -1;
     }
+
+    /* 这里用Dijkstra的解法，虽说是Dijkstra变式，如果没有类似 if (distance + w < dis[next]) 才入队的判断，
+    原本是会暴力枚举所有路径的，包括 0 -> 1 -> 2 -> 1 这样有环路的路径，关键在于这题的剪枝手段。
+    */
 };
 
 int main(int argc, char const *argv[]) {
