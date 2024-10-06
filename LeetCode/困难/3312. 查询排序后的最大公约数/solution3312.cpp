@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/sorted-gcd-pair-queries/
 参考: https://www.bilibili.com/video/BV15y1iYUE2h/
       https://leetcode.cn/problems/sorted-gcd-pair-queries/solutions/2940415/mei-ju-rong-chi-qian-zhui-he-er-fen-pyth-ujis/
-标签: LeetCode第418场周赛, 数论, 最大公约数gcd, 容斥原理, 数对, 序偶
+标签: LeetCode第418场周赛, 数论, 最大公约数gcd, 容斥原理, 调和级数, 数对, 序偶
 */
 
 #include <bits/stdc++.h>
@@ -27,6 +27,7 @@ public:
             cnt_x[x]++;
         }
 
+        // 这里的两层循环的时间复杂度是 mx / mx + mx / (mx - 1) + ...，是mx * log(mx)级别的，所以不会超时
         for (int x = mx; x >= 1; x--) {
             int c = 0;
             for (int i = x; i <= mx; i += x) {
