@@ -63,7 +63,7 @@ public class Solution172 {
     单独拆出来的，而不像9!与27的情况，27可以从3*9出来。
     */
     public int trailingZeroes_implementation3(int n) {
-        // 根据结论，2...n中因子5的个数一定比2的少，因此只需考虑计算有多少个5
+        // 根据推出来的公式，2...n中因子5的个数一定比2的少(或者相等)(n不变，p越大，质因子个数越少)，因此只需考虑计算有多少个5
         // 时间复杂度O(logn)
         int ans = 0;
         while (n / 5 > 0) {
