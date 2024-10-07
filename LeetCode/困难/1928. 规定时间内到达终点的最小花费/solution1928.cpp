@@ -2,8 +2,8 @@
 url: https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/description/?envType=daily-question&envId=2024-10-03
 参考: https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/869919/gui-ding-shi-jian-nei-dao-da-zhong-dian-n3ews/
       https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/2937601/chao-yue-98de-dijkstrayou-hua-si-lu-by-c-fipw/
-相关: LeetCode787. K 站中转内最便宜的航班
-标签: 图, Dijkstra算法变式, 带限制的Dijkstra, 权在节点上的Dijkstra, 两次Dijkstra, 动态规划例题
+相关: LeetCode787. K 站中转内最便宜的航班, LeetCode871. 最低加油次数
+标签: 图, Dijkstra算法变式, 带限制的Dijkstra, 权在节点上的Dijkstra, 两次Dijkstra, 动态规划例题, dp定义技巧
 */
 
 #include <bits/stdc++.h>
