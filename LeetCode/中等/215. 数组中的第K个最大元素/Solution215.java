@@ -22,24 +22,10 @@ public class Solution215 {
                 while (i < j && nums[i] <= pivot) i++; nums[j] = nums[i];会超时，有个用例几乎
                 全是1，会导致partition后轴点偏左或偏右，而不是偏向于二分，因此要采用如下写法。
                 */
-                while (i < j) {
-                    if (nums[j] > pivot) {
-                        j--;
-                    }
-                    else {
-                        nums[i++] = nums[j];
-                        break;
-                    }
-                }
-                while (i < j) {
-                    if (nums[i] < pivot) {
-                        i++;
-                    }
-                    else {
-                        nums[j--] = nums[i];
-                        break;
-                    }
-                }
+                while (i < j && nums[j] > pivot) j--;
+                if (i < j) nums[i++] = nums[j];
+                while (i < j && nums[i] < pivot) i++;
+                if (i < j) nums[j--] = nums[i];
             }
             nums[i] = pivot;
             if (i == k) return nums[i];

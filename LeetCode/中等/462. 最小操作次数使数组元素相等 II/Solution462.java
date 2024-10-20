@@ -30,24 +30,10 @@ public class Solution462 {
             nums[rand] = t;
             int pivot = nums[lo];
             while (i < j) {
-                while (i < j) {
-                    if (nums[j] > pivot) {
-                        j--;
-                    }
-                    else {
-                        nums[i++] = nums[j];
-                        break;
-                    }
-                }
-                while (i < j) {
-                    if (nums[i] < pivot) {
-                        i++;
-                    }
-                    else {
-                        nums[j--] = nums[i];
-                        break;
-                    }
-                }
+                while (i < j && nums[j] > pivot) j--;
+                if (i < j) nums[i++] = nums[j];
+                while (i < j && nums[i] < pivot) i++;
+                if (i < j) nums[j--] = nums[i];
             }
             nums[i] = pivot;
             if (i == k) return nums[i];

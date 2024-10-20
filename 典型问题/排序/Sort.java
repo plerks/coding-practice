@@ -73,24 +73,10 @@ public class Sort {
     public int partition(int[] arr, int left, int right) {
         int pivot = arr[left]; // 这里没有随机选一个位置的值作为pivot，简便起见直接选了arr[left]
         while (left < right) {
-            while (left < right) {
-                if (arr[right] > pivot) {
-                    right--;
-                }
-                else {
-                    arr[left++] = arr[right];
-                    break;
-                }
-            }
-            while (left < right) {
-                if (arr[left] < pivot) {
-                    left++;
-                }
-                else {
-                    arr[right--] = arr[left];
-                    break;
-                }
-            }
+            while (left < right && arr[right] > pivot) right--;
+            if (left < right) arr[left++] = arr[right];
+            while (left < right && arr[left] < pivot) left++;
+            if (left < right) arr[right--] = arr[left];
         }
         arr[left] = pivot;
         return left;
