@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/tuple-with-same-product/submissions/?envType=daily-question&envId=2023-10-19
+// https://leetcode.cn/problems/tuple-with-same-product/description/?envType=daily-question&envId=2023-10-19
 
 import java.util.HashMap;
 import java.util.Map;
