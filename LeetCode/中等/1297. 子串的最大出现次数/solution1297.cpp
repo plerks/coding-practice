@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/maximum-number-of-occurrences-of-a-substring/description/
 参考: https://leetcode.cn/problems/maximum-number-of-occurrences-of-a-substring/solutions/101811/zi-chuan-de-zui-da-chu-xian-ci-shu-by-leetcode-sol/
-标签: 【题单】滑动窗口与双指针, 滑窗枚举固定长度子串的写法技巧
+标签: 【题单】滑动窗口与双指针, 定长滑窗的写法技巧, 定长滑动窗口的写法技巧
 */
 
 #include <bits/stdc++.h>
@@ -70,7 +70,7 @@ public:
         int right = 0;
         unordered_map<char, int> count;
         int ans = 0;
-        // 滑窗枚举固定长度子串的写法技巧
+        // 定长滑窗的写法技巧，可以把 初始窗口增长到size 和 保持长度为size逐步右移 合并到一个循环里不用分开写
         while (right < n) {
             // 直接把right加进来
             count[s[right]]++;
