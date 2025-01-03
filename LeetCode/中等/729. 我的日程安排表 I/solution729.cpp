@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/my-calendar-i/description/?envType=daily-question&envId=2025-01-02
 参考: https://leetcode.cn/problems/my-calendar-i/solutions/1643942/wo-de-ri-cheng-an-pai-biao-i-by-leetcode-nlxr/
+相关: LeetCode731. 我的日程安排表 II
 标签: 二分, 动态开点线段树
 */
 #include <bits/stdc++.h>
