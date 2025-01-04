@@ -1,13 +1,14 @@
 /*
 url: https://leetcode.cn/problems/my-calendar-i/description/?envType=daily-question&envId=2025-01-02
 参考: https://leetcode.cn/problems/my-calendar-i/solutions/1643942/wo-de-ri-cheng-an-pai-biao-i-by-leetcode-nlxr/
-相关: LeetCode731. 我的日程安排表 II
+相关: LeetCode731. 我的日程安排表 II, LeetCode732. 我的日程安排表 III
 标签: 二分, 动态开点线段树
 */
 #include <bits/stdc++.h>
 
 using namespace std;
 
+// 这题应该也能像LeetCode731, 732那样用差分数组
 class MyCalendar {
 public:
     set<pair<int, int>> intervals;

@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/my-calendar-ii/description/?envType=daily-question&envId=2025-01-03
 参考: https://leetcode.cn/problems/my-calendar-ii/solutions/1678660/wo-de-ri-cheng-an-pai-biao-ii-by-leetcod-wo6n/
-相关: LeetCode729. 我的日程安排表 I
+相关: LeetCode729. 我的日程安排表 I, LeetCode732. 我的日程安排表 III
 标签: 动态开点线段树, 差分数组
 */
 #include <bits/stdc++.h>
