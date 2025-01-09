@@ -60,6 +60,7 @@ private:
         pushup(s, t, p); // 子节点更新后更新回来p
     }
 
+    // 区间更新的线段树需要有懒惰标记(单点更新不需要)，在递归子问题前，需要pushdown，递归子问题后，需要pushup
     // 懒惰标记下放
     void pushdown(int s, int t, int p) {
         int m = s + ((t - s) >> 1);

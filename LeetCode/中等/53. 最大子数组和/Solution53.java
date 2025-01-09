@@ -4,6 +4,7 @@ url: https://leetcode.cn/problems/maximum-subarray/
 相关: https://leetcode.cn/problems/maximum-sum-circular-subarray/
       如果改成子数组不需要连续，应该和[最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)解法类似
       https://leetcode.cn/problems/house-robber/
+      LeetCode3410. 删除所有值为某个元素后的最大子数组和
 其它参考: https://zhuanlan.zhihu.com/p/144385162
 */
 
@@ -51,8 +52,9 @@ public class Solution53 {
         return max;
     }
 
-    // 分治版本，最大子数组要么在左半，要么在右半，要么跨中间，从mid位置往两边延伸。复杂度O(n^2)不过可以一看，放LeetCode上运行最终会超时。
-    public int maxSubArray_implementation4(int[] nums) {
+    // 分治版本，最大子数组要么在左半，要么在右半，要么跨中间，从mid位置往两边延伸。复杂度O(n^2)不过可以一看，会超时。
+    // 原因在于没有充分利用子递归得到的信息来更新自己，而是自己暴力从中间往两边延伸，实际从子递归得到的信息足以O(1)更新自己
+    public int maxSubArray_tle(int[] nums) {
         return maxSubArray_divideAndConquer(nums, 0, nums.length);
     }
 
@@ -69,6 +71,39 @@ public class Solution53 {
             if (maxR < (sumR += nums[i])) maxR = sumR;
         }
         return Math.max(maxL + maxR, Math.max(maxSubArray_divideAndConquer(nums, lo, mi), maxSubArray_divideAndConquer(nums, mi, hi)));
+    }
+
+    /* 线段树的分治，更多内容见`LeetCode3410. 删除所有值为某个元素后的最大子数组和`，这里相当于只把线段树build出来就完了，不需要更新
+    为了知道当前区间的最大子数组和ans，若不跨中点，则在左/右子区间之一，若跨中点，则为左子区间的最大suf + 右子区间的最大pre，
+    为了求pre和suf，同样分治，以pre为例，为max(左子区间pre, 左子区间sum + 右子区间pre)，因此还需要维护一个sum
+    */
+    class Info {
+        int ans, pre, suf, sum; // 分别表示当前区间的最大子数组和, 最大前缀子数组和, 最大后缀子数组和, 区间总和
+
+        public Info(int ans, int pre, int suf, int sum) {
+            this.ans = ans;
+            this.pre = pre;
+            this.suf = suf;
+            this.sum = sum;
+        }
+    }
+
+    public int maxSubArray_implementation4(int[] nums) {
+        return build(nums, 0, nums.length - 1).ans;
+    }
+
+    public Info build(int[] nums, int s, int t) {
+        if (s == t) return new Info(nums[s], nums[s], nums[s], nums[s]);
+        int m = (s + t) / 2;
+        Info a = build(nums, s, m);
+        Info b = build(nums, m + 1, t);
+        Info info = new Info(
+            Math.max(Math.max(a.ans, b.ans), a.suf + b.pre),
+            Math.max(a.pre, a.sum + b.pre),
+            Math.max(b.suf, b.sum + a.suf),
+            a.sum + b.sum
+        );
+        return info;
     }
 
     public static void main(String[] args) {
