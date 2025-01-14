@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-ii/description/
 参考: https://www.bilibili.com/video/BV1WRtDejEjD/
-相关: LeetCode3297. 统计重新排列后包含另一个字符串的子字符串数目 I, LeetCode76. 最小覆盖子串, LeetCode2516. 每种字符至少取 K 个
+相关: LeetCode3297. 统计重新排列后包含另一个字符串的子字符串数目 I, LeetCode76. 最小覆盖子串, LeetCode2516. 每种字符至少取 K 个, LeetCode567. 字符串的排列
 标签: LeetCode第416场周赛, 滑动窗口, 滑动窗口例题
 */
 
