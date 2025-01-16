@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/description/
 参考: https://leetcode.cn/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/solutions/815407/shi-er-jin-zhi-zi-fu-chuan-zi-fu-jiao-ti-i52p/
+相关: LeetCode438. 找到字符串中所有字母异位词
 标签: 【题单】滑动窗口与双指针, 前后缀分解
 */
 
