@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/permutation-in-string/description/
 相关: LeetCode3298. 统计重新排列后包含另一个字符串的子字符串数目 II
-标签: 【题单】滑动窗口与双指针, 右端点字母更新左指针
+标签: 【题单】滑动窗口与双指针, 右端点筛选, 右端点元素筛选窗口
 */
 
 #include <bits/stdc++.h>
