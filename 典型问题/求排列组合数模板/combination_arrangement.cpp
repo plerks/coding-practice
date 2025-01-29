@@ -11,7 +11,7 @@
 using namespace std;
 
 // 这是LeetCode3179[灵茶山艾府题解](https://leetcode.cn/problems/find-the-n-th-value-after-k-seconds/solutions/2805408/zu-he-shu-xue-o1-gong-shi-pythonjavacgo-0fbgt/)中的求组合数模板
-const int MX = 2001; // 具体题目需要涉及到的最大范围
+const int MX = 2001; // MX = 具体题目需要涉及到的最大范围 + 1，阶乘最多算到(MX - 1)!
 const int MOD = (int)(1e9 + 7); // 具体题目要mod的素数
 
 long long fac[MX];
