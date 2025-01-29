@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/longest-substring-without-repeating-characters/
-相关: LeetCode3090. 每个字符最多出现两次的最长子字符串
+相关: LeetCode3090. 每个字符最多出现两次的最长子字符串, LeetCode3425. 最长特殊路径
 标签: 滑动窗口, 双指针
 */
 
