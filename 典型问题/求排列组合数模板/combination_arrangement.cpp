@@ -53,11 +53,13 @@ auto init = []() {
 }();
 
 long long comb(int n, int m) {
+    if (m > n) return 0;
     // 模p意义下，通过逆元，把除法变成了乘法
     return fac[n] * inv_fac[m] % MOD * inv_fac[n - m] % MOD;
 }
 
 long long arrange(int n, int m) {
+    if (m > n) return 0;
     return fac[n] * inv_fac[n - m] % MOD;
 }
 
