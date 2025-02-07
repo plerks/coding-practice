@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/maximum-white-tiles-covered-by-a-carpet/
 参考: https://leetcode.cn/problems/maximum-white-tiles-covered-by-a-carpet/solutions/1496434/by-endlesscheng-kdy9/
-相关: LeetCode3413. 收集连续 K 个袋子可以获得的最多硬币数量
+相关: LeetCode3413. 收集连续 K 个袋子可以获得的最多硬币数量, LeetCode2555. 两个线段获得的最多奖品
 */
 #include <bits/stdc++.h>
 
