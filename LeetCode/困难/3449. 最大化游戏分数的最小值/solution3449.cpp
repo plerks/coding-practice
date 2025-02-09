@@ -36,7 +36,7 @@ public:
                 if (i == n - 1 && k <= 0) return true; // 最后一个数借助n - 2来反复横跳
                 rem -= max(2 * k - 1, 1); // 这里要和1取max是因为即使已经够大，也需要操作一次往右走，但是如果已经到了n - 1位置就不用了
                 if (rem < 0) return false;
-                pre = max(k - 1, 0);
+                pre = max(k - 1, 0); // i 没有借助 i + 1 反复横跳来增加gameScore[i]，对 i + 1 的增加次数就是0
             }
             return true;
         };
