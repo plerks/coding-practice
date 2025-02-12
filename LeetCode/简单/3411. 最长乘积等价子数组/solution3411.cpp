@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/maximum-subarray-with-equal-products/description/
 参考: https://leetcode.cn/problems/maximum-subarray-with-equal-products/solutions/3039079/mei-ju-ti-qian-tui-chu-xun-huan-pythonja-a21k/
-标签: LeetCode第431场周赛, 数学, 数论, 滑动窗口
+标签: LeetCode第431场周赛, 数学, 数论, 滑动窗口, 【题单】滑动窗口与双指针
 */
 
 #include <bits/stdc++.h>

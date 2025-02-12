@@ -3,7 +3,7 @@ url: https://leetcode.cn/problems/maximum-coins-from-k-consecutive-bags/descript
 参考: https://leetcode.cn/problems/maximum-coins-from-k-consecutive-bags/solutions/3039059/hua-dong-chuang-kou-hua-liang-bian-pytho-4u47/
       https://www.bilibili.com/video/BV18srKYLEd8/
 相关: LeetCode2271. 毯子覆盖的最多白色砖块数
-标签: LeetCode第431场周赛
+标签: LeetCode第431场周赛, 【题单】滑动窗口与双指针
 */
 
 // 此题前置题是LeetCode2271. 毯子覆盖的最多白色砖块数
