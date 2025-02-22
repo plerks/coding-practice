@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/non-overlapping-intervals/
 LeetCode参考: https://leetcode.cn/problems/non-overlapping-intervals/solutions/541543/wu-zhong-die-qu-jian-by-leetcode-solutio-cpsb/
-相关: LeetCode2251. 花期内花的数目, /典型问题/求一组点被几个区间覆盖/IntervalCover.java
+相关: LeetCode2251. 花期内花的数目, /典型问题/求一组点被几个区间覆盖/IntervalCover.java, LeetCode3458. 选择 K 个互不重叠的特殊子字符串
 标签: 贪心, 区间
 */
 
