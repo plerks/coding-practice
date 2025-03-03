@@ -117,3 +117,17 @@ int index = upper_bound(points.begin(), points.end(), 2, [](auto &val, auto &ele
     return !(elem.first < 2);
 }) - points.begin(); // index为1
 ```
+
+## operator<
+上面upper_bound的例子可以看到，只需operator<即可得到operator<=，具体来说：
+
+$$
+x < y \iff x < y \\
+x \le y \iff !(y < x) \\
+x > y \iff y < x \\
+x \ge y \iff !(x < y) \\
+x == y \iff !(x < y) \&\& !(y < x) \\
+x != y \iff x < y || y < x
+$$
+
+也就是说，按理只需要定义operator<，即可实现所有比较操作符，但这仅限于具备全序关系的集合，例如数，std::pair，std::tuple等。不是只定义一个operator<就万能，例如std::unordered_map，元素之间可能无法定义<关系，需要的是==关系。
