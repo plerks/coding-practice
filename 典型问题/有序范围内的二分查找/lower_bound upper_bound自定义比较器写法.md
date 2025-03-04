@@ -1,6 +1,6 @@
 ## lower_bound在需要自定义比较器时的写法
 
-std::lower_bound的作用是二分查找第一个>=的位置，std::upper_bound的作用是二分查找第一个>的位置，使用的是operator<进行比较。但当使用其自定义比较器的重载版本时，功能又有所不同。
+std::lower_bound的作用是二分查找第一个>=的位置，std::upper_bound的作用是二分查找第一个>的位置，使用的是operator<进行比较。但当使用其自定义比较器的重载版本时，功能又有所不同，不再固定为查找第一个>=和>的位置，而是通用的二分查找模板。
 
 以
 ```cpp
@@ -36,6 +36,8 @@ int index2 = lower_bound(nums.begin(), nums.end(), 7, [](int x, int val) {
 }) - nums.begin() - 1; // 最后一个<=7的位置，index2为3
 ```
 注意，这是**标准的写法**，index1包含了searchFirst查找不到时应该为n的情况，index2包含了searchLast查找不到时应该为-1的情况，且不会触发begin()-1是ub的问题。
+
+如果需要访问lower_bound()的结果元素，如果写\*lower_bound()或\*(lower_bound() - 1)，前者可能lower_bound()返回结果为end()不能解引用；后者可能lower_bound() - 1是begin() - 1，是ub，且begin() - 1也不能解引用。所以，要么采用上面标准的写法转换成下标后再判断`!= n/-1`后再访问；像std::map这样不能O(1)访问任意位置的，`先判断lower_bound() != end()`，然后`*lower_bound()`/`先判断lower_bound() != begin()`，然后`it--`，再`*it`。
 
 **总结**：统一换为searchLast的判断条件，用这个条件判断区间是否为`从否到是`，最后结果原为searchFirst则无-1，原为searchLast则有-1。
 
