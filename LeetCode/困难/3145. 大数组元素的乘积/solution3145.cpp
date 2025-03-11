@@ -3,6 +3,7 @@ url: https://leetcode.cn/problems/find-products-of-elements-of-big-array/descrip
 LeetCode参考: https://leetcode.cn/problems/find-products-of-elements-of-big-array/solutions/2774549/olog-shi-tian-fa-pythonjavacgo-by-endles-w2l4/
               https://www.bilibili.com/video/BV1cz421m786/
               https://leetcode.cn/circle/discuss/dHn9Vk/
+相关: LeetCode3470. 全排列 IV
 标签: LeetCode第130场双周赛, 数学, 试填法
 */
 
