@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/count-complete-substrings/description/
 参考: https://leetcode.cn/problems/count-complete-substrings/solutions/2551743/bao-li-hua-chuang-mei-ju-chuang-kou-nei-31j5m/
       https://leetcode.cn/problems/longest-even-odd-subarray-with-threshold/solutions/2528771/jiao-ni-yi-ci-xing-ba-dai-ma-xie-dui-on-zuspx/
-相关: LeetCode2760. 最长奇偶子数组
+相关: LeetCode2760. 最长奇偶子数组, LeetCode632. 最小区间
 标签: 【题单】滑动窗口与双指针, 考虑值域, 右端点筛选, 分组循环, 动态维护
 */
 
