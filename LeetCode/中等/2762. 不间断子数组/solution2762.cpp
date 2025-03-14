@@ -17,7 +17,7 @@ public:
             st.insert(nums[r]);
             while (*st.rbegin() - *st.begin() > 2) {
                 auto it = st.find(nums[l]);
-                st.erase(it); // std::multiset，erase(value)会删除所有这个元素，得erase(it)才是只删除一个，是个坑
+                st.erase(it); // std::multiset，erase(key)会删除所有这个元素，得erase(it)才是只删除一个，是个坑
                 l++;
             }
             ans += r - l + 1;
