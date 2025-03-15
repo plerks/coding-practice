@@ -57,3 +57,23 @@ st.erase(5); // 会删除所有5
 ```
 
 在`LeetCode2762. 不间断子数组`中遇到这个问题，并且当有大量重复元素时，std::multiset的查找效率不如用std::map + value计数，std::multiset的相同元素有各自独立的树节点，而不是std::map<Key, int>这种频率计数的方式。因为比如Key是个struct，并且key之间的大小比较只用到了其中一部分字段，那么仅仅计数就是不行的，必须各自有独立的节点。
+
+## std::partial_sum内部计算使用的类型
+以下代码，用std::partial_sum计算完前缀和后，pre[2]会是INT_MIN，溢出了。
+```cpp
+vector<int> nums = {INT_MAX, 1, INT_MAX};
+vector<long long> pre(nums.size() + 1);
+partial_sum(nums.begin(), nums.end(), pre.begin() + 1);
+cout << pre[2] << endl; // 输出INT_MIN
+```
+nums[i]是在int范围内的，pre[i]的类型为long long，但是partial_sum内部计算累加时，并不是用的pre[i]的类型，而是用的nums[i]的类型。也就是说，partial_sum内部计算累加时用的是int，所以虽然pre定义为了long long，但用partial_sum计算前缀和会溢出。
+
+```cpp
+partial_sum(_InputIterator __first, _InputIterator __last, _OutputIterator __result) {
+    typedef typename iterator_traits<_InputIterator>::value_type _ValueType;
+      ...
+```
+
+**用std::partial_sum计算前缀和，若需要开long long，不仅结果容器要是long long，计算的对象容器也得是long long。**
+
+在[LeetCode3261. 统计满足 K 约束的子字符串数量 II](https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/)中遇到这个问题。
