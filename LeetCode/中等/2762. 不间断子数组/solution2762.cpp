@@ -1,5 +1,6 @@
 /*
 url: https://leetcode.cn/problems/continuous-subarrays/
+相关: LeetCode1438. 绝对差不超过限制的最长连续子数组
 标签: 【题单】滑动窗口与双指针
 */
 #include <bits/stdc++.h>

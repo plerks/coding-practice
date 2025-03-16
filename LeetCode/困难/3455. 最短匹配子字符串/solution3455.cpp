@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/shortest-matching-substring/
 参考: https://leetcode.cn/problems/shortest-matching-substring/solutions/3076453/xian-xing-zuo-fa-kmpmei-ju-zhong-jian-sa-5qow/
+相关: LeetCode1712. 将数组分成三个子数组的方案数
 标签: LeetCode第150场双周赛, kmp, 二分, 三指针
 */
 
