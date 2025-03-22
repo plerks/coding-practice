@@ -41,6 +41,8 @@ int index2 = lower_bound(nums.begin(), nums.end(), 7, [](int x, int val) {
 
 **总结**：统一换为searchLast的判断条件，用这个条件判断区间是否为`从否到是`，最后结果原为searchFirst则无-1，原为searchLast则有-1。
 
+在[LeetCode948. 令牌放置](https://leetcode.cn/problems/bag-of-tokens/)中遇到了，使用向右偏移了一步的前缀和数组(`vector<long long> pre(n + 1)`)并在前缀和数组中二分查找时，二分查找的结果位置要再多减一个1，因为这样的前缀和数组的头是pre.begin() + 1，例如`int last = upper_bound(pre.begin(), pre.end(), power + pre[l]) - pre.begin() - 1 - 1;`。
+
 例子：
 
 `自定义比较器lower_bound`查找第一个>7的位置（对应searchLast的判断条件为**elem <= 7**，区间对于**elem <= 7**从是到否变化，无需取反）：

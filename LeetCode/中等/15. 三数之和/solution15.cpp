@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/3sum/
-相关: LeetCode18. 四数之和
+相关: LeetCode18. 四数之和, LeetCode923. 三数之和的多种可能, LeetCode611. 有效三角形的个数
 标签: 【题单】滑动窗口与双指针
 */
 #include <bits/stdc++.h>
@@ -35,7 +35,7 @@ public:
     }
 
     // 参考灵茶题解，去重只需要让前后两次指针位置指向的值不同即可
-    vector<vector<int>> threeSum(vector<int>& nums) {
+    vector<vector<int>> threeSum_implementation2(vector<int>& nums) {
         int n = nums.size();
         sort(nums.begin(), nums.end());
         vector<vector<int>> ans;
@@ -64,5 +64,6 @@ public:
 int main(int argc, char const *argv[]) {
     Solution15 solu;
     auto a = solu.threeSum(*new vector<int>{-1,0,1,2,-1,-4});
+    auto b = solu.threeSum(*new vector<int>{-1,0,1,2,-1,-4});
     return 0;
 }
