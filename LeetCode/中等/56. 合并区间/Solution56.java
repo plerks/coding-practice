@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/merge-intervals/
 LeetCode参考: https://leetcode.cn/problems/merge-intervals/solutions/203562/he-bing-qu-jian-by-leetcode-solution/
-相关: LeetCode57. 插入区间, LeetCode715. Range 模块, LeetCode2580. 统计将重叠区间合并成组的方案数, LeetCode2276. 统计区间中的整数数目
+相关: LeetCode57. 插入区间, LeetCode715. Range 模块, LeetCode2580. 统计将重叠区间合并成组的方案数, LeetCode2276. 统计区间中的整数数目, LeetCode986. 区间列表的交集
 标签: 区间合并
 */
 

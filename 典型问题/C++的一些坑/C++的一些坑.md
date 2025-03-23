@@ -77,3 +77,20 @@ partial_sum(_InputIterator __first, _InputIterator __last, _OutputIterator __res
 **用std::partial_sum计算前缀和，若需要开long long，不仅结果容器要是long long，计算的对象容器也得是long long。**
 
 在[LeetCode3261. 统计满足 K 约束的子字符串数量 II](https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-ii/)中遇到这个问题。
+
+## int溢出但sanitizer不能发现
+开了sanitizer的情况下，int计算时的发生溢出能被发现，但是超出INT_MAX的long long转化为int截断时，sanitizer不会报错。
+
+例如：
+```cpp
+int x = INT_MAX;
+int y = x + 1; // sanitizer会报错
+
+long long p = INT_MAX + 1;
+int q = p; // sanitizer无报错
+
+vector<int> memo(2);
+memo[0] = INT_MAX + 1; // sanitizer无报错
+```
+
+例如，[LeetCode1537. 最大得分](https://leetcode.cn/problems/get-the-maximum-score/)，做的时候memo没有开long long，san又不会对这种报错，wa了知道是溢出的问题但是san又没报错，问题很隐蔽。
