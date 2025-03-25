@@ -2,8 +2,8 @@
 url: https://leetcode.cn/problems/subarray-with-elements-greater-than-varying-threshold/description/
 LeetCode参考: https://leetcode.cn/problems/subarray-with-elements-greater-than-varying-threshold/solutions/1658410/by-endlesscheng-j6pp/
               https://www.bilibili.com/video/BV1Le4y1R7xu/
-相关: LeetCode3161. 物块放置查询
-标签: 并查集, 并查集的奇妙用法
+相关: LeetCode3161. 物块放置查询, LeetCode795. 区间子数组个数
+标签: 并查集, 并查集的奇妙用法, [special]
 */
 
 #include <bits/stdc++.h>
@@ -16,6 +16,7 @@ public:
     但是看评论说这里并查集的使用方式很特别，就一直记着这个。
     LeetCode3161. 物块放置查询中又遇到了并查集的特殊用法，就再回来看看这个，这里这个并查集的用法比
     LeetCode3161. 物块放置查询的还特别，甚至可以说挺怪。
+    LeetCode795. 区间子数组个数也可以用这种并查集思路。
     */
     int validSubarraySize(vector<int>& nums, int threshold) {
         /* 考虑子数组中的最小值，其应该越大越好，长度应该越长越好。于是考虑从大到小遍历nums，现在考虑nums[id]
