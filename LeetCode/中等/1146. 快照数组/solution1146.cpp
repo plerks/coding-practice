@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/snapshot-array/
-相关: LeetCode981. 基于时间的键值存储
+相关: LeetCode981. 基于时间的键值存储, LeetCode911. 在线选举
 标签: 【题单】二分算法
 */
 #include <bits/stdc++.h>

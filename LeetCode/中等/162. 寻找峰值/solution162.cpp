@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/find-peak-element/description/
-相关: LeetCode1901. 寻找峰值 II, 典型问题/有序范围内的二分查找
+相关: LeetCode1901. 寻找峰值 II, 典型问题/有序范围内的二分查找, LeetCode1287. 有序数组中出现次数超过25%的元素
 标签: 二分查找
 */
 
