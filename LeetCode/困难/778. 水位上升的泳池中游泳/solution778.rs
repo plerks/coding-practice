@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/swim-in-rising-water/
 参考: https://leetcode.cn/problems/swim-in-rising-water/solutions/582250/shui-wei-shang-sheng-de-yong-chi-zhong-y-862o/
+相关: LeetCode2812. 找出最安全路径
 标签: 【题单】二分算法, 并查集, Dijkstra算法变式, [mark], [special]
 */
 
