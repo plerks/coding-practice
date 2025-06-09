@@ -2,7 +2,7 @@
 url: https://leetcode.cn/problems/factorial-trailing-zeroes/description/
 LeetCode参考: https://leetcode.cn/problems/factorial-trailing-zeroes/solutions/1360892/jie-cheng-hou-de-ling-by-leetcode-soluti-1egk/
 相关: 典型问题/质因数分解
-标签: 阶乘, 质因数分解, 数论, [2,n]中质因子p的个数
+标签: 阶乘, 质因数分解, 数论, [2,n]中质因子p的个数, 勒让德定理
 */
 
 import java.util.*;
