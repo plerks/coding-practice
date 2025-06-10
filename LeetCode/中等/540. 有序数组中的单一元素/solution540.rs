@@ -17,7 +17,7 @@ impl Solution540 {
         let mut right: i32 = n / 2 - 1;
         while left <= right {
             let mid = (left + right) / 2;
-            if 2 * mid + 1 < n && nums[2 * mid as usize] == nums[2 * mid as usize + 1] { left = mid + 1; }
+            if nums[2 * mid as usize] == nums[2 * mid as usize + 1] { left = mid + 1; }
             else { right = mid - 1; }
         }
         
