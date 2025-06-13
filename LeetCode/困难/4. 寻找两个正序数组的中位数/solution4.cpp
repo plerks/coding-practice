@@ -46,7 +46,7 @@ public:
     是正确的，只是没剪掉那么多。
 
     时间复杂度：
-    每轮 k 都变成原来的一半，k最大为m + n，时间复杂度为O(log(m + n))
+    每轮 k 都变成原来的一半，时间复杂度为O(logk)，k最大取m + n，此时时间复杂度会达到O(log(m + n))
 
     如果⌊k/2⌋ - 1越界，这时剪不了那么多元素，会不会影响时间复杂度？
     不会，不妨设A段越界。若判断出来剪B段，则此轮k还是减半；若判断出来剪A段，那么A段直接就剪空了，下轮就直接是边界情况退出了。
@@ -125,7 +125,7 @@ public:
     官方题解的解决办法是保证m <= n，即当 m > n 时交换 nums1 和 nums2，然后在 i ∈ [0, m] 二分找i
     还有一个解决办法是：0 <= i <= m，0 <= (j = ⌊(m + n + 1) / 2⌋ - i) <= n，解得 max(0, ⌊(m + n + 1) / 2⌋ - n) <= i <= min(m, ⌊(m + n + 1) / 2⌋)，设置二分范围即可
     
-    时间复杂度 O(min(m, n))
+    时间复杂度 O(min(m, n))，即使k取m + n，时间复杂度也只取决于min(m, n)
     */
     double findMedianSortedArrays_implementation2(vector<int>& nums1, vector<int>& nums2) {
         // 这里看似可以写成 if (nums1.size() > nums2.size() + 1)，但是有个极端用例 {2} {}，会nums2下标越界

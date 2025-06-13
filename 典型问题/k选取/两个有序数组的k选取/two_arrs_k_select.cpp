@@ -9,7 +9,7 @@
 using namespace std;
 
 // 具体解释见`LeetCode4. 寻找两个正序数组的中位数`解法一
-// 时间复杂度O(log(m + n))
+// 时间复杂度O(logk)，k最大取m + n，此时时间复杂度会达到O(log(m + n))
 int two_arrs_k_select(vector<int>& nums1, vector<int>& nums2, int k) { // nums1和nums2分别有序，找二者中第k大的数(k从1开始)
     int m = nums1.size(), n = nums2.size();
 
@@ -57,7 +57,7 @@ int two_arrs_k_select(vector<int>& nums1, vector<int>& nums2, int k) { // nums1�
 
 计算最后一个'是'位置的 max(A[i - 1], B[j - 1])
 */
-// 时间复杂度O(log(min(m, n)))
+// 时间复杂度O(log(min(m, n)))，即使k取m + n，时间复杂度也只取决于min(m, n)
 int two_arrs_k_select_implementation2(vector<int>& nums1, vector<int>& nums2, int k) { // nums1和nums2分别有序，找二者中第k大的数(k从1开始)
     int m = nums1.size(), n = nums2.size();
 
