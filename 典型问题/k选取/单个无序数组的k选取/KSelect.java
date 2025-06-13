@@ -8,6 +8,7 @@ public class KSelect {
     /* 使用快速排序中的partition()，<https://leetcode.cn/problems/kth-largest-element-in-an-array/solutions/307351/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/>中有说明，
     《算法导论》9.2：期望为线性的选择算法有推导，在随机数据的情况下期望时间复杂度为O(n)，这里这样写达不到。
     此外算法导论9.3有描述最坏情况为线性时间的选择算法，《数据结构(C++语言版)》-ISBN9787302330646 12.2.6节也有。 */
+    // C++可以直接用 std::nth_element()
     public int kSelect(int[] nums, int k) {
         int lo = 0, hi = nums.length - 1;
         while (lo < hi) {
