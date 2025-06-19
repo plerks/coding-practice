@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/next-greater-element-ii/
 参考: https://leetcode.cn/problems/next-greater-element-ii/solutions/637573/xia-yi-ge-geng-da-yuan-su-ii-by-leetcode-bwam/
+相关: LeetCode962. 最大宽度坡
 标签: 【算法题单】单调栈, 循环数组
 */
 
