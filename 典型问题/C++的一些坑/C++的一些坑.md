@@ -2,9 +2,13 @@
 
 位运算的优先级并不高，低于==。
 
+[运算符优先级表](https://learn.microsoft.com/zh-cn/cpp/cpp/cpp-built-in-operators-precedence-and-associativity?view=msvc-170#c-operator-precedence-and-associativity-table)
+
 以下优先级从高到低：
 ```
-乘除取余加减
+乘除取余
+
+加减
 
 移位
 
@@ -49,8 +53,20 @@ for (int i = 0; i < n; i++) pre[i + 1] = pre[i - 1 + 1] + (nums[i] > 8 ? 1 : -1)
 所以，如果三目运算符表达式和别的进行运算，**三目运算符表达式整体要用括号括起来**。
 
 ## 关于%的优先级
-%的优先级低于乘除，高于加减，所以，(a + b) % MOD需要打括号，
-a * b % MOD不用。正确且简洁的写法例如：(a + b) * (c + d) % MOD或者(a * b + c * d) % MOD，拿不准的话就尽量都打括号。
+
+%的优先级与乘除**相同**，左结合；高于加减。
+
+左结合是指：当一组运算符具有相同优先级时，运算会从左往右进行。
+
+所以，(a + b) % MOD需要打括号，a * b % MOD不用。正确且简洁的写法例如：(a + b) * (c + d) % MOD或者(a * b + c * d) % MOD，拿不准的话就尽量都打括号。
+
+比如 5 % 2 * 3，会先算 %，再算 *，即等价于`(5 % 2) * 3`。而非 5 % (2 * 3)。
+
+LeetCode2281中遇到计算ans时要算不止两个因子相乘的情况。a * b % MOD * c，优先级都相同，由于左结合性，会先算 a * b，然后 % MOD，然后 * c，也即`a * b % MOD * c`等价于`(a * b % MOD) * c`。而非 (a * b) % (MOD * c)。
+
+LeetCode2281中还遇到这样一种情况：每次`ans = (ans + part1 - part2) % MOD`。题目问题性质保证 ans 每次都会增加，也就是说无限位长的情况下一定每次 part1 >= part2，但是由于计算 part1 和 part2 时二者也取模了，所以现在二者大小关系可能反转。相减就可能出负数，然后C++负数的取模和期望的不同，然后WA。
+
+**每次取模问题遇到相减**，则要考虑差是否可能出现负数。最稳妥的方式是**只要出现差，`% MOD`之前要先`+ MOD`变成正的**，例如`(a % MOD - b % MOD + MOD) % MOD`。
 
 ## size_t无符号问题
 c++ stl的容器返回size都是size_t类型，在64位机器上size_t是unsigned long long。当其与有符号数比较时，由于会转成无符号数的比较，可能会出现问题。**特别当size()减去一个负数时**。

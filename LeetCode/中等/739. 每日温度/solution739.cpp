@@ -7,6 +7,7 @@ url: https://leetcode.cn/problems/daily-temperatures/
 
 using namespace std;
 
+// 题目：“如果气温在这之后都不会升高，请在该位置用 0 来代替”
 class Solution739 {
 public:
     // i让左侧所有小于自己的j出栈，从而知道ans[j]
