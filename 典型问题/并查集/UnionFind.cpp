@@ -59,8 +59,11 @@ public:
         return parent[x];
     }
 
-    int getSize(int x) {
-        return size[x];
+    // size[x]，只有x为连通块的根时才有意义，写成return size[find(x)]，以便外部调用时忘了先find()也没事
+    // 在unite(x, y)时更新二者的size也不能保证size的每个值都有意义，因为可能：连通块1，2，3，先unite(1, 2)，再unite(1, 3)，
+    // 于是size[2]就会不对，所以要先find()
+    int getSize(int x) { // 返回x所在集合的大小
+        return size[find(x)];
     }
 };
 
