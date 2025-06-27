@@ -1,7 +1,8 @@
 /*
 url: https://leetcode.cn/problems/pacific-atlantic-water-flow/
 参考: https://leetcode.cn/problems/pacific-atlantic-water-flow/solutions/1447341/tai-ping-yang-da-xi-yang-shui-liu-wen-ti-sjk3/
-标签: 【算法题单】网格图, [special]
+相关: LeetCode542. 01 矩阵
+标签: 【算法题单】网格图, [special], 多源bfs
 */
 #include <bits/stdc++.h>
 
