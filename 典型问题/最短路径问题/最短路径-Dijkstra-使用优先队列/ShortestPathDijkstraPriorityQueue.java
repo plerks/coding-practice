@@ -42,7 +42,7 @@ public class ShortestPathDijkstraPriorityQueue {
             加上这行，只有第一次出队时会跑一遍for (neighbor)；删去这行，会跑多遍无意义的for (neighbor)，只有第一次是有用的。
             算法其它部分保证了不会发生死循环，所以去掉这行continue也不会发生死循环。
             */
-            if (distance > dis[node]) continue;
+            if (distance > dis[node]) continue; // 这行相当于if (vis[node]) continue; vis[node] = true; 见../vis的修改位置问题/
             for (int[] neighbor : graph.get(node)) {
                 int next = neighbor[0];
                 int w = neighbor[1];

@@ -1,6 +1,7 @@
 /*
 参考: https://leetcode.cn/problems/cut-off-trees-for-golf-event/solutions/1512294/by-ac_oier-ksth/
       https://leetcode.cn/problems/cut-off-trees-for-golf-event/solutions/1510776/wei-gao-er-fu-bi-sai-kan-shu-by-leetcode-rlrc/
+相关: 典型问题/最短路径问题/A-star算法, LeetCode2290. 到达角落需要移除障碍物的最小数目
 标签: A*算法
 */
 

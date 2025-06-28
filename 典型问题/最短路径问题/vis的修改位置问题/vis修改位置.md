@@ -81,7 +81,7 @@ pq.push({root, 0});
 while (!pq.empty()) {
     auto [node, distance] = pq.top(); pq.pop();
 
-    if (vis[node]) { continue; } // 可以用`if (distance > dis[node]) { continue; }`代替这两行
+    if (vis[node]) { continue; } // 可以用`if (distance > dis[node]) { continue; }`代替这两行。用vis判断，还是要有个dis数组记录最小距离。
     vis[node] = true;
 
     for (neighbor) {
