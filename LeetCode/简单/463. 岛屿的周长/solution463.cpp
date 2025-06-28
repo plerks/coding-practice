@@ -1,5 +1,6 @@
 /*
 url: https://leetcode.cn/problems/island-perimeter/
+相关: LeetCode749. 隔离病毒, LeetCode1034. 边界着色
 标签: 【算法题单】网格图
 */
 #include <bits/stdc++.h>
