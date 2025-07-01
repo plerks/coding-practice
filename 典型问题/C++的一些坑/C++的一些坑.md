@@ -1,6 +1,6 @@
 ## 位运算优先级的坑
 
-位运算的优先级并不高，低于==。
+位运算的优先级并不高，甚至低于 `==`，只比 `&&` `||` `?:` `=` `运算赋值(+=等)` 高。**大部分运算符优先级都比位运算高**，但是一般写出来的式子是期望先算位运算，所以，**位运算的部分记得打括号**。
 
 [运算符优先级表](https://learn.microsoft.com/zh-cn/cpp/cpp/cpp-built-in-operators-precedence-and-associativity?view=msvc-170#c-operator-precedence-and-associativity-table)
 
@@ -34,6 +34,12 @@ if (j & k == 0)
 在`AcWing292. 炮兵阵地`和`LeetCode1276. 不浪费原料的汉堡制作方案`中都有遇到这样的坑，很隐蔽。
 
 Java里运算符优先级也是这样，k == 0会先算，但是会因为int & boolean报错。
+
+再比如：
+```cpp
+int x = 1 << 5 + 1; // 64。编译器会有warning提示
+cout << 1 << 5 + 1 << endl; // 这也是个坑，会输出'1''6'
+```
 
 总之，有用到位运算和移位运算符时，最好打括号把那部分括起来。
 
