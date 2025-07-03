@@ -4,7 +4,7 @@ url: https://leetcode.cn/problems/count-pairs-with-xor-in-a-range/
 标签: 【算法题单】位运算, 字典树
 */
 
-// 这篇题解，卡常仙人：
+// 这篇题解，卡常仙人，C++使用avx2指令集，O(n^2)的复杂度，能和字典树解法差不多快：
 // <https://leetcode.cn/problems/count-pairs-with-xor-in-a-range/solutions/672266/bao-li-aczen-yao-neng-shao-de-liao-cni-b-j2co/>
 
 #include <bits/stdc++.h>
@@ -87,7 +87,7 @@ public:
 
     此外由于是边建树边计算的，两次f()要建2棵字典树。似乎也可以直接先建一棵完整的，不过要考虑(i, j) (j, i) (j, j)重复计数的问题。
 
-    时间复杂度 O(nlogU)，U为数据范围。
+    时间复杂度 O(nlogU)，U为数据范围。n, nums[i], low, high 都是2e4的级别。
     */
     int countPairs(vector<int>& nums, int low, int high) {
         return f(nums, high) - f(nums, low - 1);
