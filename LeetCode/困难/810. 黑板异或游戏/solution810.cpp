@@ -1,7 +1,7 @@
 /*
 url: https://leetcode.cn/problems/chalkboard-xor-game/
 参考: https://leetcode.cn/problems/chalkboard-xor-game/solutions/789745/gong-shui-san-xie-noxiang-xin-ke-xue-xi-ges7k/
-标签: 【算法题单】位运算, 博弈论
+标签: 【算法题单】位运算, 博弈论, [mark]
 */
 #include <bits/stdc++.h>
 
