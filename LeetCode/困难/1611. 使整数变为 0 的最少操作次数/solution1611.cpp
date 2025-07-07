@@ -2,6 +2,7 @@
 url: https://leetcode.cn/problems/minimum-one-bit-operations-to-make-integers-zero/
 参考: https://leetcode.cn/problems/minimum-one-bit-operations-to-make-integers-zero/solutions/435645/hua-shan-yi-tiao-dao-wo-men-di-gui-zhao-zou-by-luc/
       https://leetcode.cn/problems/minimum-one-bit-operations-to-make-integers-zero/solutions/671561/ni-ge-lei-ma-by-mt19937-p3ue/
+      https://leetcode.cn/problems/minimum-one-bit-operations-to-make-integers-zero/solutions/441847/1611-shi-zheng-shu-bian-wei-0-de-zui-shao-cao-zuo-/
 相关: LeetCode89. 格雷编码
 标签: 【算法题单】位运算, 格雷码, 格雷码的反函数
 */
@@ -76,6 +77,27 @@ public:
         }
         return i;
     }
+
+    /* 参考<https://leetcode.cn/problems/minimum-one-bit-operations-to-make-integers-zero/solutions/441847/1611-shi-zheng-shu-bian-wei-0-de-zui-shao-cao-zuo-/>
+    一个很有意思的解法，首先，题目的两种操作都是可逆的，a -> b 和 b -> a 的操作次数是相同的。
+    考虑 1000 -> 0，步骤为 1000 1001 1011 1010 1110 1111 1101 1100 0100 ...
+    其是会经过所有点的，也就是说，1000 这种形式，是同有效位数下，离0最远的。其和改变低位的1有重合部分。
+    然后就有很像容斥原理的一种解法。
+    从高位到低位找1，开销 f = f(2^i) - f(2^j) + - + - ... (i, j, ... 为二进制中1的位置)
+
+    时间复杂度和minimumOneBitOperations_implementation2()一样，也是 n 的位长。
+    */
+    int minimumOneBitOperations_implementation3(int n) {
+        int ans = 0;
+        int symbol = 1;
+        while (n) {
+            int t = __lg(n);
+            ans = ans + symbol * ((1 << (t + 1)) - 1);
+            symbol *= -1; // 反号
+            n -= 1 << t;
+        }
+        return ans;
+    }
 };
 
 int main(int argc, char const *argv[]) {
@@ -87,5 +109,9 @@ int main(int argc, char const *argv[]) {
     cout << solu.minimumOneBitOperations_implementation2(3) << endl;
     cout << solu.minimumOneBitOperations_implementation2(6) << endl;
     cout << solu.minimumOneBitOperations_implementation2(9) << endl;
+
+    cout << solu.minimumOneBitOperations_implementation3(3) << endl;
+    cout << solu.minimumOneBitOperations_implementation3(6) << endl;
+    cout << solu.minimumOneBitOperations_implementation3(9) << endl;
     return 0;
 }
