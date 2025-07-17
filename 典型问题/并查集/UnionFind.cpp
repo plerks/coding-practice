@@ -65,6 +65,11 @@ public:
     int getSize(int x) { // 返回x所在集合的大小
         return size[find(x)];
     }
+
+    // x, y 是否在同一分量
+    int is_connected(int x, int y) {
+        return find(x) == find(y);
+    }
 };
 
 int main(int argc, char const *argv[])
