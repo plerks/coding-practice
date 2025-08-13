@@ -16,10 +16,10 @@ public class Sieve {
         for (int i = 2; i <= N; i++) {
             if (isPrime[i]) { // 根据不变性，i还没被<i的范围内的数筛掉，说明这些数都不是i的因子，说明i是质数
                 primes.add(i);
-            }
-            if ((long)i * i > N) continue; // 这里i * i可能溢出int范围，提前转long判断一下
-            for (int j = i * i; j <= N; j += i) { // 这里不需要从2i开始筛，因为2的时候已经把2i筛了，直接从i*i筛
-                isPrime[j] = false;
+                if ((long)i * i > N) continue; // 这里i * i可能溢出int范围，提前转long判断一下
+                for (int j = i * i; j <= N; j += i) { // 这里不需要从2i开始筛，因为2的时候已经把2i筛了，直接从i*i筛
+                    isPrime[j] = false;
+                }
             }
         }
         return primes;
@@ -38,10 +38,10 @@ public class Sieve {
             }
             if (isPrime[i]) {
                 primes.add(i);
-            }
-            if ((long)i * i > N) continue;
-            for (int j = i * i; j <= N; j += i) {
-                isPrime[j] = false;
+                if ((long)i * i > N) continue;
+                for (int j = i * i; j <= N; j += i) {
+                    isPrime[j] = false;
+                }
             }
         }
         return primes;
@@ -62,8 +62,11 @@ public class Sieve {
         /* 只需到用根号N筛，其实上面的写法当第一次i * i > N后后续都有i * i > N，所以相当于可以直接break。
         但是这样虽然isPrime是正确的，已经筛好了，i却没有遍历完[2, N]，为了填充primes需要单独再遍历一次。 */
         for (int i = 2; i * i <= N; i++) {
-            for (int j = i * i; j <= N; j += i) {
-                isPrime[j] = false;
+            if (isPrime[i]) {
+                if ((long)i * i > N) continue;
+                for (int j = i * i; j <= N; j += i) {
+                    isPrime[j] = false;
+                }
             }
         }
         for (int i = 2; i <= N; i++) {
