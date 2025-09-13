@@ -1,6 +1,7 @@
 /*
 url: https://leetcode.cn/problems/contains-duplicate-iii/description/
 参考: https://leetcode.cn/problems/contains-duplicate-iii/solutions/726619/cun-zai-zhong-fu-yuan-su-iii-by-leetcode-bbkt/
+相关: LeetCode164. 最大间距
 标签: 【题单】滑动窗口与双指针
 */
 
