@@ -60,6 +60,11 @@ public class KMP {
         但对于build改进next表，一轮j开始时，t是[0, j - 1]的最长真前后缀匹配长度，也即非改进next[j]，然后直到满足p[j] == p[t]，
         这时才求出了非改进next[j + 1] (t+1)，然后再通过判断p[j + 1] != p[t + 1]求出真正的改进next[j + 1]；
         也就是说t都是非改进next[j]！
+        `t = next[t];` 这句，会把改进next[t + 1] 赋值给 t 重新尝试，那 t 还是 非改进next[j] 吗？
+        是，求next[j]时，若p[t] != p[j]，那么下一个尝试的 p[t'] 应!= p[t] 才可能让 p[t'] = p[j]，也就是说，
+        t = next[...next[t]] 这个过程用改进next表是比用非改进next表更快的，最后都会找到 j 的最长真前后缀匹配长度t，t的含义维持为非改进next[j]。
+        
+        关于非改进next表和改进next表的构造代码，看./KMP.cpp里的写法，更简洁。
         */
         while (j < p.length() - 1) {
             if (t == -1 || p.charAt(j) == p.charAt(t)) {
