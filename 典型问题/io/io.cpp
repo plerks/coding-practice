@@ -30,6 +30,7 @@ namespace my {
         void rdline(std::string& s) {
             s.clear();
             int c = getchar();
+            // 与通常的读行函数不同，rdline 的实现跳过了前导空白字符！
             while (c == ' ' || c == '\n') c = getchar();
             while (c != '\n' && c != EOF) {
                 s.push_back(c);
