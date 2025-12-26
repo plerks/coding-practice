@@ -36,7 +36,9 @@ namespace my::debug 下的函数作用需要在本地自行定义好 **DEBUG 宏
 
 1. 输入重定向
 
-    stdin 自动重定向为了 INPUT_FILE (默认为 "case.txt")
+    若定义了 DEBUG 宏，则会尝试 fopen INPUT_FILE (默认为 "case.txt")，若确实有这个文件，则 my::debug 会将 stdin 重定向为 INPUT_FILE。
+
+    否则，stdin 仍为终端。
 
 2. debug 宏函数
 
