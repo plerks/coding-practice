@@ -90,7 +90,7 @@ namespace my {
             print(vec, separator); wr('\n');
         }
 
-        // 匿名命名空间，为 printf 提供辅助函数，且辅助函数对外不可见
+        // 匿名命名空间，为 print(fmt, ...) 提供辅助函数，且辅助函数对外不可见
         namespace {
             __attribute__((unused))
             void print_fmt_impl(std::string::const_iterator it, std::string::const_iterator end) {
