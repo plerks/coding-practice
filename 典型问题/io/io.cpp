@@ -135,7 +135,7 @@ namespace my {
                 // 终端一般是阻塞式的读，stdin重定向为文件后一般是非阻塞式的（会读到EOF）
                 #define INPUT_FILE "case.txt" // 用例文件
                 FILE* f = fopen(INPUT_FILE, "r");
-                if (f) {
+                if (f) { // 若有 INPUT_FILE 则重定向输入
                     freopen(INPUT_FILE, "r", stdin);
                     fclose(f);
                 }
@@ -144,15 +144,27 @@ namespace my {
         #endif
 
         #ifdef DEBUG
-        // 这里 do {...} while (0) 的技巧：是为了让这个宏函数是一个语句，不能直接用 {...} ，其对 if (cond) debug(x); else foo(); 不行
-        #define debug(x) \
-            do { \
-                print("\u{1B}[93m"); \
-                print("[L{} {}]: ", __LINE__, #x); \
-                print(x); \
-                putchar('\n'); \
-                print("\u{1B}[0m"); \
-            } while (0)
+            // 这里 do {...} while (0) 的技巧：是为了让这个宏函数是一个语句，不能直接用 {...} ，其对 if (cond) debug(x); else foo(); 不行
+            #define debug(x) \
+                do { \
+                    print("\u{1B}[93m"); \
+                    print("[L{} {}] ", __LINE__, #x); \
+                    print(x); \
+                    putchar('\n'); \
+                    print("\u{1B}[0m"); \
+                } while (0)
+
+            #define debugf(fmt, ...) \
+                do { \
+                    print("\u{1B}[93m"); \
+                    print("[L{}] ", __LINE__); \
+                    print(fmt, ##__VA_ARGS__); \
+                    putchar('\n'); \
+                    print("\u{1B}[0m"); \
+                } while (0)
+        #else
+        #define debug(x)   ((void)0)
+        #define debugf(...) ((void)0)
         #endif
     }
 } using namespace my::io; using namespace my::debug;
@@ -171,5 +183,7 @@ int main(int argc, char const *argv[]) {
     std::string s;
     rd(s);
     debug(s);
+    debugf("s: {}", s);
+    println(s);
     return 0;
 }
