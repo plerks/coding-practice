@@ -36,9 +36,7 @@ public:
             int mask = get_mask();
             if (mask == 0) return 0;
             queue<int> q;
-            unordered_set<int> st;
             q.push(mask);
-            st.insert(mask);
             int level = 1;
             while (!q.empty()) {
                 int sz = q.size();
