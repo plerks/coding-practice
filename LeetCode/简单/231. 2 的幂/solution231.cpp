@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/power-of-two/description/
-相关: LeetCode3154. 到达第 K 级台阶的方案数, LeetCode342. 4的幂
+相关: LeetCode3154. 到达第 K 级台阶的方案数, LeetCode342. 4的幂, LeetCode847. 访问所有节点的最短路径
 标签: 2的幂, n & (n - 1)的位运算特征
 */
 
