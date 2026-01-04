@@ -111,3 +111,20 @@ printf 是 C 有的函数，然后才发现 C++23 有 std::print 和 std::printl
 如果 stdin / stdout 是**二进制模式**，例如 `freopen("case.txt", "rb", stdin)`，`getchar` 确实会读到 `\r`，`putchar('\n')` 也只会原样输出 `\n`。
 
 此外，`read() / write()` 总是二进制模式，二者是系统调用（不过严格来说 windows 下 msvc 的 read / write 是 CRT 对 Win32 API ReadFile / WriteFile的封装），不会转换字符。
+
+试了下，如果文件里 "\r\n" 没连着的话，文本模式也能读出 '\r'
+
+```cpp
+FILE *fp = fopen("case.txt", "wb");
+if (fp) {
+    fputc('1', fp);
+    fputc('\r', fp);
+    fclose(fp);
+}
+
+freopen("case.txt", "r", stdin);
+int c;
+c = getchar(); // '1'
+c = getchar(); // 会读到'\r'
+c = getchar(); // EOF
+```
