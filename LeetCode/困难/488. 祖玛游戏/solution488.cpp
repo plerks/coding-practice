@@ -1,3 +1,9 @@
+/*
+url: https://leetcode.cn/problems/zuma-game/
+参考: https://leetcode.cn/problems/zuma-game/solutions/1092466/zu-ma-you-xi-by-leetcode-solution-lrp4/
+标签: 【题单】图论算法
+*/
+
 #include <bits/stdc++.h>
 
 using namespace std;
