@@ -1,6 +1,7 @@
+#include <vector>
+
 // 快读快写、格式化输出等工具函数。只使用 c 的 stdio (getchar / printf / putchar)，不使用任何 c++ 的 iostream (cin / cout)
 // ┌──────────────────────────── io template & debug tool begin ────────────────────────────┐
-#include <vector>
 #include <string>
 #include <type_traits>
 namespace my::io {
@@ -65,7 +66,7 @@ namespace my::io {
     std::string format(Iterator begin, Iterator end, const std::string& separator = ", ", const std::string& bracket = "[]") {
         std::string s;
         if (0 < bracket.size()) s.push_back(bracket[0]);
-        for (; begin != end; begin++) { s.append(std::to_string(*begin)); if (begin + 1 != end) s.append(separator); }
+        for (; begin != end; begin++) { s.append(std::to_string(*begin)); if (std::next(begin) != end) s.append(separator); }
         if (1 < bracket.size()) s.push_back(bracket[1]);
         return s;
     }
@@ -76,7 +77,7 @@ namespace my::debug {
     // 1. 本地 DEBUG 时的输入重定向。若有 DEBUG 宏且有 INPUT_FILE (默认为 case.txt) 这个文件，则将其作为输入
     // 2. 本地 DEBUG 时的调试打印函数。若有 DEBUG 宏则用 BrightYellow 颜色打印 INFO
     #ifdef DEBUG
-        auto init = []() -> int {
+        auto debug_init = []() -> int {
             // 终端一般是阻塞式的读，stdin重定向为文件后一般是非阻塞式的（会读到EOF）
             #define INPUT_FILE "case.txt" // 用例文件
             FILE* f = fopen(INPUT_FILE, "r");

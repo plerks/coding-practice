@@ -64,9 +64,7 @@ io.cpp 太长了，io_slim.cpp 把内容精简了下并压行。
 
 输入函数:
 
-* `rd(T& x)`，T 为整数类型（int / long long）
-
-* `rd(std::string& s)`
+* `rd(T& x)`，T 为 int / long long / std::string
 
 * `rdline(std::string& s)`
 
@@ -93,6 +91,46 @@ io.cpp 太长了，io_slim.cpp 把内容精简了下并压行。
 ### debug 工具
 
 和 io.cpp 里的没变化，只是压行了。
+
+## [io_slim_final.cpp](./io_slim_final.cpp) （推荐）
+
+再压缩，现在行数就比较小了。
+
+### 输入输出
+
+输入函数:
+
+* `rd(T& x)`，T 为 int / long long / std::string
+
+* `rdline(std::string& s)`
+
+    与通常的读行函数不同，**rdline 的实现跳过了前导空白字符**
+
+输出函数:
+
+* `wr(T x)`，T 为 int / long long / char
+
+* `wr(const std::string& s)`
+
+剩余功能用 getchar / putchar / printf 完成即可，若要 printf std::string 则: printf("%s", s.c_str());
+
+格式化函数:
+
+* `string format(iterable, separator, bracket)`
+
+### debug 工具
+
+同样进行了简化，只实现为最简洁实用的三个功能：
+
+1. 自动检测 case.txt 并输入重定向。
+
+2. 设置输出有颜色以便在终端粘贴输入运行的话也好区分输入输出。作为 ans 的输出为绿色(这里绿色不代表正确性，以后觉得有误导性的话可以改成紫色95)，debug() 块里的输出为黄色。
+
+3. `debug(code)` 块。若无 DEBUG 宏，则被 debug() 包裹的 code 不生效，否则生效，用于本地调试。
+
+## [io_minimized.cpp](./io_minimized.cpp)
+
+极简化的，对大部分情况也够用了
 
 ## 关于函数名冲突问题
 

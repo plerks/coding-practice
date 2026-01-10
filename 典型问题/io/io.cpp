@@ -69,8 +69,7 @@ namespace my::io {
 
     // 打印 std::string
     void print(const std::string& s) {
-        const char *p = s.c_str();
-        while (*p) wr(*p), ++p;
+        for (const char *p = s.c_str(); *p; ++p) putchar(*p);
     }
 
     void println(const std::string& s) {
@@ -135,7 +134,7 @@ namespace my::debug {
     // 1. 本地 DEBUG 时的输入重定向。若有 DEBUG 宏且有 INPUT_FILE (默认为 case.txt) 这个文件，则将其作为输入
     // 2. 本地 DEBUG 时的调试打印函数。若有 DEBUG 宏则用 BrightYellow 颜色打印 INFO
     #ifdef DEBUG
-        auto init = []() -> int {
+        auto debug_init = []() -> int {
             // 终端一般是阻塞式的读，stdin重定向为文件后一般是非阻塞式的（会读到EOF）
             #define INPUT_FILE "case.txt" // 用例文件
             FILE* f = fopen(INPUT_FILE, "r");
