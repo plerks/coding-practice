@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <type_traits>
-namespace my::io {
+namespace am::io {
     // 读入整数
     template <typename T, typename = std::enable_if<std::is_integral_v<T>>>
     void rd(T& x) {
@@ -127,9 +127,9 @@ namespace my::io {
     void println(const std::string& fmt, Args&&... args) {
         print(fmt, std::forward<Args>(args)...); wr('\n');
     }
-} using namespace my::io;
+} using namespace am::io;
 
-namespace my::debug {
+namespace am::debug {
     // namespace debug 下的函数作用需要在本地自行定义好 DEBUG 宏，若无 DEBUG 宏则不会起任何作用，若通过 IDE 定义 DEBUG 宏，提交至 oj 时无需任何代码更改
     // 1. 本地 DEBUG 时的输入重定向。若有 DEBUG 宏且有 INPUT_FILE (默认为 case.txt) 这个文件，则将其作为输入
     // 2. 本地 DEBUG 时的调试打印函数。若有 DEBUG 宏则用 BrightYellow 颜色打印 INFO
@@ -169,7 +169,7 @@ namespace my::debug {
     #define debug(x)   ((void)0)
     #define debugf(...) ((void)0)
     #endif
-} using namespace my::debug;
+} using namespace am::debug;
 // └──────────────────────────── io template & debug tool end   ────────────────────────────┘
 
 int main(int argc, char const *argv[]) {

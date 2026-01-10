@@ -4,7 +4,7 @@
 // ┌──────────────────────────── io template & debug tool begin ────────────────────────────┐
 #include <string>
 #include <type_traits>
-namespace my::io {
+namespace am::io {
     template <typename T, typename = std::enable_if<std::is_integral_v<T>>>
     void rd(T& x) { // 读入整数
         T k = 0, f = 1;
@@ -70,9 +70,9 @@ namespace my::io {
         if (1 < bracket.size()) s.push_back(bracket[1]);
         return s;
     }
-} using namespace my::io;
+} using namespace am::io;
 
-namespace my::debug {
+namespace am::debug {
     // namespace debug 下的函数作用需要在本地自行定义好 DEBUG 宏，若无 DEBUG 宏则不会起任何作用，若通过 IDE 定义 DEBUG 宏，提交至 oj 时无需任何代码更改
     // 1. 本地 DEBUG 时的输入重定向。若有 DEBUG 宏且有 INPUT_FILE (默认为 case.txt) 这个文件，则将其作为输入
     // 2. 本地 DEBUG 时的调试打印函数。若有 DEBUG 宏则用 BrightYellow 颜色打印 INFO
@@ -109,13 +109,13 @@ namespace my::debug {
     #define debug(x)   ((void)0)
     #define debugf(...) ((void)0)
     #endif
-} using namespace my::debug;
+} using namespace am::debug;
 // └──────────────────────────── io template & debug tool end   ────────────────────────────┘
 
 int main(int argc, char const *argv[]) {
     print("a = {}, b = {}, c = {}\n", 1, 3, "dsa");
 
-    /* 占位符后面没给对应参数，按理说应该是ub了，但是由于奇妙的巧合，这里会直接调用 my::io::inner::print_fmt_impl(it, end)，
+    /* 占位符后面没给对应参数，按理说应该是ub了，但是由于奇妙的巧合，这里会直接调用 am::io::inner::print_fmt_impl(it, end)，
     然后会直接打印字符串。于是，print(fmt, ...) 神奇地具有了 printf(fmt, ...) 和 print(string) 的双重功能
     */
     print("aa{}\n");
@@ -123,7 +123,7 @@ int main(int argc, char const *argv[]) {
     int a = 3;
     debug(a);
     const std::vector<int> vec = {1, 7, 5, 3, 2};
-    print("{}\n", my::io::format(vec.begin(), vec.end()));
+    print("{}\n", am::io::format(vec.begin(), vec.end()));
 
     print("a = {}, b = {}, c = {}\n", 1, 3, "dsa");
 

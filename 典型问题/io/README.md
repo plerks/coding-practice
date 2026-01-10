@@ -34,7 +34,7 @@
 
 本地 debug 工具配置，包括 输入重定向 和 debug打印函数。
 
-namespace my::debug 下的函数作用需要在本地自行定义好 **DEBUG 宏**，若无 DEBUG 宏则不会起任何作用。
+namespace am::debug 下的函数作用需要在本地自行定义好 **DEBUG 宏**，若无 DEBUG 宏则不会起任何作用。
 
 预期使用方式为: 本地 IDE 定义好 DEBUG 宏，使用 `debug()` 函数打印调试，且提交至 oj 时无需任何代码更改。
 
@@ -42,7 +42,7 @@ namespace my::debug 下的函数作用需要在本地自行定义好 **DEBUG 宏
 
 1. 输入重定向
 
-    若定义了 DEBUG 宏，则会尝试 fopen INPUT_FILE (默认为 "case.txt")，若确实有这个文件，则 my::debug 会将 stdin 重定向为 INPUT_FILE。
+    若定义了 DEBUG 宏，则会尝试 fopen INPUT_FILE (默认为 "case.txt")，若确实有这个文件，则 am::debug 会将 stdin 重定向为 INPUT_FILE。
 
     否则，stdin 仍为终端。
 
@@ -54,7 +54,7 @@ namespace my::debug 下的函数作用需要在本地自行定义好 **DEBUG 宏
 
     注意 `debug()` 和 `debugf()` 都会**自动换行**
 
-my::debug 的内容提交至 OJ 时，只要 OJ 没有定义 DEBUG 宏，就会**自动失效**，**无需**特意删除 debug 相关的内容，且在 OJ 上也不会有任何多余行为（例如尝试打开/重定向文件）。
+am::debug 的内容提交至 OJ 时，只要 OJ 没有定义 DEBUG 宏，就会**自动失效**，**无需**特意删除 debug 相关的内容，且在 OJ 上也不会有任何多余行为（例如尝试打开/重定向文件）。
 
 ## [io_slim.cpp](./io_slim.cpp)
 
@@ -76,7 +76,7 @@ io.cpp 太长了，io_slim.cpp 把内容精简了下并压行。
 
     "{}" 能直接接受 整数、char、字符串。
     
-    但是这里的实现导致了个很神奇的点，例如`print("aa{}\n");`，这样的调用，占位符后面没给够对应参数，按理说应该是ub了，但是由于奇妙的巧合，`print("aa{}\n");`会直接调用 my::io::inner::print_fmt_impl(it, end)，然后会直接打印字符串。于是，print(fmt, ...) 神奇地具有了 `printf(fmt, ...)` 和 `print(string)` 的双重功能。
+    但是这里的实现导致了个很神奇的点，例如`print("aa{}\n");`，这样的调用，占位符后面没给够对应参数，按理说应该是ub了，但是由于奇妙的巧合，`print("aa{}\n");`会直接调用 am::io::inner::print_fmt_impl(it, end)，然后会直接打印字符串。于是，print(fmt, ...) 神奇地具有了 `printf(fmt, ...)` 和 `print(string)` 的双重功能。
     
     占位符 > 打印参数，后面占位符直接打印为 "{}"，占位符 < 打印参数，后面参数不打印。不会发生 segmentation fault。
 
@@ -84,9 +84,9 @@ io.cpp 太长了，io_slim.cpp 把内容精简了下并压行。
 
 * `string format(begin, end, separator, bracket)`
 
-    用来 format 一些结构，然后打印，例如 `my::io::format(vec.begin(), vec.end())` 会直接得到 "[1, 7, 5, 3, 2]"，separator 和 bracket 可以指定 分隔符 和 要不要括号，要哪种括号 。
+    用来 format 一些结构，然后打印，例如 `am::io::format(vec.begin(), vec.end())` 会直接得到 "[1, 7, 5, 3, 2]"，separator 和 bracket 可以指定 分隔符 和 要不要括号，要哪种括号 。
 
-    想要打印 vector 的话，就可以 `print("{}\n", my::io::format(vec.begin(), vec.end()));` 。
+    想要打印 vector 的话，就可以 `print("{}\n", am::io::format(vec.begin(), vec.end()));` 。
 
 ### debug 工具
 
