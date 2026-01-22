@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/subarray-sum-equals-k/
-相关: LeetCode2588. 统计美丽子数组数目
+相关: LeetCode2588. 统计美丽子数组数目, LeetCode3811. 交替按位异或分割的数目
 */
 #include <bits/stdc++.h>
 

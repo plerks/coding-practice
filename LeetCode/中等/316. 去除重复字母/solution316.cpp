@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/next-greater-element-i/
-相关: LeetCode1081. 不同字符的最小子序列
+相关: LeetCode1081. 不同字符的最小子序列, LeetCode3816. 删除重复字符后的字典序最小字符串
 标签: 【算法题单】单调栈, 字典序
 */
 #include <bits/stdc++.h>
