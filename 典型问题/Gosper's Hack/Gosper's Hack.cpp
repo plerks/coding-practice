@@ -1,6 +1,6 @@
 /*
 描述: Gosper's Hack。当前的数的二进制表示中有k个1，Gosper's Hack能在O(1)时间内直接得到下一个二进制表示中具有k个1的数
-相关: LeetCode2397. 被列覆盖的最多行数, LeetCode2859. 计算 K 置位下标对应元素的和
+相关: LeetCode2397. 被列覆盖的最多行数, LeetCode2859. 计算 K 置位下标对应元素的和, LeetCode3821. 二进制中恰好K个1的第N小整数
 */
 
 #include <bits/stdc++.h>
