@@ -40,7 +40,7 @@ public:
     void modify(int index, int val) {
         int diff = val;
         nums[index] += val;
-        // 更新各个关键区间
+        // 更新各个关键区间，i + lowbit(i) 为父节点
         for (int i = index + 1; i < tree.size(); i = i + lowbit(i)) {
             tree[i] += diff;
         }
