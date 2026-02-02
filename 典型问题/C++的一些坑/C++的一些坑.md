@@ -83,7 +83,14 @@ c++ stl的容器返回size都是size_t类型，在64位机器上size_t是unsigne
 
 在`LeetCode3159. 查询数组中元素的出现位置`中遇到这个坑。
 
-[LeetCode475. 供暖器](https://leetcode.cn/problems/heaters/) -> findRadius_implementation2()，又出现了这个问题，那题的代码类似`while (index < nums.size() && nums[index] <= x)`，但是那题代码写的方式不对，index可能变为负数，这时负数与ULL比较，结果 < 为false，虽然index为负数下标越界了，但是不会执行到nums[index]，不会真的越界，只是执行逻辑完全错了。
+[LeetCode475. 供暖器](https://leetcode.cn/problems/heaters/) -> findRadius_implementation2()，又出现了这个问题，那题的代码类似`while (index < nums.size() && nums[index] <= x)`，但是那题代码写的方式不对，index可能变为负数，这时负数与ULL比较，结果 < 为false，虽然index为负数下标越界了，但是不会执行到nums[index]，不会真的越界，只是执行逻辑完全错了。再比如想像这样循环 n + 1 次也是不行的：
+
+```cpp
+vector<int> nums = {1, 3, 5};
+for (int i = -1; i < nums.size(); i++) { // i = -1 和 size_t 比较时，被转换成了 ULLONG_MAX ，不会进循环
+    cout << 1 << endl; // 一次都不会输出
+}
+```
 
 也就是说，除了unsigned去减一个正数时有这个坑，另一边的int如果可能为负数也会有这个坑，需要保证**两边都必定非负**才是安全的。
 
