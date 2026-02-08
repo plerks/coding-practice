@@ -1,6 +1,6 @@
 /*
 描述: 单调队列求滑动窗口最大/小值，虽然叫单调队列，但是实际要用deque
-相关: LeetCode239. 滑动窗口最大值, LeetCode1696. 跳跃游戏 VI, LeetCode1438. 绝对差不超过限制的最长连续子数组
+相关: LeetCode239. 滑动窗口最大值, LeetCode1696. 跳跃游戏 VI, LeetCode1438. 绝对差不超过限制的最长连续子数组, LeetCode3835. 开销小于等于 K 的子数组数目
 */
 #include <bits/stdc++.h>
 

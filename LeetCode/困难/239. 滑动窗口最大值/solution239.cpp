@@ -1,6 +1,6 @@
 /*
 url: https://leetcode.cn/problems/sliding-window-maximum/
-相关: LeetCode1438. 绝对差不超过限制的最长连续子数组
+相关: LeetCode1438. 绝对差不超过限制的最长连续子数组, LeetCode3835. 开销小于等于 K 的子数组数目
 */
 
 #include <bits/stdc++.h>
