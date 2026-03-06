@@ -39,3 +39,7 @@ LeetCode332的[官方题解](https://leetcode.cn/problems/reconstruct-itinerary/
 ## 相关
 
 * LuoguP2731 [USACO3.3] 骑马修栅栏 Riding the Fences
+
+* LeetCode753. 破解保险箱
+
+    找到一个哈密顿路径/回路是一个NPC问题，没有已知的多项式时间内的求解算法。
