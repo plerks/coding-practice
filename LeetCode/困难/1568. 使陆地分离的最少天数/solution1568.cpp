@@ -1,8 +1,5 @@
-/*
-描述: 对于无向图，求点双连通分量
-参考: https://oi-wiki.org/graph/bcc/#%E7%82%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F
-相关: LuoguP8435 【模板】点双连通分量
-*/
+// https://leetcode.cn/problems/minimum-number-of-days-to-disconnect-island/
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -17,6 +14,7 @@ public:
     vector<vector<int>> bcc; // 点双分量
     int root = 0; // 当前dfs的树根
     vector<vector<int>> g;
+    int cc = 0; // 连通分量数
 
     VertexBCC(int n, const vector<pair<int, int>>& edges) {
         this->n = n;
@@ -32,6 +30,7 @@ public:
 
         for (int i = 0; i < n; i++) {
             if (!dfn[i]) {
+                cc++; // 可以在这里顺便统计连通分量数
                 root = i;
                 tarjan(i);
             }
@@ -73,28 +72,60 @@ public:
     }
 };
 
-int main(int argc, char const *argv[]) {
-    const int n = 12;
-    // 图见img/refence.png，上部是原图，下部是点双分解结果
-    vector<pair<int, int>> edges = {{0,1},{0,4},{1,5},{2,3},{2,5},{2,7},{3,7},{4,5},{4,8},{5,6},{5,8},{5,9},{5,10},{6,10},{9,10},{10,11}};
-    
-    VertexBCC vb(n, edges);
+class Solution1568 {
+public:
+    /* 参考官方题解，最终答案不会超过 2，因为总是可以将某个角落相邻的两个陆地单元变成水单元，从而使这个角落的陆地单元与原岛屿分离。
+    分类讨论，先看连通分量的数量，
+    1. 如果连通分量数 > 1，不用删除
+    2. 如果连通分量数 == 1，看 n 是否为 1 和 割点数，如果有割点，答案为 1，否则为 2
+    */
+    int minDays(vector<vector<int>>& grid) {
+        int mx = std::max(grid.size(), grid[0].size());
+        vector<pair<int, int>> DIRECTIONS = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        auto legal = [&](int x, int y) {
+            return 0 <= x && x < grid.size() && 0 <= y && y < grid[0].size();
+        };
 
-    for (auto& v : vb.bcc) {
-        cout << '{';
-        for (int i = 0; i < (int)v.size(); i++) {
-            if (i < (int)v.size() - 1) cout << (char)(v[i] + 'A') << ", ";
-            else cout << (char)(v[i] + 'A');
+        auto h = [&](int x, int y) {
+            return x * mx + y;
+        };
+
+        int n = 0;
+        vector<int> idx(mx * mx); // 节点顺序编号
+        for (int i = 0; i < grid.size(); i++) {
+            for (int j = 0; j < grid[0].size(); j++) {
+                if (grid[i][j] == 1) {
+                    idx[h(i, j)] = n++;
+                }
+            }
         }
-        cout << '}' << endl;
+        
+        vector<pair<int, int>> edges;
+        for (int i = 0; i < grid.size(); i++) {
+            for (int j = 0; j < grid[0].size(); j++) {
+                if (grid[i][j] == 1) {
+                    for (auto [dx, dy] : DIRECTIONS) {
+                        int ii = i + dx, jj = j + dy;
+                        if (legal(ii, jj) && grid[ii][jj] == 1) {
+                            edges.emplace_back(idx[h(i, j)], idx[h(ii, jj)]);
+                        }
+                    }
+                }
+            }
+        }
+
+        VertexBCC vb(n, edges);
+        if (vb.cc == 0 || vb.cc > 1) return 0; // 没节点 或 已经不连通
+        if (n == 1) return 1;
+        int cut_cnt = 0;
+        for (int i = 0; i < n; i++) if (vb.cut[i]) cut_cnt++;
+        if (cut_cnt > 0) return 1;
+        return 2;
     }
+};
 
-    auto _ = [&]() {
-        cout << "cut vertex: ";
-        for (int i = 0; i < n; i++) {
-            if (vb.cut[i]) cout << (char)(i + 'A');
-        }
-        return 0;
-    }();
+int main(int argc, char const *argv[]) {
+    Solution1568 solu;
+    cout << solu.minDays(*new vector<vector<int>>{{1, 1}, {1, 0}}) << endl;
     return 0;
 }

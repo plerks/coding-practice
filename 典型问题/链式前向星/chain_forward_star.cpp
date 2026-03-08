@@ -3,6 +3,7 @@
 using namespace std;
 
 struct Edge {
+    // int from; // 如果要知道 edge[i] 的起点，需要再加个 from 属性并在 add_edge() 时维护
     int to; // 边的终点
     int w; // 边权
     int next; // 下一条兄弟边的编号

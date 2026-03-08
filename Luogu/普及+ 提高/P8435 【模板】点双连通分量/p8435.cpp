@@ -1,8 +1,5 @@
-/*
-描述: 对于无向图，求点双连通分量
-参考: https://oi-wiki.org/graph/bcc/#%E7%82%B9%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F
-相关: LuoguP8435 【模板】点双连通分量
-*/
+// https://www.luogu.com.cn/problem/P8435
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -74,27 +71,27 @@ public:
 };
 
 int main(int argc, char const *argv[]) {
-    const int n = 12;
-    // 图见img/refence.png，上部是原图，下部是点双分解结果
-    vector<pair<int, int>> edges = {{0,1},{0,4},{1,5},{2,3},{2,5},{2,7},{3,7},{4,5},{4,8},{5,6},{5,8},{5,9},{5,10},{6,10},{9,10},{10,11}};
+    cin.tie(0)->sync_with_stdio(false);
+    int n, m; cin >> n >> m;
+    vector<pair<int, int>> edges;
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        cin >> u >> v;
+        u--; v--; // 题目节点编号从 1 开始的
+        edges.emplace_back(u, v);
+    }
     
     VertexBCC vb(n, edges);
 
-    for (auto& v : vb.bcc) {
-        cout << '{';
-        for (int i = 0; i < (int)v.size(); i++) {
-            if (i < (int)v.size() - 1) cout << (char)(v[i] + 'A') << ", ";
-            else cout << (char)(v[i] + 'A');
-        }
-        cout << '}' << endl;
-    }
+    cout << vb.bcc.size() << '\n';
 
-    auto _ = [&]() {
-        cout << "cut vertex: ";
-        for (int i = 0; i < n; i++) {
-            if (vb.cut[i]) cout << (char)(i + 'A');
+    for (auto& v : vb.bcc) {
+        cout << v.size();
+        for (int i = 0; i < (int)v.size(); i++) {
+            if (i < (int)v.size() - 1) cout << ' ' << (v[i] + 1); // +1 是为了把编号还原成从 1 开始
+            else cout << ' ' << (v[i] + 1);
         }
-        return 0;
-    }();
+        cout << '\n';
+    }
     return 0;
 }
